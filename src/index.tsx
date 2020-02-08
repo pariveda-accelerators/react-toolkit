@@ -25,18 +25,6 @@ const Flex = styled.div<IFlex>`
   font-family: sans-serif;
 `;
 
-interface IButton {
-  color: string;
-}
-
-const Button = styled.button<IButton>`
-  background-color: ${props => props.color};
-  border-radius: 4px;
-  font-family: sans-serif;
-  font-weight: bold;
-  padding: 1em;
-`;
-
 // const TextField = styled.input`
 //   border-radius: 4px;
 //   border: 1px solid #666;
@@ -45,7 +33,7 @@ const Button = styled.button<IButton>`
 
 const SCALE = 16;
 const MULTIPLIER = 1.5;
-const SHADE_COUNT = 2;
+const SHADE_COUNT = 3;
 const COLOR_RANGE = 255 - SCALE * MULTIPLIER * SHADE_COUNT;
 const HALF_RANGE = Math.floor(COLOR_RANGE / 2);
 const MAX_VALUE = 128 + HALF_RANGE;
@@ -145,9 +133,9 @@ const getColorPaletteFromRgb = (rgb: IRGB) => {
 
 export const ColorPalette = () => {
   const [rgb, setRgb] = React.useState({
-    r: 192,
-    g: 100,
-    b: 100,
+    r: 180,
+    g: 64,
+    b: 128,
   });
   const handleChange = (channel: 'r' | 'g' | 'b') => (
     onChange: React.ChangeEvent<HTMLInputElement>
