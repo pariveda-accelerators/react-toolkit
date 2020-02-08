@@ -121,11 +121,11 @@ const getColorPaletteFromRgb = (rgb: IRGB) => {
       lock: { r: false },
     },
     {
-      hex: `#${gHex}${bHex}${rHex}`,
+      hex: `#${bHex}${rHex}${gHex}`,
       lock: { g: false },
     },
     {
-      hex: `#${bHex}${rHex}${gHex}`,
+      hex: `#${gHex}${bHex}${rHex}`,
       lock: { b: false },
     },
   ];
