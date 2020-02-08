@@ -154,7 +154,7 @@ export const ColorPalette = () => {
   const shades = generateColorPaletteShades(
     [
       {
-        hex: '#666',
+        hex: '#808080',
       },
     ].concat(colors)
   );
