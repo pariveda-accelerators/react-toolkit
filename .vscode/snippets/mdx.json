@@ -1,0 +1,36 @@
+{
+  "Storybook Container Template": {
+    "prefix": "ContainerDocs",
+    "body": [
+      "import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';",
+      "import { ${1:ComponentName} } from '${2:components}';",
+      "import { StatefulStory } from 'utilities';",
+      "",
+      "<Meta title=\"${3:Group}|${4:ContainerName}\" />",
+      "",
+      "## Preview",
+      "",
+      "<Preview>",
+      "  <Story name=\"${1:ComponentName}\">",
+      "    $5",
+      "  </Story>",
+      "</Preview>",
+      "",
+      "## Description",
+      "",
+      "${1:ComponentName} is used to ${6:do something}",
+      "",
+      "## Keyboard Accessibility",
+      "",
+      "${1:ComponentName} support the following keyboard interactions:",
+      "",
+      "- `${7:key}` to ${8:perform action}",
+      "",
+      "## Props",
+      "",
+      "<Props of={${1:ComponentName}} />",
+      ""
+    ],
+    "description": "Template for the container documentation format"
+  }
+}

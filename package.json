@@ -17,7 +17,7 @@
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
-    "storybook": "start-storybook -p 3000",
+    "storybook": "start-storybook -p 3000 --ci",
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
@@ -52,5 +52,9 @@
     "tsdx": "^0.12.3",
     "tslib": "^1.10.0",
     "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "@types/styled-components": "^4.4.2",
+    "styled-components": "^5.0.1"
   }
 }
