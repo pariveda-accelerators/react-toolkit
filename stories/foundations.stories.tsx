@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorPalette } from '../src';
+import { ColorPalette } from '../src/foundations/colors';
 
 export default {
   title: 'Foundations',

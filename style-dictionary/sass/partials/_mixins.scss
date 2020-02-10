@@ -1,0 +1,66 @@
+@use 'sass:math';
+@import 'build/scss/variables';
+@import 'functions';
+
+@mixin mix-palette($paletteSeed: $color-palette-base) {
+  $base-grey: map-get($paletteSeed, 'grey');
+  $base-primary: map-get($paletteSeed, 'primary');
+  $shade-count: map-get($paletteSeed, 'shade-count');
+  $interval: math.floor(255 / $shade-count);
+
+  $base: (
+    'base': $base-grey,
+    'shades': #383838 #505050 #686868 #808080 #989898 #b0b0b0 #c8c8c8,
+  );
+
+  $palette-diff: palette-diff($base);
+  $grey-palette: create-palette($base-grey, $palette-diff);
+
+  $red-palette: create-palette($base-primary, $palette-diff);
+
+  $base-orange: adjust-hue($base-primary, 60deg);
+  $orange-palette: create-palette($base-orange, $palette-diff);
+
+  $base-yellow: adjust-hue($base-primary, 120deg);
+  $yellow-palette: create-palette($base-yellow, $palette-diff);
+
+  $base-green: adjust-hue($base-primary, 180deg);
+  $green-palette: create-palette($base-green, $palette-diff);
+
+  $base-blue: adjust-hue($base-primary, 240deg);
+  $blue-palette: create-palette($base-blue, $palette-diff);
+
+  $base-purple: adjust-hue($base-primary, 300deg);
+  $purple-palette: create-palette($base-purple, $palette-diff);
+
+  :root {
+    @for $i from 1 through length($grey-palette) {
+      $color: nth($grey-palette, $i);
+      --grey-#{$i}: #{$color};
+    }
+    @for $i from 1 through length($red-palette) {
+      $color: nth($red-palette, $i);
+      --red-#{$i}: #{$color};
+    }
+    @for $i from 1 through length($orange-palette) {
+      $color: nth($orange-palette, $i);
+      --orange-#{$i}: #{$color};
+    }
+    @for $i from 1 through length($yellow-palette) {
+      $color: nth($yellow-palette, $i);
+      --yellow-#{$i}: #{$color};
+    }
+    @for $i from 1 through length($green-palette) {
+      $color: nth($green-palette, $i);
+      --green-#{$i}: #{$color};
+    }
+    @for $i from 1 through length($blue-palette) {
+      $color: nth($blue-palette, $i);
+      --blue-#{$i}: #{$color};
+    }
+    @for $i from 1 through length($purple-palette) {
+      $color: nth($purple-palette, $i);
+      --purple-#{$i}: #{$color};
+    }
+  }
+}
