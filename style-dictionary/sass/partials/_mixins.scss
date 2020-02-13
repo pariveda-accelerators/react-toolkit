@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use 'sass:map';
 @import 'build/scss/variables';
 @import 'functions';
 
@@ -10,57 +11,42 @@
 
   $base: (
     'base': $base-grey,
-    'shades': #383838 #505050 #686868 #808080 #989898 #b0b0b0 #c8c8c8,
+    'shades': #242424 #484848 #6c6c6c #808080 #939393 #b7b7b7 #dbdbdb,
   );
 
   $palette-diff: palette-diff($base);
+  @debug ($palette-diff);
   $grey-palette: create-palette($base-grey, $palette-diff);
 
-  $red-palette: create-palette($base-primary, $palette-diff);
+  $palette: ();
 
-  $base-orange: adjust-hue($base-primary, 60deg);
-  $orange-palette: create-palette($base-orange, $palette-diff);
+  $palette: map.merge(
+    $palette,
+    (
+      'grey': $grey-palette,
+    )
+  );
 
-  $base-yellow: adjust-hue($base-primary, 120deg);
-  $yellow-palette: create-palette($base-yellow, $palette-diff);
+  $color-count: 12;
+  $interval: 360deg / $color-count;
 
-  $base-green: adjust-hue($base-primary, 180deg);
-  $green-palette: create-palette($base-green, $palette-diff);
-
-  $base-blue: adjust-hue($base-primary, 240deg);
-  $blue-palette: create-palette($base-blue, $palette-diff);
-
-  $base-purple: adjust-hue($base-primary, 300deg);
-  $purple-palette: create-palette($base-purple, $palette-diff);
+  @for $i from 1 through $color-count {
+    $color-name: color-#{$i};
+    $color: adjust-hue($base-primary, $interval * ($i - 1));
+    $palette: map.merge(
+      $palette,
+      (#{$color-name}: create-palette($color, $palette-diff))
+    );
+  }
 
   :root {
-    @for $i from 1 through length($grey-palette) {
-      $color: nth($grey-palette, $i);
-      --grey-#{$i}: #{$color};
-    }
-    @for $i from 1 through length($red-palette) {
-      $color: nth($red-palette, $i);
-      --red-#{$i}: #{$color};
-    }
-    @for $i from 1 through length($orange-palette) {
-      $color: nth($orange-palette, $i);
-      --orange-#{$i}: #{$color};
-    }
-    @for $i from 1 through length($yellow-palette) {
-      $color: nth($yellow-palette, $i);
-      --yellow-#{$i}: #{$color};
-    }
-    @for $i from 1 through length($green-palette) {
-      $color: nth($green-palette, $i);
-      --green-#{$i}: #{$color};
-    }
-    @for $i from 1 through length($blue-palette) {
-      $color: nth($blue-palette, $i);
-      --blue-#{$i}: #{$color};
-    }
-    @for $i from 1 through length($purple-palette) {
-      $color: nth($purple-palette, $i);
-      --purple-#{$i}: #{$color};
+    --white: #fff;
+    --black: #000;
+    @each $color, $shades in $palette {
+      @for $i from 1 through length($shades) {
+        $shade: nth($shades, $i);
+        --#{$color}-#{$i}: #{$shade};
+      }
     }
   }
 }

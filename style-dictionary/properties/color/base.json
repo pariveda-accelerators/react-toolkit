@@ -2,7 +2,7 @@
   "color": {
     "base": {
       "grey": { "value": "#808080" },
-      "primary": { "value": "#E02169" },
+      "primary": { "value": "#ff7700" },
       "shade-count": { "value": 5 }
     }
   }
