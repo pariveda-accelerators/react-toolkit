@@ -16,7 +16,10 @@ const getFlexStyles = (props: IFlex) => {
       align-self: stretch;
     `;
   } else if (shrink) {
-    return 'flex: 0 1 auto';
+    return `
+      flex: 0 1 auto;
+      align-self: ${center ? 'center' : 'stretch'};
+    `;
   } else if (start) {
     return `
       align-items: flex-start;
@@ -114,16 +117,19 @@ interface IColorSlice {
   percent?: number;
   saturation?: number;
   height?: number;
+  children?: React.ReactNode;
 }
 export const ColorSlice: FC<IColorSlice> = ({
   color,
   percent,
   saturation,
   height,
+  children,
 }) => (
   <Flex column color={color} height={height || 256} equal saturation={saturation}>
     {(percent || typeof percent === 'number') && <Body bold>{percent}%</Body>}
     {color.includes('#') && <Body>{color.toUpperCase()}</Body>}
+    {children}
   </Flex>
 );
 
@@ -151,25 +157,26 @@ export const cssNames = [
 interface IFont {
   color?: string;
   bold?: boolean;
+  condensed?: boolean;
 }
 export const Heading = styled.h2<IFont>`
   font-family: sans-serif;
   font-size: 2em;
   font-weight: ${props => (props.bold ? 'bold' : 'inherit')};
-  margin: 1em 0;
+  margin: ${props => (props.condensed ? '.25em 0' : '1em 0')};
   color: ${props => parseColorProp(props.color)};
 `;
 export const Subheading = styled.h3<IFont>`
   font-family: sans-serif;
   font-size: 1.5em;
   font-weight: ${props => (props.bold ? 'bold' : 'inherit')};
-  margin: 1em 0;
+  margin: ${props => (props.condensed ? '.25em 0' : '1em 0')};
   color: ${props => parseColorProp(props.color)};
 `;
 export const Body = styled.p<IFont>`
   font-family: sans-serif;
   font-weight: ${props => (props.bold ? 'bold' : 'inherit')};
-  margin: 1em 0;
+  margin: ${props => (props.condensed ? '.25em 0' : '1em 0')};
   color: ${props => parseColorProp(props.color)};
 `;
 export const Bold = styled.b``;
@@ -183,11 +190,26 @@ export const ListItem = styled.li`
   font-size: 1.25em;
 `;
 
-export const Button = styled.button`
-  border: 1px solid ${props => parseColorProp(props.color)};
-  background-color: ${props => parseColorProp(props.color)};
+const getButtonColors = (props: IButton) => {
+  if (props.secondary) {
+    return `
+      border: 1px solid ${parseColorProp(props.color)};
+      background-color: var(--white);
+    `;
+  }
+  return `
+    border: 1px solid ${parseColorProp(props.color)};
+    background-color: ${parseColorProp(props.color)};
+  `;
+};
+
+interface IButton {
+  secondary?: boolean;
+  color?: string;
+}
+export const Button = styled.button<IButton>`
+  ${props => getButtonColors(props)}
   padding: 1em 2em;
-  border-radius: 4px;
   font-weight: bold;
   font-size: 1em;
 `;

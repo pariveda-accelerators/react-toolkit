@@ -1,164 +1,124 @@
 import * as React from 'react';
 import { Flex, Heading, ColorSlice, Body, Subheading, Button } from './components';
 
-export const ColorAndBrand = () => (
-  <Flex column center>
-    <Heading bold>Complimentary Colors</Heading>
-    <Flex stretch>
-      <ColorSlice color="color-1-4" height={64} />
-      <ColorSlice color="color-7-4" height={64} />
-    </Flex>
-    <Flex stretch>
-      <ColorSlice color="color-2-4" height={64} />
-      <ColorSlice color="color-8-4" height={64} />
-    </Flex>
-    <Flex stretch>
-      <ColorSlice color="color-3-4" height={64} />
-      <ColorSlice color="color-9-4" height={64} />
-    </Flex>
-    <Heading bold>Analogous Colors</Heading>
-    <Flex stretch>
-      <ColorSlice color="color-1-4" height={64} />
-      <ColorSlice color="color-2-4" height={64} />
-      <ColorSlice color="color-3-4" height={64} />
-    </Flex>
-    <Flex stretch>
-      <ColorSlice color="color-6-4" height={64} />
-      <ColorSlice color="color-7-4" height={64} />
-      <ColorSlice color="color-8-4" height={64} />
-    </Flex>
-    <Flex stretch>
-      <ColorSlice color="color-10-4" height={64} />
-      <ColorSlice color="color-11-4" height={64} />
-      <ColorSlice color="color-12-4" height={64} />
-    </Flex>
-    <Heading bold>Triadic Colors</Heading>
-    <Flex stretch>
-      <ColorSlice color="color-1-4" height={64} />
-      <ColorSlice color="color-5-4" height={64} />
-      <ColorSlice color="color-9-4" height={64} />
-    </Flex>
-    <Flex stretch>
-      <ColorSlice color="color-2-4" height={64} />
-      <ColorSlice color="color-6-4" height={64} />
-      <ColorSlice color="color-10-4" height={64} />
-    </Flex>
-    <Flex stretch>
-      <ColorSlice color="color-4-4" height={64} />
-      <ColorSlice color="color-8-4" height={64} />
-      <ColorSlice color="color-12-4" height={64} />
-    </Flex>
-    <Heading bold>Split Complementary Colors</Heading>
-    <Flex stretch>
-      <ColorSlice color="color-1-4" height={64} />
-      <ColorSlice color="color-6-4" height={64} />
-      <ColorSlice color="color-8-4" height={64} />
-    </Flex>
-    <Flex stretch>
-      <ColorSlice color="color-2-4" height={64} />
-      <ColorSlice color="color-7-4" height={64} />
-      <ColorSlice color="color-9-4" height={64} />
-    </Flex>
-    <Flex stretch>
-      <ColorSlice color="color-3-4" height={64} />
-      <ColorSlice color="color-8-4" height={64} />
-      <ColorSlice color="color-10-4" height={64} />
-    </Flex>
-    <Heading bold>Tetradic Colors</Heading>
-    <Flex stretch>
-      <ColorSlice color="color-1-4" height={64} />
-      <ColorSlice color="color-7-4" height={64} />
-      <ColorSlice color="color-5-4" height={64} />
-      <ColorSlice color="color-11-4" height={64} />
-    </Flex>
-    <Flex stretch>
-      <ColorSlice color="color-3-4" height={64} />
-      <ColorSlice color="color-9-4" height={64} />
-      <ColorSlice color="color-5-4" height={64} />
-      <ColorSlice color="color-11-4" height={64} />
-    </Flex>
-  </Flex>
-);
+export const ColorAndBrand = () => {
+  const TETRAD_SHIFT = 1;
 
-const brands = [
-  {
-    primary: 'color-1-4',
-    secondary: 'color-2-4',
-    tertiary: 'color-3-4',
-  },
-  {
-    primary: 'color-6-4',
-    secondary: 'color-7-4',
-    tertiary: 'color-8-4',
-  },
-  {
-    primary: 'color-10-4',
-    secondary: 'color-11-4',
-    tertiary: 'color-12-4',
-  },
-  {
-    primary: 'color-1-4',
-    secondary: 'color-5-4',
-    tertiary: 'color-9-4',
-  },
-  {
-    primary: 'color-2-4',
-    secondary: 'color-6-4',
-    tertiary: 'color-10-4',
-  },
-  {
-    primary: 'color-4-4',
-    secondary: 'color-8-4',
-    tertiary: 'color-12-4',
-  },
-  {
-    primary: 'color-1-4',
-    secondary: 'color-6-4',
-    tertiary: 'color-8-4',
-  },
-  {
-    primary: 'color-2-4',
-    secondary: 'color-7-4',
-    tertiary: 'color-9-4',
-  },
-  {
-    primary: 'color-3-4',
-    secondary: 'color-8-4',
-    tertiary: 'color-10-4',
-  },
-];
+  const MAX_COLOR = 12;
+  const MAX_SHADE = 7;
+  const [color, setColor] = React.useState(1);
+  const [shade, setShade] = React.useState(4);
 
-export const BrandThemeDemo = () => {
-  const brand = brands[0];
+  const updateColor = (change: number) => {
+    const nextColor = color + change;
+    if (nextColor > MAX_COLOR) {
+      setColor(1);
+    } else if (nextColor < 1) {
+      setColor(MAX_COLOR);
+    } else {
+      setColor(nextColor);
+    }
+  };
+  const updateShade = (change: number) => {
+    const nextShade = shade + change;
+    if (nextShade > MAX_SHADE) {
+      setShade(1);
+    } else if (nextShade < 1) {
+      setShade(MAX_SHADE);
+    } else {
+      setShade(nextShade);
+    }
+  };
+
+  const getColorWithOffset = (color: number, offset: number) => {
+    const newColor = color + offset;
+    if (newColor > MAX_COLOR) {
+      return newColor - MAX_COLOR;
+    } else if (newColor < 1) {
+      return newColor + MAX_COLOR;
+    }
+    return newColor;
+  };
   return (
-    <Flex column>
-      <Flex stretch color={brand.primary} padding={16}>
-        <Heading color="white">Big important banner message</Heading>
+    <Flex column center>
+      <Flex stretch>
+        <ColorSlice color={`color-${color}-4`} height={64}>
+          <Heading color="white">Color</Heading>
+        </ColorSlice>
+        <Flex shrink />
+        <Button onClick={() => updateColor(-1)}>Previous</Button>
+        <Button onClick={() => updateColor(1)}>Next</Button>
       </Flex>
-      <Flex stretch padding={16}>
-        <Flex column color={brand.secondary}>
-          <Subheading>Card with stuff</Subheading>
-          <Body>This is some bacon ipsum action coming right at you</Body>
-          <Flex />
-          <Button color={brand.tertiary}>Learn More</Button>
-        </Flex>
-        <Flex />
-        <Flex column color={brand.secondary}>
-          <Subheading>Card with stuff</Subheading>
-          <Body>This is some bacon ipsum action coming right at you</Body>
-          <Flex />
-          <Button color={brand.tertiary}>Learn More</Button>
-        </Flex>
-        <Flex />
-        <Flex column color={brand.secondary}>
-          <Subheading>Card with stuff</Subheading>
-          <Body>This is some bacon ipsum action coming right at you</Body>
-          <Flex />
-          <Button color={brand.tertiary}>Learn More</Button>
-        </Flex>
+      <Flex stretch>
+        <ColorSlice color={`color-${color}-${shade}`} height={64}>
+          <Heading>Shade</Heading>
+        </ColorSlice>
+        <Flex shrink />
+        <Button onClick={() => updateShade(-1)}>Previous</Button>
+        <Button onClick={() => updateShade(1)}>Next</Button>
       </Flex>
-      <Flex stretch color={brand.primary} padding={16}>
-        <Subheading color="white">Footer with some stuff in it</Subheading>
+      <Heading bold>Complimentary Colors</Heading>
+      <Flex stretch>
+        <ColorSlice color={`color-${color}-${shade}`} height={64} />
+        <ColorSlice
+          color={`color-${getColorWithOffset(color, MAX_COLOR / 2)}-${shade}`}
+          height={64}
+        />
+      </Flex>
+      <Heading bold>Analogous Colors</Heading>
+      <Flex stretch>
+        <ColorSlice
+          color={`color-${getColorWithOffset(color, -1)}-${shade}`}
+          height={64}
+        />
+        <ColorSlice color={`color-${color}-${shade}`} height={64} />
+        <ColorSlice
+          color={`color-${getColorWithOffset(color, 1)}-${shade}`}
+          height={64}
+        />
+      </Flex>
+      <Heading bold>Triadic Colors</Heading>
+      <Flex stretch>
+        <ColorSlice color={`color-${color}-${shade}`} height={64} />
+        <ColorSlice
+          color={`color-${getColorWithOffset(color, MAX_COLOR / 3)}-${shade}`}
+          height={64}
+        />
+        <ColorSlice
+          color={`color-${getColorWithOffset(color, (MAX_COLOR * 2) / 3)}-${shade}`}
+          height={64}
+        />
+      </Flex>
+      <Heading bold>Split Complementary Colors</Heading>
+      <Flex stretch>
+        <ColorSlice color={`color-${color}-${shade}`} height={64} />
+        <ColorSlice
+          color={`color-${getColorWithOffset(color, MAX_COLOR / 2 + 1)}-${shade}`}
+          height={64}
+        />
+        <ColorSlice
+          color={`color-${getColorWithOffset(color, MAX_COLOR / 2 - 1)}-${shade}`}
+          height={64}
+        />
+      </Flex>
+      <Heading bold>Tetradic Colors</Heading>
+      <Flex stretch>
+        <ColorSlice color={`color-${color}-${shade}`} height={64} />
+        <ColorSlice
+          color={`color-${getColorWithOffset(color, MAX_COLOR / 2)}-${shade}`}
+          height={64}
+        />
+        <ColorSlice
+          color={`color-${getColorWithOffset(color, TETRAD_SHIFT)}-${shade}`}
+          height={64}
+        />
+        <ColorSlice
+          color={`color-${getColorWithOffset(
+            color,
+            TETRAD_SHIFT + MAX_COLOR / 2
+          )}-${shade}`}
+          height={64}
+        />
       </Flex>
     </Flex>
   );
