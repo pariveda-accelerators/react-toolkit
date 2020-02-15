@@ -54,8 +54,8 @@ export const ColorAndBrand = () => {
           <Heading>Shade</Heading>
         </ColorSlice>
         <Flex shrink />
-        <Button onClick={() => updateShade(-1)}>Previous</Button>
-        <Button onClick={() => updateShade(1)}>Next</Button>
+        <Button onClick={() => updateShade(-1)}>Darker</Button>
+        <Button onClick={() => updateShade(1)}>Lighter</Button>
       </Flex>
       <Heading bold>Complimentary Colors</Heading>
       <Flex stretch>

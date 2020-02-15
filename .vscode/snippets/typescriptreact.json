@@ -1,0 +1,17 @@
+{
+  "Storybook Container Template": {
+    "prefix": "FunctionComponent",
+    "body": [
+      "import React, { FC } from 'react';",
+      "",
+      "interface I${1:Component} {",
+      "  prop: any;",
+      "}",
+      "",
+      "export const ${1:Component}: FC<I${1:Component}> = props => {",
+      "  return <div>${1:Component}</div>;",
+      "};"
+    ],
+    "description": "Template for the container documentation format"
+  }
+}
