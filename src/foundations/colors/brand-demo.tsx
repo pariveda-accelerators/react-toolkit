@@ -5,7 +5,11 @@ export const BrandThemeDemo = () => {
   const MAX_COLOR = 12;
   const MAX_SHADE = 7;
   const [color, setColor] = React.useState(1);
-  const [shade, setShade] = React.useState(4);
+  const [shade, setShade] = React.useState({
+    primary: 4,
+    secondary: 4,
+    tertiary: 4,
+  });
 
   const updateColor = (change: number) => {
     const nextColor = color + change;
@@ -17,14 +21,14 @@ export const BrandThemeDemo = () => {
       setColor(nextColor);
     }
   };
-  const updateShade = (change: number) => {
-    const nextShade = shade + change;
+  const updateShade = (priority: string, change: number) => {
+    const nextShade = shade[priority] + change;
     if (nextShade > MAX_SHADE) {
-      setShade(1);
+      setShade({ ...shade, [priority]: 1 });
     } else if (nextShade < 1) {
-      setShade(MAX_SHADE);
+      setShade({ ...shade, [priority]: MAX_SHADE });
     } else {
-      setShade(nextShade);
+      setShade({ ...shade, [priority]: nextShade });
     }
   };
 
@@ -37,15 +41,13 @@ export const BrandThemeDemo = () => {
     }
     return newColor;
   };
-  const primaryColor = `color-${color}-${shade}`;
-  const secondaryColor = `color-${getColorWithOffset(
-    color,
-    MAX_COLOR / 2 + 1
-  )}-${shade}`;
-  const tertiaryColor = `color-${getColorWithOffset(
-    color,
-    MAX_COLOR / 2 - 1
-  )}-${shade}`;
+  const primaryColor = `color-${color}-${shade.primary}`;
+  const secondaryColor = `color-${getColorWithOffset(color, MAX_COLOR / 2 + 1)}-${
+    shade.secondary
+  }`;
+  const tertiaryColor = `color-${getColorWithOffset(color, MAX_COLOR / 2 - 1)}-${
+    shade.tertiary
+  }`;
   return (
     <Flex column center>
       <Flex stretch>
@@ -67,8 +69,24 @@ export const BrandThemeDemo = () => {
           <Heading>Shade</Heading>
         </ColorSlice>
         <Flex shrink />
-        <Button onClick={() => updateShade(-1)}>Previous</Button>
-        <Button onClick={() => updateShade(1)}>Next</Button>
+        <Button onClick={() => updateShade('primary', -1)}>Darker</Button>
+        <Button onClick={() => updateShade('primary', 1)}>Lighter</Button>
+      </Flex>
+      <Flex stretch>
+        <ColorSlice color={secondaryColor} height={64}>
+          <Heading>Shade</Heading>
+        </ColorSlice>
+        <Flex shrink />
+        <Button onClick={() => updateShade('secondary', -1)}>Darker</Button>
+        <Button onClick={() => updateShade('secondary', 1)}>Lighter</Button>
+      </Flex>
+      <Flex stretch>
+        <ColorSlice color={tertiaryColor} height={64}>
+          <Heading>Shade</Heading>
+        </ColorSlice>
+        <Flex shrink />
+        <Button onClick={() => updateShade('tertiary', -1)}>Darker</Button>
+        <Button onClick={() => updateShade('tertiary', 1)}>Lighter</Button>
       </Flex>
       <Flex column stretch color="black">
         <Flex column color="grey-7" stretch padding={0}>
