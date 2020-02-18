@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'sass:math';
 @use 'sass:map';
 @import 'build/scss/variables';
@@ -11,10 +12,16 @@
 
   $base: (
     'base': $base-grey,
-    'shades': #242424 #484848 #6c6c6c #808080 #939393 #b7b7b7 #dbdbdb,
+    'shades': color.scale($base-grey, $lightness: -75%)
+      color.scale($base-grey, $lightness: -50%)
+      color.scale($base-grey, $lightness: -25%) $base-grey
+      color.scale($base-grey, $lightness: 25%)
+      color.scale($base-grey, $lightness: 50%)
+      color.scale($base-grey, $lightness: 75%),
   );
 
   $palette-diff: palette-diff($base);
+  @debug ($base);
   @debug ($palette-diff);
   $grey-palette: create-palette($base-grey, $palette-diff);
 

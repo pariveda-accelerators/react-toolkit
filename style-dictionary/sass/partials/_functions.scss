@@ -1,3 +1,41 @@
+@use 'sass:math';
+
+@function luminance($color) {
+  $colors: (
+    'red': red($color),
+    'green': green($color),
+    'blue': blue($color),
+  );
+
+  @each $name, $value in $colors {
+    $value: $value / 255;
+
+    @if $value < 0.03928 {
+      $value: $value / 12.92;
+    } @else {
+      $value: ($value + 0.055) / 1.055;
+      $value: math.pow($value, 2.4);
+    }
+
+    $colors: map-merge(
+      $colors,
+      (
+        $name: $value,
+      )
+    );
+  }
+
+  @return (map-get($colors, 'red') * 0.2126) + (map-get($colors, 'green') * 0.7152) +
+    (map-get($colors, 'blue') * 0.0722);
+}
+
+@function contrast-ratio($light-color, $dark-color) {
+  // See https://www.w3.org/TR/WCAG20/#contrast-ratiodef for maths
+  $light-luminance: luminance(($light-color));
+  $dark-luminance: luminance(($dark-color));
+  @return ($light-lumnance + 0.05) / ($dark-luminance + 0.05);
+}
+
 @function color-diff($a, $b) {
   $sat: saturation($a) - saturation($b);
   $lig: lightness($a) - lightness($b);

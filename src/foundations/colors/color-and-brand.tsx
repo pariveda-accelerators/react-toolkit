@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Heading, ColorSlice, Body, Subheading, Button } from './components';
+import { Flex, Heading, ColorSlice, Button } from './components';
 
 export const ColorAndBrand = () => {
   const TETRAD_SHIFT = 1;
