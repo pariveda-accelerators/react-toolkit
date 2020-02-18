@@ -1,0 +1,27 @@
+{
+  "source": ["style-dictionary/properties/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "style-dictionary/build/css/",
+      "files": [
+        {
+          "destination": "_variables.css",
+          "format": "css/variables"
+        }
+      ]
+    },
+    "scss": {
+      "transformGroup": "scss",
+      "buildPath": "style-dictionary/build/scss/",
+      "files": [
+        {
+          "destination": "_variables.scss",
+          "format": "scss/map-flat",
+          "mapName": "color-palette-base",
+          "transforms": ["value/number", "time/seconds"]
+        }
+      ]
+    }
+  }
+}

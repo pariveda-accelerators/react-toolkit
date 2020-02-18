@@ -1,0 +1,5 @@
+@use 'global';
+@import 'partials/mixins';
+@import 'partials/variables';
+
+@include mix-palette;
