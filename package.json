@@ -17,7 +17,7 @@
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
-    "storybook": "build-styles && yarn start-storybook -p 4000 --ci",
+    "storybook": "yarn build-styles && yarn start-storybook -p 4000 --ci",
     "build-storybook": "build-storybook",
     "build-styles": "node ./sass/node-sass.js"
   },
