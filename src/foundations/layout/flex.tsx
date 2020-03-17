@@ -13,14 +13,16 @@ interface IFlex {
   className?: string;
   column?: boolean;
   color?: TColor;
+  p?: string;
 }
 
 const UnstyledFlex: FC<IFlex> = props => {
-  return <div className={props.className}>Flex</div>;
+  return <div className={props.className}>{props.children}</div>;
 };
 
 export const Flex = styled(UnstyledFlex)`
   display: flex;
   flex-direction: ${props => (props.column ? 'column' : 'row')};
   background-color: ${props => getPaletteColor(props.color)};
+  padding: ${props => (props.p ? props.p : 0)};
 `;

@@ -1,0 +1,28 @@
+@use 'sass:math';
+@use 'sass:list';
+
+@function create-uniform-shades($color, $shade-count, $is-grey: false) {
+  $shade-blend: ();
+  $hue: chromatic-color-get($color, 'hcl.h');
+  $chroma: chromatic-color-get($color, 'hcl.c');
+  $lightness: chromatic-color-get($color, 'hcl.l');
+  $mid-point: ceil($shade-count / 2);
+  @for $i from 0 through $shade-count - 1 {
+    @if ($is-grey) {
+      $chroma: 0;
+    }
+    $multiplier: $i - $mid-point;
+    $shift: (100 - $chroma) / $shade-count;
+    $total-shift: abs($multiplier * $shift);
+
+    $shade-chroma: $chroma - ($total-shift);
+    $shade-lightness: 95 - ($i * 95 / $shade-count);
+    // $luminance: 0.01 + 0.5 * ($shade-count - $i) / $shade-count;
+
+    $shade-blend: append(
+      $shade-blend,
+      chromatic-hcl($hue, $shade-chroma, $shade-lightness)
+    );
+  }
+  @return $shade-blend;
+}

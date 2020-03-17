@@ -13,7 +13,7 @@ module.exports = ({ config }) => {
   });
   config.resolve.extensions.push('.ts', '.tsx');
   config.resolve.alias = Object.assign(config.resolve.alias, {
-    src: path.resolve(__dirname, '../src'),
+    foundations: path.resolve(__dirname, '../src/foundations'),
   });
   return config;
 };

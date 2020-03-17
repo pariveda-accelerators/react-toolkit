@@ -1,0 +1,64 @@
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:map';
+@import 'functions';
+@import 'variables';
+
+@mixin mix-palette($paletteSeed: $color-palette-base) {
+  $grey: map-get($paletteSeed, 'grey');
+  $base: map-get($paletteSeed, 'base');
+  $shade-count: map-get($paletteSeed, 'shade-count');
+  $colors: map-get($paletteSeed, 'colors');
+  $theme: map-get($paletteSeed, 'theme');
+
+  $base-hue: chromatic-color-get($base, 'hcl.h');
+  $base-chroma: chromatic-color-get($base, 'hcl.c');
+  $base-lightness: chromatic-color-get($base, 'hcl.l');
+  $color-offset: $base-hue % 30;
+
+  $base-chroma: 60;
+  $base-lightness: 70;
+
+  $grey: chromatic-hcl($base-hue, 0, 0.5);
+  $red: chromatic-hcl(30 + $color-offset, $base-chroma, $base-lightness);
+  $orange: chromatic-hcl(60 + $color-offset, $base-chroma, $base-lightness);
+  $yellow: chromatic-hcl(90 + $color-offset, $base-chroma, $base-lightness);
+  $lime: chromatic-hcl(120 + $color-offset, $base-chroma, $base-lightness);
+  $green: chromatic-hcl(150 + $color-offset, $base-chroma, $base-lightness);
+  $seafoam: chromatic-hcl(175 + $color-offset, $base-chroma, $base-lightness);
+  $teal: chromatic-hcl(200 + $color-offset, $base-chroma, $base-lightness);
+  $azure: chromatic-hcl(235 + $color-offset, $base-chroma, $base-lightness);
+  $blue: chromatic-hcl(275 + $color-offset, $base-chroma, $base-lightness);
+  $violet: chromatic-hcl(300 + $color-offset, $base-chroma, $base-lightness);
+  $magenta: chromatic-hcl(330 + $color-offset, $base-chroma, $base-lightness);
+  $rose: chromatic-hcl(0 + $color-offset, $base-chroma, $base-lightness);
+
+  $palette: (
+    'grey': create-uniform-shades($grey, $shade-count, $is-grey: true),
+    'red': create-uniform-shades($red, $shade-count),
+    'orange': create-uniform-shades($orange, $shade-count),
+    'yellow': create-uniform-shades($yellow, $shade-count),
+    'lime': create-uniform-shades($lime, $shade-count),
+    'green': create-uniform-shades($green, $shade-count),
+    'seafoam': create-uniform-shades($seafoam, $shade-count),
+    'teal': create-uniform-shades($teal, $shade-count),
+    'azure': create-uniform-shades($azure, $shade-count),
+    'blue': create-uniform-shades($blue, $shade-count),
+    'violet': create-uniform-shades($violet, $shade-count),
+    'magenta': create-uniform-shades($magenta, $shade-count),
+    'rose': create-uniform-shades($rose, $shade-count),
+  );
+
+  :root {
+    --white: var(--grey-1);
+    --black: var(--grey-9);
+    @each $color in append($colors, 'grey') {
+      $shades: map-get($palette, $color);
+      @for $i from 0 through length($shades)-1 {
+        $shade: nth($shades, $i + 1);
+        --#{$color}-#{$i + 1}: #{$shade};
+      }
+    }
+  }
+}
