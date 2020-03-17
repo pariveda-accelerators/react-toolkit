@@ -60,5 +60,14 @@
         --#{$color}-#{$i + 1}: #{$shade};
       }
     }
+    @each $theme-variable, $color-for-theme-variable in $theme {
+      $shades: map-get($palette, $color-for-theme-variable);
+      @if (length($shades) > 0) {
+        @for $i from 0 through length($shades)-1 {
+          $shade: nth($shades, $i + 1);
+          --#{$theme-variable}-#{$i + 1}: #{$shade};
+        }
+      }
+    }
   }
 }
