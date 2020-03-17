@@ -1,0 +1,26 @@
+$color-palette-base: (
+  'grey': #808080,
+  'base': #ff0000,
+  'shade-count': 9,
+  'colors': (
+    'rose',
+    'red',
+    'orange',
+    'yellow',
+    'lime',
+    'green',
+    'seafoam',
+    'teal',
+    'azure',
+    'blue',
+    'violet',
+    'magenta',
+  ),
+  'theme': (
+    'primary': 'seafoam',
+    'secondary': 'azure',
+    'warning': 'orange',
+    'error': 'red',
+    'success': 'green',
+  ),
+);
