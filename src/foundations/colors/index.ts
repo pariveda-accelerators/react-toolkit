@@ -1,6 +1,4 @@
-export * from './colors';
-
-export const colors = [
+export const COLORS = [
   'white',
   'black',
   'grey',
@@ -17,14 +15,12 @@ export const colors = [
   'violet',
   'magenta',
 ];
-export const shades = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'];
+export const SHADES = ['10', '20', '30', '40', '50', '60', '70', '80', '90'];
 
-export type TColorName = typeof colors[number];
-export type TShade = typeof shades[number];
+export type TColor = typeof COLORS[number];
+export type TShade = typeof SHADES[number];
 
 export interface IColor {
   color: TColor;
   shade: TShade;
 }
-
-export type TColor = TColorName | IColor;

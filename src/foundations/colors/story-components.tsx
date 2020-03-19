@@ -1,28 +1,17 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Flex } from 'foundations/layout';
 import { Heading, Body } from 'foundations/typography';
+import { COLORS } from '.';
 
-const COLORS = [
-  'grey',
-  'red',
-  'orange',
-  'yellow',
-  'lime',
-  'green',
-  'seafoam',
-  'teal',
-  'azure',
-  'blue',
-  'violet',
-  'magenta',
-  'rose',
-];
+const getBackgroundColor = (color = 'grey-50') => {
+  return `var(--${color})`;
+};
 
 const ColorSwatch = styled.div`
   height: 64px;
   width: 64px;
-  ${props => `background-color: var(--${props.color || 'grey-50'});`}
+  background-color: ${props => getBackgroundColor(props.color)};
   filter: saturate(1);
 `;
 
@@ -33,7 +22,7 @@ export const Colors = () => {
       <Body>Colors are used for lots of cool things</Body>
       <Flex p="1em" />
       <Flex column>
-        {COLORS.map(color => (
+        {COLORS.slice(2).map(color => (
           <Flex column p=".5em" key={color}>
             <Heading>{color}</Heading>
             <Flex key={color}>
