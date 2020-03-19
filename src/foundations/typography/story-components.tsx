@@ -4,7 +4,9 @@ import { Flex } from 'foundations/layout';
 
 export const Typography = () => (
   <Flex column>
-    <Fonts.Heading>Heading</Fonts.Heading>
-    <Fonts.Body>Body</Fonts.Body>
+    {Object.keys(Fonts).map(font => {
+      const Component = Fonts[font];
+      return <Component key={font}>{font}</Component>;
+    })}
   </Flex>
 );

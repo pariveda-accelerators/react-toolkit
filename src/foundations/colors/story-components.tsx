@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Flex } from 'foundations/layout';
-import { Heading, Body } from 'foundations/typography';
+import { SectionTitle, Body } from 'foundations/typography';
 import { COLORS } from '.';
 
 const getBackgroundColor = (color = 'grey-50') => {
@@ -18,13 +18,13 @@ const ColorSwatch = styled.div`
 export const Colors = () => {
   return (
     <Flex column>
-      <Heading>Colors</Heading>
+      <SectionTitle>Colors</SectionTitle>
       <Body>Colors are used for lots of cool things</Body>
       <Flex p="1em" />
       <Flex column>
         {COLORS.slice(2).map(color => (
           <Flex column p=".5em" key={color}>
-            <Heading>{color}</Heading>
+            <SectionTitle>{color}</SectionTitle>
             <Flex key={color}>
               <ColorSwatch color={`${color}-1`} />
               <ColorSwatch color={`${color}-2`} />
