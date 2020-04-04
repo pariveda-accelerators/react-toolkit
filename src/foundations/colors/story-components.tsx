@@ -17,7 +17,7 @@ const ColorSwatch = styled.div`
 
 export const Colors = () => {
   return (
-    <Flex column>
+    <Flex column p="2em">
       <SectionTitle>Colors</SectionTitle>
       <Body>Colors are used for lots of cool things</Body>
       <Flex p="1em" />

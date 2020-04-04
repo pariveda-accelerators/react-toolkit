@@ -19,7 +19,8 @@
     "prepare": "tsdx build",
     "storybook": "yarn build-styles && yarn start-storybook -p 4000 --ci",
     "build-storybook": "build-storybook",
-    "build-styles": "node ./sass/node-sass.js"
+    "build-styles": "node ./sass/node-sass.js",
+    "watch-styles": "nodemon --watch ./sass -e scss -x \"yarn build-styles\""
   },
   "peerDependencies": {
     "react": ">=16"
@@ -50,6 +51,7 @@
     "chromatic-sass": "^0.1.8",
     "husky": "^4.2.1",
     "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "rollup-plugin-scss": "^2.1.0",

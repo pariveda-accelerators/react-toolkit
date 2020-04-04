@@ -1,6 +1,22 @@
 import React, { FC } from 'react';
+import { getKeys } from 'utils/key-map';
 
-export const FONT_TAGS = [
+//#region Font Tag
+interface IFontTag {
+  h1?: boolean;
+  h2?: boolean;
+  h3?: boolean;
+  h4?: boolean;
+  h5?: boolean;
+  h6?: boolean;
+  p?: boolean;
+  label?: boolean;
+  b?: boolean;
+  strong?: boolean;
+  i?: boolean;
+  em?: boolean;
+}
+export const FONT_TAG = [
   'h1',
   'h2',
   'h3',
@@ -14,77 +30,108 @@ export const FONT_TAGS = [
   'i',
   'em',
 ];
-export const FONT_TYPES = [
+//#endregion Font Tag
+//#region Font Type
+interface IFontType {
+  display?: boolean;
+  title?: boolean;
+  subtitle?: boolean;
+  'section-title'?: boolean;
+  'section-subtitle'?: boolean;
+  'subsection-title'?: boolean;
+  body?: boolean;
+  description?: boolean;
+  label?: boolean;
+}
+export const FONT_TYPE = [
   'display',
   'title',
   'subtitle',
-  'section title',
-  'section subtitle',
-  'subsection title',
+  'section-title',
+  'section-subtitle',
+  'subsection-title',
   'body',
   'description',
   'label',
 ];
-export const FONT_STYLES = ['bold', 'strong', 'italics', 'emphasis'];
-export const TEXT_ALIGN = ['left', 'center', 'right'];
-
-export type TFontTag = typeof FONT_TAGS[number];
-export type TFontType = typeof FONT_TYPES[number];
-export type TFontStyle = typeof FONT_STYLES[number];
-export type TTextAlign = typeof TEXT_ALIGN[number];
-
-interface IBaseFont {
-  tag: TFontTag;
-  type: TFontType;
-  style?: TFontStyle;
+//#endregion Font Type
+//#region Font Style
+interface IFontStyle {
+  bold?: boolean;
+  strong?: boolean;
+  italics?: boolean;
+  emphasis?: boolean;
 }
+export const FONT_STYLE = ['bold', 'strong', 'italics', 'emphasis'];
+//#endregion Font Style
+//#region Font Align
+interface IFontAlign {
+  left?: boolean;
+  center?: boolean;
+  right?: boolean;
+}
+export const FONT_ALIGN = ['left', 'center', 'right'];
+//#endregion Font Align
 
-const BaseFont: FC<IBaseFont> = ({ tag, type, children, ...restProps }) => {
-  console.log('tag: ', tag);
-  console.log('type: ', type);
-  console.log('children: ', children);
-  console.log('restProps: ', restProps);
+export type anyTag = typeof FONT_TAG[number];
+export type anyType = typeof FONT_TYPE[number];
+export type anyStyle = typeof FONT_STYLE[number];
+export type TTextAlign = typeof FONT_ALIGN[number];
+
+type TBaseFont = IFontTag & IFontType & IFontStyle & IFontAlign;
+
+const BaseFont: FC<TBaseFont> = ({ children, ...restProps }) => {
+  const fontTag = getKeys(restProps, FONT_TAG);
+  const tag = Object.keys(fontTag)[0];
+
+  const fontType = getKeys(restProps, FONT_TYPE);
+  const type = Object.keys(fontType)[0];
+
+  // const fontStyle = getKeys(restProps, FONT_TYPE);
+  // const style = Object.keys(fontStyle)[0];
+
+  // const fontAlign = getKeys(restProps, FONT_TYPE);
+  // const align = Object.keys(fontAlign)[0];
+
   const TagElement = React.createElement(
-    tag,
+    tag || 'p',
     {
       className: type,
-      ...restProps,
+      tag,
     },
     children
   );
   return TagElement;
 };
 
-export type TFont = Partial<Pick<IBaseFont, 'tag' | 'style'>>;
+type TFont = Omit<TBaseFont, keyof IFontType>;
+export const Display: FC<TFont> = (props) => <BaseFont display {...props} h1 />;
+export const Title: FC<TFont> = (props) => <BaseFont title {...props} h2 />;
+export const Subtitle: FC<TFont> = (props) => <BaseFont subtitle {...props} h3 />;
+export const SectionTitle: FC<TFont> = (props) => (
+  <BaseFont section-title {...props} h4 />
+);
+export const SectionSubtitle: FC<TFont> = (props) => (
+  <BaseFont section-subtitle {...props} h5 />
+);
+export const Label: FC<TFont> = (props) => (
+  <BaseFont subsection-title {...props} h6 />
+);
+export const Body: FC<TFont> = (props) => <BaseFont body {...props} p />;
 
-export const Display: FC<TFont> = props => (
-  <BaseFont tag="h1" {...props} type="display" />
+export const Description: FC<TFont> = (props) => (
+  <BaseFont description {...props} p />
 );
-export const Title: FC<TFont> = props => (
-  <BaseFont tag="h2" {...props} type="title" />
-);
-export const Subtitle: FC<TFont> = props => (
-  <BaseFont tag="h3" {...props} type="subtitle" />
-);
-export const SectionTitle: FC<TFont> = props => (
-  <BaseFont tag="h4" {...props} type="section title" />
-);
-export const SectionSubtitle: FC<TFont> = props => (
-  <BaseFont tag="h5" {...props} type="section subtitle" />
-);
-export const SubsectionTitle: FC<TFont> = props => (
-  <BaseFont tag="h6" {...props} type="subsection title" />
-);
-export const Body: FC<TFont> = props => <BaseFont tag="p" {...props} type="body" />;
 
 export const Fonts: {
-  [key: string]: React.ComponentType;
+  [key: string]: React.ComponentType<TFont>;
 } = {
   Display,
   Title,
   Subtitle,
   SectionTitle,
   SectionSubtitle,
-  SubsectionTitle,
+  Label,
   Body,
+  Description,
 };
