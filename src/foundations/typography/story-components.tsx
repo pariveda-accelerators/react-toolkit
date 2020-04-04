@@ -8,12 +8,12 @@ const Hr = styled.hr`
 `;
 
 export const Typography = () => (
-  <Flex column p="2em">
-    <Block>
-      <Fonts.Display>Typography</Fonts.Display>
+  <Flex column p="2em" bgColor={{ color: 'grey', shade: '2' }}>
+    <Block bgColor={{ color: 'white' }} p="0 2em">
+      <Fonts.Title h1>Typography</Fonts.Title>
       <Hr />
-      <Fonts.Title>All Fonts</Fonts.Title>
-      {Object.keys(Fonts).map((font) => {
+      <Fonts.Subtitle>Types</Fonts.Subtitle>
+      {Object.keys(Fonts).map(font => {
         const Component = Fonts[font];
         return <Component key={font}>{font}</Component>;
       })}

@@ -1,4 +1,6 @@
-export const COLORS = [
+import { isString, isNullOrUndefined } from 'utils/type-guards';
+
+export const COLOR = [
   'white',
   'black',
   'grey',
@@ -14,13 +16,42 @@ export const COLORS = [
   'blue',
   'violet',
   'magenta',
-];
-export const SHADES = ['10', '20', '30', '40', '50', '60', '70', '80', '90'];
+] as const;
+export type TColor = typeof COLOR[number];
 
-export type TColor = typeof COLORS[number];
-export type TShade = typeof SHADES[number];
+export const SHADE = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
+export type TShade = typeof SHADE[number];
 
-export interface IColor {
+export interface IColorObject {
   color: TColor;
-  shade: TShade;
+  shade?: TShade;
 }
+
+export const isColor = (value: any): value is TColor => COLOR.includes(value);
+export const isShade = (value: any): value is TShade => SHADE.includes(value);
+export const isColorObject = (value: any): value is IColorObject => {
+  if (!isNullOrUndefined(value)) {
+    const keys = Object.keys(value);
+    // Only checking `color` because `shade` is not required
+    return keys.includes('color');
+  }
+  return false;
+};
+
+export const colorIsInPalette = (value: any): boolean => {
+  if (isString(value)) {
+    const color = value.split('-')[0];
+    return isColor(color);
+  }
+  return false;
+};
+
+export const getPaletteColor = (obj?: IColorObject) => {
+  if (isColorObject(obj)) {
+    const { color, shade = '5' } = obj;
+    const isWhiteOrBlack = ['white', 'black'].includes(color);
+    const colorString = isWhiteOrBlack ? color : `${color}-${shade}`;
+    return colorIsInPalette(colorString) ? colorString : '';
+  }
+  return '';
+};

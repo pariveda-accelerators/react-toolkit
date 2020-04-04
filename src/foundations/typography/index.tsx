@@ -105,23 +105,19 @@ const BaseFont: FC<TBaseFont> = ({ children, ...restProps }) => {
 };
 
 type TFont = Omit<TBaseFont, keyof IFontType>;
-export const Display: FC<TFont> = (props) => <BaseFont display {...props} h1 />;
-export const Title: FC<TFont> = (props) => <BaseFont title {...props} h2 />;
-export const Subtitle: FC<TFont> = (props) => <BaseFont subtitle {...props} h3 />;
-export const SectionTitle: FC<TFont> = (props) => (
+export const Display: FC<TFont> = props => <BaseFont display {...props} h1 />;
+export const Title: FC<TFont> = props => <BaseFont title {...props} h2 />;
+export const Subtitle: FC<TFont> = props => <BaseFont subtitle {...props} h3 />;
+export const SectionTitle: FC<TFont> = props => (
   <BaseFont section-title {...props} h4 />
 );
-export const SectionSubtitle: FC<TFont> = (props) => (
+export const SectionSubtitle: FC<TFont> = props => (
   <BaseFont section-subtitle {...props} h5 />
 );
-export const Label: FC<TFont> = (props) => (
-  <BaseFont subsection-title {...props} h6 />
-);
-export const Body: FC<TFont> = (props) => <BaseFont body {...props} p />;
+export const Label: FC<TFont> = props => <BaseFont subsection-title {...props} h6 />;
+export const Body: FC<TFont> = props => <BaseFont body {...props} p />;
 
-export const Description: FC<TFont> = (props) => (
-  <BaseFont description {...props} p />
-);
+export const Description: FC<TFont> = props => <BaseFont description {...props} p />;
 
 export const Fonts: {
   [key: string]: React.ComponentType<TFont>;

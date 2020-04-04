@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Flex } from 'foundations/layout';
 import { SectionTitle, Body } from 'foundations/typography';
-import { COLORS } from '.';
+import { COLOR } from '.';
 
 const getBackgroundColor = (color = 'grey-50') => {
   return `var(--${color})`;
@@ -22,7 +22,7 @@ export const Colors = () => {
       <Body>Colors are used for lots of cool things</Body>
       <Flex p="1em" />
       <Flex column>
-        {COLORS.slice(2).map(color => (
+        {COLOR.slice(2).map((color: string) => (
           <Flex column p=".5em" key={color}>
             <SectionTitle>{color}</SectionTitle>
             <Flex key={color}>
