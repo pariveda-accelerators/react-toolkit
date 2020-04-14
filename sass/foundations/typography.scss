@@ -9,6 +9,17 @@ h4,
 h5,
 h6,
 p,
+label {
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
 label,
 b,
 strong,
@@ -66,4 +77,28 @@ em {
 
 .description {
   font-size: 0.878rem;
+}
+
+.text {
+  &--left {
+    text-align: left;
+  }
+  &--center {
+    text-align: center;
+  }
+  &--right {
+    text-align: right;
+  }
+  &--none {
+    text-transform: none;
+  }
+  &--lowercase {
+    text-transform: lowercase;
+  }
+  &--uppercase {
+    text-transform: uppercase;
+  }
+  &--capitalize {
+    text-transform: capitalize;
+  }
 }

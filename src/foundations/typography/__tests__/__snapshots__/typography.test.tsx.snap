@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typography Handles Bold 1`] = `
+<body>
+  <div>
+    <h1
+      class="text--display"
+      tag="h1"
+    >
+      <b>
+        Bold Display Font
+      </b>
+    </h1>
+  </div>
+</body>
+`;
+
+exports[`Typography Handles Emphasis 1`] = `
+<body>
+  <div>
+    <h1
+      class="text--display"
+      tag="h1"
+    >
+      <em>
+        Emphasis Display Font
+      </em>
+    </h1>
+  </div>
+</body>
+`;
+
+exports[`Typography Handles Italics 1`] = `
+<body>
+  <div>
+    <h1
+      class="text--display"
+      tag="h1"
+    >
+      <i>
+        Italics Display Font
+      </i>
+    </h1>
+  </div>
+</body>
+`;
+
+exports[`Typography Handles Strong 1`] = `
+<body>
+  <div>
+    <h1
+      class="text--display"
+      tag="h1"
+    >
+      <strong>
+        Strong Display Font
+      </strong>
+    </h1>
+  </div>
+</body>
+`;
+
+exports[`Typography Handles Tag 1`] = `
+<body>
+  <div>
+    <h1
+      class="text--display"
+      tag="h1"
+    >
+      H1 Tag
+    </h1>
+    <h2
+      class="text--display"
+      tag="h2"
+    >
+      H2 Tag
+    </h2>
+    <h3
+      class="text--display"
+      tag="h3"
+    >
+      H3 Tag
+    </h3>
+    <h4
+      class="text--display"
+      tag="h4"
+    >
+      H4 Tag
+    </h4>
+    <h5
+      class="text--display"
+      tag="h5"
+    >
+      H5 Tag
+    </h5>
+    <h6
+      class="text--display"
+      tag="h6"
+    >
+      H6 Tag
+    </h6>
+    <p
+      class="text--display"
+      tag="p"
+    >
+      P Tag
+    </p>
+  </div>
+</body>
+`;
+
+exports[`Typography Renders Default 1`] = `
+<body>
+  <div>
+    <h1
+      class="text--display"
+      tag="h1"
+    >
+      Display Font
+    </h1>
+    <h2
+      class="text--title"
+      tag="h2"
+    >
+      Title Font
+    </h2>
+    <h3
+      class="text--subtitle"
+      tag="h3"
+    >
+      Subtitle Font
+    </h3>
+    <h4
+      class="text--section-title"
+      tag="h4"
+    >
+      SectionTitle Font
+    </h4>
+    <h5
+      class="text--section-subtitle"
+      tag="h5"
+    >
+      Section Subtitle Font
+    </h5>
+    <p
+      class="text--body"
+      tag="p"
+    >
+      Body Font
+    </p>
+    <p
+      class="text--description"
+      tag="p"
+    >
+      Description Font
+    </p>
+    <h6
+      class="text--subsection-title"
+      tag="h6"
+    >
+      Label Font
+    </h6>
+  </div>
+</body>
+`;

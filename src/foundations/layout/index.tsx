@@ -14,8 +14,6 @@ const Box: FC<IBox> = props => {
 };
 
 const getSharedProps = (props: IBox) => {
-  console.log(props.bgColor);
-  console.log(getPaletteColor(props.bgColor));
   const bgColor = props.bgColor
     ? `var(--${getPaletteColor(props.bgColor)})`
     : 'transparent';
@@ -33,8 +31,5 @@ export const Flex = styled(Box)`
 
 export const Block = styled(Box)`
   display: block;
-  ${props => {
-    console.log('block: ', props);
-    return getSharedProps(props);
-  }}
+  ${props => getSharedProps(props)}
 `;
