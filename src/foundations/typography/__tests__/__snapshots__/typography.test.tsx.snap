@@ -142,6 +142,12 @@ exports[`Typography Renders Default 1`] = `
     >
       Section Subtitle Font
     </h5>
+    <h6
+      class="text--subsection-title"
+      tag="h6"
+    >
+      Subsection Title Font
+    </h6>
     <p
       class="text--body"
       tag="p"
@@ -154,12 +160,12 @@ exports[`Typography Renders Default 1`] = `
     >
       Description Font
     </p>
-    <h6
-      class="text--subsection-title"
-      tag="h6"
+    <label
+      class="text--body"
+      tag="label"
     >
       Label Font
-    </h6>
+    </label>
   </div>
 </body>
 `;

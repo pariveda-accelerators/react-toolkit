@@ -11,21 +11,42 @@ describe('Typography', () => {
         <Fonts.Subtitle>Subtitle Font</Fonts.Subtitle>
         <Fonts.SectionTitle>SectionTitle Font</Fonts.SectionTitle>
         <Fonts.SectionSubtitle>Section Subtitle Font</Fonts.SectionSubtitle>
+        <Fonts.SubsectionTitle>Subsection Title Font</Fonts.SubsectionTitle>
         <Fonts.Body>Body Font</Fonts.Body>
         <Fonts.Description>Description Font</Fonts.Description>
         <Fonts.Label>Label Font</Fonts.Label>
       </>
     );
 
+    const display = getByText('Display Font');
+    const title = getByText('Title Font');
+    const subtitle = getByText('Subtitle Font');
+    const sectionTitle = getByText('SectionTitle Font');
+    const section = getByText('Section Subtitle Font');
+    const subsectionTitle = getByText('Subsection Title Font');
+    const body = getByText('Body Font');
+    const description = getByText('Description Font');
+    const label = getByText('Label Font');
+
     expect(baseElement).toMatchSnapshot();
-    expect(getByText('Display Font').tagName).toBe('H1');
-    expect(getByText('Title Font').tagName).toBe('H2');
-    expect(getByText('Subtitle Font').tagName).toBe('H3');
-    expect(getByText('SectionTitle Font').tagName).toBe('H4');
-    expect(getByText('Section Subtitle Font').tagName).toBe('H5');
-    expect(getByText('Body Font').tagName).toBe('P');
-    expect(getByText('Description Font').tagName).toBe('P');
-    expect(getByText('Label Font').tagName).toBe('H6');
+    expect(display.tagName).toBe('H1');
+    expect(display).toHaveClass('text--display');
+    expect(title.tagName).toBe('H2');
+    expect(title).toHaveClass('text--title');
+    expect(subtitle.tagName).toBe('H3');
+    expect(subtitle).toHaveClass('text--subtitle');
+    expect(sectionTitle.tagName).toBe('H4');
+    expect(sectionTitle).toHaveClass('text--section-title');
+    expect(section.tagName).toBe('H5');
+    expect(section).toHaveClass('text--section-subtitle');
+    expect(subsectionTitle.tagName).toBe('H6');
+    expect(subsectionTitle).toHaveClass('text--subsection-title');
+    expect(body.tagName).toBe('P');
+    expect(body).toHaveClass('text--body');
+    expect(description.tagName).toBe('P');
+    expect(description).toHaveClass('text--description');
+    expect(label.tagName).toBe('LABEL');
+    expect(label).toHaveClass('text--body');
   });
 
   it('Handles Tag', () => {

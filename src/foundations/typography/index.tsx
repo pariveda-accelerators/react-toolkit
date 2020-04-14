@@ -36,7 +36,6 @@ interface IFontType {
   'subsection-title'?: boolean;
   body?: boolean;
   description?: boolean;
-  label?: boolean;
 }
 export const FONT_TYPE = [
   'display',
@@ -146,10 +145,12 @@ export const SectionTitle: FC<TFont> = props => (
 export const SectionSubtitle: FC<TFont> = props => (
   <BaseFont section-subtitle {...props} h5 />
 );
-export const Label: FC<TFont> = props => <BaseFont subsection-title {...props} h6 />;
+export const SubsectionTitle: FC<TFont> = props => (
+  <BaseFont subsection-title {...props} h6 />
+);
 export const Body: FC<TFont> = props => <BaseFont body {...props} p />;
-
 export const Description: FC<TFont> = props => <BaseFont description {...props} p />;
+export const Label: FC<TFont> = props => <BaseFont body {...props} label />;
 
 export const Fonts: {
   [key: string]: React.ComponentType<TFont>;
@@ -159,7 +160,8 @@ export const Fonts: {
   Subtitle,
   SectionTitle,
   SectionSubtitle,
-  Label,
+  SubsectionTitle,
   Body,
   Description,
+  Label,
 };
