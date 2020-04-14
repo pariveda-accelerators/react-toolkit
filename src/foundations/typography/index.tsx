@@ -125,7 +125,7 @@ const BaseFont: FC<IBaseFont> = ({ children, ...restProps }) => {
   const classes = createClassName(classNameStyles, { block: 'text' });
 
   const TagElement = React.createElement(
-    tag || 'p',
+    tag,
     {
       className: classnames(...classes),
       tag,
