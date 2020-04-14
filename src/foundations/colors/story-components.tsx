@@ -1,41 +1,30 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Flex } from 'foundations/layout';
-import { Heading, Body } from 'foundations/typography';
+import { SectionTitle, Body } from 'foundations/typography';
+import { COLOR } from '.';
 
-const COLORS = [
-  'grey',
-  'red',
-  'orange',
-  'yellow',
-  'lime',
-  'green',
-  'seafoam',
-  'teal',
-  'azure',
-  'blue',
-  'violet',
-  'magenta',
-  'rose',
-];
+const getBackgroundColor = (color = 'grey-50') => {
+  return `var(--${color})`;
+};
 
 const ColorSwatch = styled.div`
   height: 64px;
   width: 64px;
-  ${props => `background-color: var(--${props.color || 'grey-50'});`}
+  background-color: ${props => getBackgroundColor(props.color)};
   filter: saturate(1);
 `;
 
 export const Colors = () => {
   return (
-    <Flex column>
-      <Heading>Colors</Heading>
+    <Flex column p="2em">
+      <SectionTitle>Colors</SectionTitle>
       <Body>Colors are used for lots of cool things</Body>
       <Flex p="1em" />
       <Flex column>
-        {COLORS.map(color => (
+        {COLOR.slice(2).map((color: string) => (
           <Flex column p=".5em" key={color}>
-            <Heading>{color}</Heading>
+            <SectionTitle>{color}</SectionTitle>
             <Flex key={color}>
               <ColorSwatch color={`${color}-1`} />
               <ColorSwatch color={`${color}-2`} />
