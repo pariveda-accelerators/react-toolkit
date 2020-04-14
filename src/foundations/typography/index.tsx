@@ -68,7 +68,7 @@ const wrapChildren = (Em: FC, B: FC, children: string) => (
 );
 //#endregion Font Style
 //#region Font Align
-interface IFontAlign {
+interface ITextAlign {
   left?: boolean;
   center?: boolean;
   right?: boolean;
@@ -91,7 +91,7 @@ export type anyStyle = typeof FONT_STYLE[number];
 export type TTextAlign = typeof TEXT_ALIGN[number];
 export type TTextTextTransform = typeof TEXT_TRANSFORM[number];
 
-type TBaseFont = IFontTag & IFontType & IFontStyle & IFontAlign & ITextTransform;
+type TBaseFont = IFontTag & IFontType & IFontStyle & ITextAlign & ITextTransform;
 
 interface IBaseFont extends TBaseFont {
   children: string;
