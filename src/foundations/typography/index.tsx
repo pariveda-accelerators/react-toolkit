@@ -85,12 +85,6 @@ interface ITextTransform {
 export const TEXT_TRANSFORM = ['none', 'uppercase', 'lowercase', 'capitalize'];
 //#endregion Text Transform
 
-export type anyTag = typeof FONT_TAG[number];
-export type anyType = typeof FONT_TYPE[number];
-export type anyStyle = typeof FONT_STYLE[number];
-export type TTextAlign = typeof TEXT_ALIGN[number];
-export type TTextTextTransform = typeof TEXT_TRANSFORM[number];
-
 type TBaseFont = IFontTag & IFontType & IFontStyle & ITextAlign & ITextTransform;
 
 interface IBaseFont extends TBaseFont {

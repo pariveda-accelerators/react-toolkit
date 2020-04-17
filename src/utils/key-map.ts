@@ -1,24 +1,28 @@
 import { isNullOrUndefined } from './type-guards';
 
-interface IKeyedObject {
-  [key: string]: any;
+export interface IKeyedObject<T = {}> {
+  [key: string]: T;
 }
-export const getKeys = <T extends object>(
-  obj: IKeyedObject,
+export const getKeys = <T>(
+  obj: IKeyedObject<T>,
   keys: string[] = [],
-  defaultValue: any = undefined
+  defaultValue: IKeyedObject<T> | undefined = undefined
 ): T => {
   if (isNullOrUndefined(obj) || keys.length === 0) {
     return {} as T;
   }
   return keys.reduce((mappedObject, currKey) => {
     if (isNullOrUndefined(obj[currKey])) {
-      return !isNullOrUndefined(defaultValue)
-        ? {
-            ...mappedObject,
-            [currKey]: defaultValue,
-          }
-        : mappedObject;
+      if (
+        !isNullOrUndefined(defaultValue) &&
+        !isNullOrUndefined(defaultValue[currKey])
+      ) {
+        return {
+          ...mappedObject,
+          [currKey]: defaultValue[currKey],
+        };
+      }
+      return mappedObject;
     }
     return {
       ...mappedObject,

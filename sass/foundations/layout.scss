@@ -1,0 +1,12 @@
+@import 'sass/partials/variables';
+@import 'sass/partials/mixins';
+
+$space-sizes: (
+  0: 0,
+  s: 0.5rem,
+  m: 1rem,
+  l: 2rem,
+);
+
+@include mix-sizes(p, padding, $space-sizes);
+@include mix-sizes(m, margin, $space-sizes);
