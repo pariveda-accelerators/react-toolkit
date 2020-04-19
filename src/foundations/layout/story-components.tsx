@@ -3,18 +3,18 @@ import { Box as Bx } from 'foundations/layout';
 import { Fonts } from 'foundations/typography';
 
 export const Box = () => (
-  <Bx block>
+  <Bx d="block">
     <Fonts.Title>Box</Fonts.Title>
     <Fonts.Subtitle>Configuration</Fonts.Subtitle>
     <Fonts.SectionTitle>Padding</Fonts.SectionTitle>
     <Bx>
-      <Bx column pm block>
+      <Bx column p="s">
         <Fonts.Body bold>Values</Fonts.Body>
-        <Fonts.Body>ps</Fonts.Body>
-        <Fonts.Body>pm</Fonts.Body>
-        <Fonts.Body>pl</Fonts.Body>
+        <Fonts.Body>p="s"</Fonts.Body>
+        <Fonts.Body>p="m"</Fonts.Body>
+        <Fonts.Body>p="l"</Fonts.Body>
       </Bx>
-      <Bx column>
+      <Bx column p="s">
         <Fonts.Body bold>Effect</Fonts.Body>
         <Fonts.Body>padding: .5em</Fonts.Body>
         <Fonts.Body>padding: 1em</Fonts.Body>

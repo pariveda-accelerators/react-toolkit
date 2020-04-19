@@ -1,13 +1,13 @@
 import { isNullOrUndefined } from './type-guards';
 
 export interface IKeyedObject<T = {}> {
-  [key: string]: T | undefined;
+  [key: string]: T;
 }
 export const getKeys = <T>(
   obj: IKeyedObject<T>,
-  keys: any[] | readonly any[] = [],
+  keys: string[] = [],
   defaultValue: IKeyedObject<T> | undefined = undefined
-): T => {
+): Partial<T> => {
   if (isNullOrUndefined(obj) || keys.length === 0) {
     return {} as T;
   }
