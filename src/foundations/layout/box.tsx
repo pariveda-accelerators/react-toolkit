@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import classnames from 'classnames';
-import { IColorObject, getPaletteColor } from 'foundations/colors';
+import { IColorObject, TColorShade } from 'foundations/colors';
 import { getKeys, IKeyedObject } from 'utils/key-map';
-import { isNullOrUndefined } from 'utils/type-guards';
 
 //#region Padding
 export interface IPadding {
@@ -23,22 +23,54 @@ export interface IMargin {
 }
 export const MARGIN = ['m0', 'ms', 'mm', 'ml'];
 //#endregion Margin
+//#region Background Color
+export interface IBgColor {
+  bg?: TColorShade;
+}
+//#endregion
+//#region Display
+export interface IDisplay {
+  none?: boolean;
+  block?: boolean;
+  flex?: boolean;
+  grid?: boolean;
+  'list-item'?: boolean;
+}
+export const DISPLAY = ['none', 'block', 'flex', 'grid', 'list-item'];
+//#endregion Display
+//#region Inline
+export interface IInline {
+  inline?: boolean;
+}
+export const INLINE = ['inline'];
+//#endregion Inline
 
-export interface IBox extends IPadding, IMargin {
+export interface IBox extends IPadding, IMargin, IBgColor {
   className?: string;
   column?: boolean;
-  bgColor?: IColorObject;
-  [key: string]: string | boolean | IColorObject | undefined;
+  [key: string]: string | boolean | IColorObject | React.ReactNode;
 }
 
 interface IPropMap {
-  [key: string]: string[];
+  [key: string]: string[] | readonly string[];
 }
 
 const parseClassesFromProps = (props: IKeyedObject<any>, propMap: IPropMap) => {
-  const values = Object.values(propMap).flat();
-  const projection = getKeys(props, values);
+  const values = Object.values(propMap);
+  const projection = values.reduce((proj, value) => {
+    console.log('value: ', value);
+    const matchingKeys = getKeys(props, value);
+    console.log('matchingKeys: ', matchingKeys);
+    const keyToUse = matchingKeys[0];
+    console.log('keyToUse: ', keyToUse);
+    return {
+      ...proj,
+      [keyToUse]: props[keyToUse],
+    };
+  }, {});
   const projectedKeys = Object.keys(projection);
+  console.log('projection: ', projection);
+  console.log('projectedKeys: ', projectedKeys);
   if (projectedKeys.length === 0) {
     return [];
   }
@@ -49,23 +81,31 @@ export const Box: FC<IBox> = props => {
   const propMap = {
     padding: PADDING,
     margin: MARGIN,
+    display: DISPLAY,
   };
   const classes = parseClassesFromProps(props, propMap);
+  console.log('props: ', props);
+  console.log('classes: ', classes);
+  const bg = `bg-${props.bg || 'transparent'}`;
+  const column =
+    props.display === 'flex' ? (props.column && 'column') || 'row' : undefined;
   return (
-    <div className={classnames(props.className, ...classes)}>{props.children}</div>
+    <div className={classnames(props.className, bg, column)}>{props.children}</div>
   );
 };
-
-export const getSharedProps = (props: IBox) => {
-  const bgColor = props.bgColor
-    ? `var(--${getPaletteColor(props.bgColor)})`
-    : 'transparent';
-  return `
-    background-color: ${bgColor};
-  `;
+Box.propTypes = {
+  ...DISPLAY.reduce(
+    (propTypes, prop) => ({
+      ...propTypes,
+      [prop]: PropTypes.bool,
+    }),
+    {}
+  ),
+};
+Box.defaultProps = {
+  flex: true,
 };
 
 export const Block = styled(Box)`
   display: block;
-  ${props => getSharedProps(props)}
 `;

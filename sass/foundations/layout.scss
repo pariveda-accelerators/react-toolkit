@@ -10,3 +10,27 @@ $space-sizes: (
 
 @include mix-sizes(p, padding, $space-sizes);
 @include mix-sizes(m, margin, $space-sizes);
+
+.bg-transparent {
+  background-color: transparent;
+}
+@include mix-colors(bg, background-color);
+
+.none {
+  display: none;
+}
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+  &.column {
+    flex-direction: column;
+  }
+}
+.grid {
+  display: grid;
+}
+.list-item {
+  display: list-item;
+}

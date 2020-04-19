@@ -1,4 +1,4 @@
-import { Block } from './box';
+import { Block, Box } from './box';
 import { Flex } from './flex';
 
-export { Block, Flex };
+export { Block, Box, Flex };

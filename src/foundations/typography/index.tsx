@@ -57,11 +57,21 @@ interface IFontStyle {
   emphasis?: boolean;
 }
 export const FONT_STYLE = ['bold', 'strong', 'italics', 'emphasis'];
-const Emphasis: FC<{ children?: React.ReactNode }> = props => <em {...props} />;
-const Italics: FC<{ children?: React.ReactNode }> = props => <i {...props} />;
-const Strong: FC<{ children?: React.ReactNode }> = props => <strong {...props} />;
-const Bold: FC<{ children?: React.ReactNode }> = props => <b {...props} />;
-const wrapChildren = (Em: FC, B: FC, children: string) => (
+
+//#region Style & Accessibility Tags
+export interface ChildrenAsReactNode {
+  children: React.ReactNode;
+}
+//#endregion Style & Accessibility Tags
+const Emphasis: FC<ChildrenAsReactNode> = props => <em {...props} />;
+const Italics: FC<ChildrenAsReactNode> = props => <i {...props} />;
+const Strong: FC<ChildrenAsReactNode> = props => <strong {...props} />;
+const Bold: FC<ChildrenAsReactNode> = props => <b {...props} />;
+const wrapChildren = (
+  Em: FC<ChildrenAsReactNode>,
+  B: FC<ChildrenAsReactNode>,
+  children: string
+) => (
   <Em>
     <B>{children}</B>
   </Em>
@@ -89,6 +99,7 @@ type TBaseFont = IFontTag & IFontType & IFontStyle & ITextAlign & ITextTransform
 
 interface IBaseFont extends TBaseFont {
   children: string;
+  [key: string]: any;
 }
 
 const BaseFont: FC<IBaseFont> = ({ children, ...restProps }) => {
@@ -129,7 +140,7 @@ const BaseFont: FC<IBaseFont> = ({ children, ...restProps }) => {
   return TagElement;
 };
 
-type TFont = Omit<IBaseFont, keyof IFontType>;
+type TFont = Exclude<IBaseFont, keyof IFontType>;
 export const Display: FC<TFont> = props => <BaseFont display {...props} h1 />;
 export const Title: FC<TFont> = props => <BaseFont title {...props} h2 />;
 export const Subtitle: FC<TFont> = props => <BaseFont subtitle {...props} h3 />;
