@@ -1,4 +1,5 @@
 import { isString, isNullOrUndefined } from 'utils/type-guards';
+import { TBooleanConfigProp } from 'types';
 
 export const COLOR = [
   'white',
@@ -144,9 +145,7 @@ export const COLOR_SHADE = [
   'magenta-9',
 ] as const;
 export type TColorShade = typeof COLOR_SHADE[number];
-export type TColorShadeProp = {
-  [P in TColorShade]?: boolean;
-};
+export type TColorShadeProp = TBooleanConfigProp<TColorShade>;
 
 export const BACKGROUND_COLOR = [
   'bg-transparent',
@@ -271,9 +270,7 @@ export const BACKGROUND_COLOR = [
   'bg-magenta-9',
 ] as const;
 export type TBgColor = typeof BACKGROUND_COLOR[number];
-export type TBgColorProp = {
-  [P in TBgColor]?: boolean;
-};
+export type TBgColorProp = TBooleanConfigProp<TBgColor>;
 
 export interface IColorObject {
   color: TColor;

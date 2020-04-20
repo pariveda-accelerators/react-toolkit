@@ -11,4 +11,5 @@ export interface IDefaultProps {
    * of these components
    */
   className?: string;
+  [key: string]: any;
 }

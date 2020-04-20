@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { getProps } from 'utils/key-map';
 import classnames from 'classnames';
 import { createClassName } from 'utils/create-class-name';
+import { TBooleanConfigProp } from 'types';
 
 /**
  * Docs on everything you can do w/ fonts: https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals
@@ -14,29 +15,11 @@ import { createClassName } from 'utils/create-class-name';
  */
 
 //#region Font Tag
-interface IFontTag {
-  h1?: boolean;
-  h2?: boolean;
-  h3?: boolean;
-  h4?: boolean;
-  h5?: boolean;
-  h6?: boolean;
-  p?: boolean;
-  label?: boolean;
-}
-export const FONT_TAG = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'label'];
+export const FONT_TAG = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'label'] as const;
+export type TFontTag = typeof FONT_TAG[number];
+export type TFontTagProp = TBooleanConfigProp<TFontTag>;
 //#endregion Font Tag
 //#region Font Type
-interface IFontType {
-  display?: boolean;
-  title?: boolean;
-  subtitle?: boolean;
-  'section-title'?: boolean;
-  'section-subtitle'?: boolean;
-  'subsection-title'?: boolean;
-  body?: boolean;
-  description?: boolean;
-}
 export const FONT_TYPE = [
   'display',
   'title',
@@ -47,17 +30,14 @@ export const FONT_TYPE = [
   'body',
   'description',
   'label',
-];
+] as const;
+export type TFontType = typeof FONT_TYPE[number];
+export type TFontTypeProp = TBooleanConfigProp<TFontType>;
 //#endregion Font Type
 //#region Font Style
-interface IFontStyle {
-  bold?: boolean;
-  strong?: boolean;
-  italics?: boolean;
-  emphasis?: boolean;
-}
 export const FONT_STYLE = ['bold', 'strong', 'italics', 'emphasis'];
-
+export type TFontStyle = typeof FONT_STYLE[number];
+export type TFontStyleProp = TBooleanConfigProp<TFontStyle>;
 //#region Style & Accessibility Tags
 export interface ChildrenAsReactNode {
   children: React.ReactNode;
@@ -78,24 +58,21 @@ const wrapChildren = (
 );
 //#endregion Font Style
 //#region Font Align
-interface ITextAlign {
-  left?: boolean;
-  center?: boolean;
-  right?: boolean;
-}
 export const TEXT_ALIGN = ['left', 'center', 'right'];
+export type TTextAlign = typeof TEXT_ALIGN[number];
+export type TTextAlignProp = TBooleanConfigProp<TTextAlign>;
 //#endregion Font Align
 //#region Text Transform
-interface ITextTransform {
-  none?: boolean;
-  uppercase?: boolean;
-  lowercase?: boolean;
-  capitalize?: boolean;
-}
 export const TEXT_TRANSFORM = ['none', 'uppercase', 'lowercase', 'capitalize'];
+export type TTextTransform = typeof FONT_TYPE[number];
+export type TTextTransformProp = TBooleanConfigProp<TTextTransform>;
 //#endregion Text Transform
 
-type TBaseFont = IFontTag & IFontType & IFontStyle & ITextAlign & ITextTransform;
+type TBaseFont = TFontTagProp &
+  TFontTypeProp &
+  TFontStyleProp &
+  TTextAlignProp &
+  TTextTransformProp;
 
 interface IBaseFont extends TBaseFont {
   children: string;
@@ -109,7 +86,7 @@ const BaseFont: FC<IBaseFont> = ({ children, ...restProps }) => {
   const fontType = getProps(restProps, FONT_TYPE);
   const type = Object.keys(fontType)[0];
 
-  const { italics, emphasis, bold, strong } = getProps<IFontStyle>(
+  const { italics, emphasis, bold, strong } = getProps<TFontStyleProp>(
     restProps,
     FONT_STYLE
   );
@@ -140,7 +117,7 @@ const BaseFont: FC<IBaseFont> = ({ children, ...restProps }) => {
   return TagElement;
 };
 
-type TFont = Exclude<IBaseFont, keyof IFontType>;
+type TFont = Exclude<IBaseFont, keyof TFontTypeProp>;
 export const Display: FC<TFont> = props => <BaseFont display {...props} h1 />;
 export const Title: FC<TFont> = props => <BaseFont title {...props} h2 />;
 export const Subtitle: FC<TFont> = props => <BaseFont subtitle {...props} h3 />;
