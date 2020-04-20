@@ -71,3 +71,29 @@
     }
   }
 }
+
+@mixin mix-sizes($selector, $style, $size-map) {
+  .#{$selector} {
+    @each $size in $t-shirt-sizes {
+      &#{$size} {
+        #{$style}: map-get($size-map, $size);
+      }
+    }
+  }
+}
+
+@mixin mix-colors($selector, $style) {
+  $shade-count: map-get($color-palette-base, 'shade-count');
+  $colors: map-get($color-palette-base, 'colors');
+
+  .#{$selector} {
+    @each $color in append($colors, 'grey') {
+      @for $i from 1 through $shade-count {
+        @debug (#{$color}-#{$i});
+        &-#{$color}-#{$i} {
+          background-color: var(--#{$color}-#{$i});
+        }
+      }
+    }
+  }
+}

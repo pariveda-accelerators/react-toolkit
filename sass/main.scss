@@ -1,9 +1,10 @@
 @import 'partials/mixins';
 
-@import 'foundations/typography';
+@include mix-palette;
 
 * {
   margin: 0px;
 }
 
-@include mix-palette;
+@import 'foundations/typography';
+@import 'foundations/layout';

@@ -1,0 +1,36 @@
+@import 'sass/partials/variables';
+@import 'sass/partials/mixins';
+
+$space-sizes: (
+  0: 0,
+  s: 0.5rem,
+  m: 1rem,
+  l: 2rem,
+);
+
+@include mix-sizes(p, padding, $space-sizes);
+@include mix-sizes(m, margin, $space-sizes);
+
+.bg-transparent {
+  background-color: transparent;
+}
+@include mix-colors(bg, background-color);
+
+.none {
+  display: none;
+}
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+  &.column {
+    flex-direction: column;
+  }
+}
+.grid {
+  display: grid;
+}
+.list-item {
+  display: list-item;
+}
