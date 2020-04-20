@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { getKeys } from 'utils/key-map';
+import { getProps } from 'utils/key-map';
 import classnames from 'classnames';
 import { createClassName } from 'utils/create-class-name';
 
@@ -103,23 +103,23 @@ interface IBaseFont extends TBaseFont {
 }
 
 const BaseFont: FC<IBaseFont> = ({ children, ...restProps }) => {
-  const fontTag = getKeys(restProps, FONT_TAG);
+  const fontTag = getProps(restProps, FONT_TAG);
   const tag = Object.keys(fontTag)[0];
 
-  const fontType = getKeys(restProps, FONT_TYPE);
+  const fontType = getProps(restProps, FONT_TYPE);
   const type = Object.keys(fontType)[0];
 
-  const { italics, emphasis, bold, strong } = getKeys<IFontStyle>(
+  const { italics, emphasis, bold, strong } = getProps<IFontStyle>(
     restProps,
     FONT_STYLE
   );
   const Em = italics ? Italics : emphasis ? Emphasis : React.Fragment;
   const B = bold ? Bold : strong ? Strong : React.Fragment;
 
-  const textAlign = getKeys(restProps, TEXT_ALIGN);
+  const textAlign = getProps(restProps, TEXT_ALIGN);
   const align = Object.keys(textAlign)[0];
 
-  const textTransform = getKeys(restProps, TEXT_TRANSFORM);
+  const textTransform = getProps(restProps, TEXT_TRANSFORM);
   const transform = Object.keys(textTransform)[0];
 
   const classNameStyles = {

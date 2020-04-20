@@ -3,6 +3,7 @@ import { isNullOrUndefined } from './type-guards';
 export interface IKeyedObject<T = {}> {
   [key: string]: T | undefined;
 }
+
 export const getKeys = <T>(
   obj: IKeyedObject<T>,
   keys: any[] | readonly any[] = [],
@@ -28,5 +29,23 @@ export const getKeys = <T>(
       ...mappedObject,
       [currKey]: obj[currKey],
     };
+  }, {} as T);
+};
+
+export const getProps = <T>(
+  obj: IKeyedObject<T>,
+  keys: any[] | readonly any[] = []
+): T => {
+  if (isNullOrUndefined(obj) || keys.length === 0) {
+    return {} as T;
+  }
+  return Object.keys(obj).reduce((mappedObject, currKey) => {
+    if (keys.includes(currKey)) {
+      return {
+        ...mappedObject,
+        [currKey]: obj[currKey],
+      };
+    }
+    return mappedObject;
   }, {} as T);
 };
