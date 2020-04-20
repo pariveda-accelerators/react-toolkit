@@ -70,7 +70,7 @@ const Bold: FC<ChildrenAsReactNode> = props => <b {...props} />;
 const wrapChildren = (
   Em: FC<ChildrenAsReactNode>,
   B: FC<ChildrenAsReactNode>,
-  children: string
+  children: React.ReactNode
 ) => (
   <Em>
     <B>{children}</B>
@@ -97,8 +97,7 @@ export const TEXT_TRANSFORM = ['none', 'uppercase', 'lowercase', 'capitalize'];
 
 type TBaseFont = IFontTag & IFontType & IFontStyle & ITextAlign & ITextTransform;
 
-interface IBaseFont extends TBaseFont {
-  children: string;
+interface IBaseFont extends TBaseFont, ChildrenAsReactNode {
   [key: string]: any;
 }
 

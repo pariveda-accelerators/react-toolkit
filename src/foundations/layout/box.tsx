@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import classnames from 'classnames';
 import { TColorShade, COLOR_SHADE } from 'foundations/colors';
 import { getKeys } from 'utils/key-map';
+import { IDefaultProps } from 'types/default-props';
 
 export const SHIRT_SIZE = ['0', 's', 'm', 'l'];
 export type TShirtSize = typeof SHIRT_SIZE[number];
@@ -11,7 +12,7 @@ export type TShirtSize = typeof SHIRT_SIZE[number];
 export const DISPLAY = ['none', 'block', 'flex', 'grid', 'list-item'];
 export type TDisplay = typeof DISPLAY[number];
 
-export interface IBox {
+export interface IBox extends IDefaultProps {
   /**
    * Padding
    */
@@ -29,7 +30,6 @@ export interface IBox {
    */
   d?: TDisplay;
   inline?: boolean;
-  className?: string;
   column?: boolean;
   [key: string]: any;
 }
