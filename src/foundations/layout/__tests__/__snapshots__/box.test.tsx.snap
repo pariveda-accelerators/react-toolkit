@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box Renders Default 1`] = `
+<body>
+  <div>
+    <div
+      class=""
+    />
+  </div>
+</body>
+`;

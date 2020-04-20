@@ -33,7 +33,7 @@ describe('Utils - Key Map', () => {
       third: 'third',
     };
     const keys = ['first', 'second'];
-    const newObj = getKeys(keyedObj, keys, 'default');
+    const newObj = getKeys(keyedObj, keys, { second: 'default' });
     const newObjKeys = Object.keys(newObj);
     expect(newObjKeys.length).toBe(2);
     newObjKeys.forEach(key => expect(keys.includes(key)).toBe(true));
