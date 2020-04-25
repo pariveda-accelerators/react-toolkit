@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import classnames from 'classnames';
-import { TBgColorProp } from 'foundations/colors';
-import { TBooleanConfigProp, IDefaultProps } from 'types';
+import { TBgColorProp } from 'foundations';
+import { IDefaultProps, TBooleanConfigProp } from '../../types';
 
 //#region Padding
 export const PADDING = ['p0', 'ps', 'pm', 'pl'] as const;

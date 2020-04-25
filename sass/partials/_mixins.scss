@@ -1,7 +1,3 @@
-@use 'sass:color';
-@use 'sass:list';
-@use 'sass:math';
-@use 'sass:map';
 @import 'functions';
 @import 'variables';
 
@@ -89,7 +85,6 @@
   .#{$selector} {
     @each $color in append($colors, 'grey') {
       @for $i from 1 through $shade-count {
-        @debug (#{$color}-#{$i});
         &-#{$color}-#{$i} {
           background-color: var(--#{$color}-#{$i});
         }

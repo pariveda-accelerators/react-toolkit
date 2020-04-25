@@ -1,4 +1,4 @@
-import { createClassName } from 'utils/create-class-name';
+import { createClassName } from '../../utilities';
 
 describe('Utils - createClassName', () => {
   it('Converts keyed object to array of classes', () => {

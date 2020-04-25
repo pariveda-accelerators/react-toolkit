@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
-import { getProps } from 'utils/key-map';
+import { createClassName, getProps } from '../../utilities';
 import classnames from 'classnames';
-import { createClassName } from 'utils/create-class-name';
-import { TBooleanConfigProp } from 'types';
+import { TBooleanConfigProp } from '../../types';
 
 /**
  * Docs on everything you can do w/ fonts: https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals
@@ -50,7 +49,7 @@ const Bold: FC<ChildrenAsReactNode> = props => <b {...props} />;
 const wrapChildren = (
   Em: FC<ChildrenAsReactNode>,
   B: FC<ChildrenAsReactNode>,
-  children: string
+  children: React.ReactNode
 ) => (
   <Em>
     <B>{children}</B>
@@ -75,7 +74,7 @@ type TBaseFont = TFontTagProp &
   TTextTransformProp;
 
 interface IBaseFont extends TBaseFont {
-  children: string;
+  children: React.ReactNode;
   [key: string]: any;
 }
 

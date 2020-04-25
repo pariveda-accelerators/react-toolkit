@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from 'foundations';
 import { render } from '@testing-library/react';
-import { BACKGROUND_COLOR } from 'foundations/colors';
+import { BACKGROUND_COLOR } from 'foundations';
 
 describe('Box', () => {
   it('Renders Default', () => {

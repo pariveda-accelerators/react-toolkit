@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Box as Bx } from 'foundations/layout';
-import { Fonts } from 'foundations/typography';
-import { SHADE } from 'foundations/colors';
+import { Fonts, SHADE } from 'foundations';
 
 //#region Box Components
 interface ISizeTable {

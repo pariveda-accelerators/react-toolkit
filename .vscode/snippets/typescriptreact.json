@@ -1,0 +1,11 @@
+{
+  "Boolean Config Prop": {
+    "prefix": "BooleanConfigProp",
+    "body": [
+      "export const ${1:PROP_SINGULAR_CONSTANT} = ['${3:value1}'] as const;",
+      "export type T${2:PropName} = typeof ${1:PROP_SINGULAR_CONSTANT}[number];",
+      "export type T${2:PropName}Prop = TBooleanConfigProp<T${2:PropName}>;"
+    ],
+    "description": "Template for a set of boolean props that turn on a given feature"
+  }
+}

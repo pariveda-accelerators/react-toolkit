@@ -1,5 +1,5 @@
-import { isString, isNullOrUndefined } from 'utils/type-guards';
-import { TBooleanConfigProp } from 'types';
+import { TBooleanConfigProp } from '../../types';
+import { isNullOrUndefined, isString } from '../../utilities';
 
 export const COLOR = [
   'white',

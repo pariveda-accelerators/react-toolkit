@@ -1,4 +1,4 @@
-import { getKeys } from 'utils/key-map';
+import { getKeys } from '../../utilities';
 
 describe('Utils - Key Map', () => {
   it('Takes array of strings and pulls matching keys from object', () => {
