@@ -2,7 +2,8 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import classnames from 'classnames';
 import { TBgColorProp } from 'foundations';
-import { IDefaultProps, TBooleanConfigProp } from '../../types';
+import { TBooleanConfigProp, TDefaultProps } from '../../types';
+import { TFlexDirectionProp } from './flex';
 
 //#region Padding
 export const PADDING = ['p0', 'ps', 'pm', 'pl'] as const;
@@ -24,28 +25,21 @@ export const DISPLAY = [
   'grid',
   'inline-grid',
   'list-item',
-];
+] as const;
 export type TDisplay = typeof DISPLAY[number];
 export type TDisplayProp = TBooleanConfigProp<TDisplay>;
 //#endregion Display
 
-export interface IBox
-  extends IDefaultProps,
-    TPaddingProp,
-    TMarginProp,
-    TBgColorProp,
-    TDisplayProp {
-  column?: boolean;
-}
+export type TBox = TDefaultProps &
+  TPaddingProp &
+  TMarginProp &
+  TBgColorProp &
+  TDisplayProp &
+  TFlexDirectionProp;
 
-export const Box: FC<IBox> = ({ children, column, ...props }) => {
-  const columnClass = props.flex ? (column && 'column') || 'row' : undefined;
-  return (
-    <div className={classnames(props.className, columnClass, ...Object.keys(props))}>
-      {children}
-    </div>
-  );
-};
+export const Box: FC<TBox> = ({ children, className, ...props }) => (
+  <div className={classnames(className, ...Object.keys(props))}>{children}</div>
+);
 
 export const Block = styled(Box)`
   display: block;

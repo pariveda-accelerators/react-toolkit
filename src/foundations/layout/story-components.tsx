@@ -1,92 +1,119 @@
 import React, { FC } from 'react';
-import { Box as Bx } from 'foundations/layout';
-import { Fonts, SHADE } from 'foundations';
+import { Box as Bx, Flex as Fx, Fonts, SHADE } from 'foundations';
+import { TBox } from './box';
+import { IKeyedObject } from '../../utilities';
 
-//#region Box Components
-interface ISizeTable {
-  propModifier: string;
-  styleName: string;
+//#region Shared Components
+const Row: FC<TBox> = props => <Bx flex {...props} />;
+const Column: FC<TBox> = props => <Bx flex column ps {...props} />;
+
+interface IKeyValueTable {
+  data: IKeyedObject<string>;
 }
-const SizeTable: FC<ISizeTable> = ({ propModifier, styleName }) => (
-  <Bx flex>
-    <Bx flex column ps>
-      <Fonts.Body bold>Values</Fonts.Body>
-      <Fonts.Body>{propModifier}s</Fonts.Body>
-      <Fonts.Body>{propModifier}m</Fonts.Body>
-      <Fonts.Body>{propModifier}l</Fonts.Body>
-    </Bx>
-    <Bx flex column ps>
-      <Fonts.Body bold>Effect</Fonts.Body>
-      <Fonts.Body>{styleName}: .5em</Fonts.Body>
-      <Fonts.Body>{styleName}: 1em</Fonts.Body>
-      <Fonts.Body>{styleName}: 2em</Fonts.Body>
-    </Bx>
-  </Bx>
-);
+const KeyValueTable: FC<IKeyValueTable> = ({ data }) => {
+  const keys = Object.keys(data);
+  const values = Object.values(data);
+  return (
+    <Row>
+      <Column>
+        <Fonts.Body bold>Value</Fonts.Body>
+        {keys.map(key => (
+          <Fonts.Body key={key}>{key}</Fonts.Body>
+        ))}
+      </Column>
+      <Column>
+        <Fonts.Body bold>Effect</Fonts.Body>
+        {values.map(value => (
+          <Fonts.Body key={value}>{value}</Fonts.Body>
+        ))}
+      </Column>
+    </Row>
+  );
+};
+//#endregion Shared Components
+//#region Box Components
+const sizeMap = {
+  '0': '0',
+  s: '.5em',
+  m: '1em',
+  l: '2em',
+} as IKeyedObject<string>;
+const getSizeStyle = (modifier: string, style: string) =>
+  Object.keys(sizeMap).reduce(
+    (styles, size) => ({
+      ...styles,
+      [`${modifier}${size}`]: `${style}: ${sizeMap[size]}`,
+    }),
+    {}
+  );
+const padding = getSizeStyle('p', 'padding');
+const boxPadding = <KeyValueTable data={padding} />;
+const margin = getSizeStyle('m', 'margin');
+const boxMargin = <KeyValueTable data={margin} />;
+
+const display = {
+  none: 'display: none',
+  block: 'display: block',
+  'inline-block': 'display: inline-block',
+  flex: 'display: flex',
+  'inline-flex': 'display: inline-flex',
+  grid: 'display: grid',
+  'inline-grid': 'display: inline-grid',
+  'list-item': 'display: list-item',
+};
+const boxDisplay = <KeyValueTable data={display} />;
 
 interface IBgColorTable {
   color: string;
 }
 const BgColorTable: FC<IBgColorTable> = ({ color }) => (
-  <Bx flex column>
+  <Column>
     {SHADE.map(shade => {
       const colorShade = `bg-${color}-${shade}`;
       const bgColor = {
         [colorShade]: true,
       };
       return (
-        <Bx flex key={colorShade}>
+        <Row key={colorShade}>
           <Fonts.Body>{colorShade}</Fonts.Body>
           <Bx ms {...bgColor} pm />
-        </Bx>
+        </Row>
       );
     })}
-  </Bx>
-);
-
-const DisplayTable: FC<{}> = () => (
-  <Bx flex>
-    <Bx flex column ps>
-      <Fonts.Body bold>Values</Fonts.Body>
-      <Fonts.Body>none</Fonts.Body>
-      <Fonts.Body>block</Fonts.Body>
-      <Fonts.Body>inline-block</Fonts.Body>
-      <Fonts.Body>flex</Fonts.Body>
-      <Fonts.Body>inline-flex</Fonts.Body>
-      <Fonts.Body>grid</Fonts.Body>
-      <Fonts.Body>inline-grid</Fonts.Body>
-      <Fonts.Body>list-item</Fonts.Body>
-    </Bx>
-    <Bx flex column ps>
-      <Fonts.Body bold>Effect</Fonts.Body>
-      <Fonts.Body>display: none</Fonts.Body>
-      <Fonts.Body>display: block</Fonts.Body>
-      <Fonts.Body>display: inline-block</Fonts.Body>
-      <Fonts.Body>display: flex</Fonts.Body>
-      <Fonts.Body>display: inline-flex</Fonts.Body>
-      <Fonts.Body>display: grid</Fonts.Body>
-      <Fonts.Body>display: inline-grid</Fonts.Body>
-      <Fonts.Body>display: list-item</Fonts.Body>
-    </Bx>
-  </Bx>
+  </Column>
 );
 //#endregion Box Components
+//#region Flex Components
+//#endregion Flex Components
 
 export const Box = () => (
   <Bx block>
     <Fonts.Title>Box</Fonts.Title>
     <Fonts.Subtitle>Configuration</Fonts.Subtitle>
     <Fonts.SectionTitle>Padding</Fonts.SectionTitle>
-    <SizeTable propModifier="p" styleName="padding" />
+    {boxPadding}
     <Fonts.SectionTitle>Margin</Fonts.SectionTitle>
-    <SizeTable propModifier="m" styleName="margin" />
+    {boxMargin}
+    <Fonts.SectionTitle>Display</Fonts.SectionTitle>
+    {boxDisplay}
     <Fonts.SectionTitle>Background Color</Fonts.SectionTitle>
-    <Bx flex>
+    <Row>
       <BgColorTable color="azure" />
       <BgColorTable color="seafoam" />
       <BgColorTable color="red" />
-    </Bx>
-    <Fonts.SectionTitle>Display</Fonts.SectionTitle>
-    <DisplayTable />
+    </Row>
   </Bx>
+);
+
+export const Flex = () => (
+  <Fx inline-block>
+    <Fx column pm>
+      <Fx ps>Row1</Fx>
+      <Fx ps>Row2</Fx>
+    </Fx>
+    <Fx column pm bg-red-3>
+      <Fx ps>Row1</Fx>
+      <Fx ps>Row2</Fx>
+    </Fx>
+  </Fx>
 );

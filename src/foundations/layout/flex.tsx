@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
-import { Box } from './box';
-import { TBooleanConfigProp } from '../../types';
+import { Box, TPaddingProp, TMarginProp, TDisplayProp } from './box';
+import { TBooleanConfigProp, TDefaultProps } from '../../types';
+import { TBgColorProp } from 'foundations/colors';
 
 //#region Flex Direction
 export const FLEX_DIRECTION = ['row', 'column'] as const;
@@ -9,9 +9,16 @@ export type TFlexDirection = typeof FLEX_DIRECTION[number];
 export type TFlexDirectionProp = TBooleanConfigProp<TFlexDirection>;
 //#endregion Flex Direction
 
-export const Flex = styled(Box)`
-  display: flex;
-  flex-direction: ${props => (props.column ? 'column' : 'row')};
-`;
+export type TFlex =
+  | TDefaultProps
+  | TPaddingProp
+  | TMarginProp
+  | TBgColorProp
+  | TFlexDirectionProp
+  | Pick<TDisplayProp, 'none' | 'inline-flex' | 'flex'>;
+
+export const Flex: FC<TFlex> = props => {
+  return <Box {...props} flex />;
+};
 
 export const Row: FC<any> = props => <Flex {...props} />;

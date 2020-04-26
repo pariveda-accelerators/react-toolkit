@@ -24,6 +24,7 @@ $space-sizes: (
 }
 .flex {
   display: flex;
+  flex-direction: row;
   &.column {
     flex-direction: column;
   }
@@ -33,4 +34,15 @@ $space-sizes: (
 }
 .list-item {
   display: list-item;
+}
+.inline {
+  &-block {
+    display: inline-block;
+  }
+  &-flex {
+    display: inline-flex;
+  }
+  &-grid {
+    display: inline-grid;
+  }
 }
