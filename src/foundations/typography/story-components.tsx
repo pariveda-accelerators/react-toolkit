@@ -8,8 +8,8 @@ const Hr = styled.hr`
 `;
 
 export const Typography = () => (
-  <Flex column p="2em" bgColor={{ color: 'grey', shade: '2' }}>
-    <Block bgColor={{ color: 'white' }} p="0 2em">
+  <Flex column pl bg="grey-2">
+    <Block bg="white" ps>
       <Fonts.Title h1>Typography</Fonts.Title>
       <Hr />
       {Object.keys(Fonts).map(font => {
@@ -17,16 +17,16 @@ export const Typography = () => (
         return <Component key={font}>{font}</Component>;
       })}
     </Block>
-    <Flex p="1em" />
-    <Block bgColor={{ color: 'white' }} p="0 2em">
+    <Flex pm />
+    <Block bg="white" ps>
       <Fonts.Title h1>Alignment</Fonts.Title>
       <Hr />
       <Fonts.SectionTitle left>Left</Fonts.SectionTitle>
       <Fonts.SectionTitle center>Center</Fonts.SectionTitle>
       <Fonts.SectionTitle right>Right</Fonts.SectionTitle>
     </Block>
-    <Flex p="1em" />
-    <Block bgColor={{ color: 'white' }} p="0 2em">
+    <Flex pm />
+    <Block bg="white" ps>
       <Fonts.Title h1>Styles</Fonts.Title>
       <Hr />
       <Fonts.SectionTitle bold>Bold</Fonts.SectionTitle>
@@ -40,8 +40,8 @@ export const Typography = () => (
         Strong + Emphasis
       </Fonts.SectionTitle>
     </Block>
-    <Flex p="1em" />
-    <Block bgColor={{ color: 'white' }} p="0 2em">
+    <Flex pm />
+    <Block bg="white" ps>
       <Fonts.Title h1>Text Transform</Fonts.Title>
       <Hr />
       <Fonts.SectionTitle none>none</Fonts.SectionTitle>
