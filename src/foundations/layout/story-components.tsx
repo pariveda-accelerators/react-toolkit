@@ -4,8 +4,8 @@ import { TBox } from './box';
 import { IKeyedObject } from '../../utilities';
 
 //#region Shared Components
-const Row: FC<TBox> = props => <Bx flex {...props} />;
-const Column: FC<TBox> = props => <Bx flex column ps {...props} />;
+const Row: FC<TBox> = props => <Bx d="flex" {...props} />;
+const Column: FC<TBox> = props => <Bx d="flex" column ps {...props} />;
 
 interface IKeyValueTable {
   data: IKeyedObject<string>;
@@ -87,7 +87,7 @@ const BgColorTable: FC<IBgColorTable> = ({ color }) => (
 //#endregion Flex Components
 
 export const Box = () => (
-  <Bx block>
+  <Bx d="block">
     <Fonts.Title>Box</Fonts.Title>
     <Fonts.Subtitle>Configuration</Fonts.Subtitle>
     <Fonts.SectionTitle>Padding</Fonts.SectionTitle>

@@ -16,33 +16,35 @@ $space-sizes: (
 }
 @include mix-colors(bg, background-color);
 
-.none {
-  display: none;
-}
-.block {
-  display: block;
-}
-.flex {
-  display: flex;
-  flex-direction: row;
-  &.column {
-    flex-direction: column;
+.d {
+  &--none {
+    display: none;
   }
-}
-.grid {
-  display: grid;
-}
-.list-item {
-  display: list-item;
-}
-.inline {
-  &-block {
-    display: inline-block;
+  &--block {
+    display: block;
   }
-  &-flex {
-    display: inline-flex;
+  &--flex {
+    display: flex;
+    flex-direction: row;
+    &.column {
+      flex-direction: column;
+    }
   }
-  &-grid {
-    display: inline-grid;
+  &--grid {
+    display: grid;
+  }
+  &--list-item {
+    display: list-item;
+  }
+  &--inline {
+    &-block {
+      display: inline-block;
+    }
+    &-flex {
+      display: inline-flex;
+    }
+    &-grid {
+      display: inline-grid;
+    }
   }
 }

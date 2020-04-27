@@ -32,7 +32,7 @@ export const getKeys = <T>(
   }, {} as T);
 };
 
-export const getProps = <T>(
+export const getProps = <T extends any>(
   obj: IKeyedObject<T>,
   keys: any[] | readonly any[] = []
 ): T => {

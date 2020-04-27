@@ -6,7 +6,7 @@ interface IKeyedObject {
 interface IBemObj {
   block: string;
 }
-export const createClassName = (obj: IKeyedObject, bem: IBemObj): string[] => {
+export const createClassName = (obj: IKeyedObject, bem?: IBemObj): string[] => {
   if (isNullOrUndefined(obj)) {
     return [];
   }
@@ -14,7 +14,9 @@ export const createClassName = (obj: IKeyedObject, bem: IBemObj): string[] => {
   return objKeys.reduce((classes, key) => {
     if (isNullOrUndefined(obj[key])) {
       return classes;
+    } else if (!isNullOrUndefined(bem)) {
+      return classes.concat(`${bem.block}--${obj[key]}`);
     }
-    return classes.concat(`${bem.block}--${obj[key]}`);
+    return classes.concat(`${key}--${obj[key]}`);
   }, [] as string[]);
 };

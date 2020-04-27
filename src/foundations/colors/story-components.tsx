@@ -1,43 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Flex } from 'foundations/layout';
+import { Flex, Box } from 'foundations/layout';
 import { SectionTitle, Body } from 'foundations/typography';
-import { COLOR } from '.';
+import { COLOR, TColorShade } from '.';
 
-const getBackgroundColor = (color = 'grey-50') => {
-  return `var(--${color})`;
-};
-
-const ColorSwatch = styled.div`
+const ColorSwatch = styled(Box)`
   height: 64px;
   width: 64px;
-  background-color: ${props => getBackgroundColor(props.color)};
-  filter: saturate(1);
 `;
 
 export const Colors = () => {
   return (
-    <Flex column p="2em">
+    <Flex column pl>
       <SectionTitle>Colors</SectionTitle>
       <Body>Colors are used for lots of cool things</Body>
-      <Flex p="1em" />
+      <Flex pm />
       <Flex column>
         {COLOR.slice(2).map((color: string) => (
-          <Flex column p=".5em" key={color}>
+          <Flex column ps key={color}>
             <SectionTitle>{color}</SectionTitle>
             <Flex key={color}>
-              <ColorSwatch color={`${color}-1`} />
-              <ColorSwatch color={`${color}-2`} />
-              <ColorSwatch color={`${color}-3`} />
-              <ColorSwatch color={`${color}-4`} />
-              <ColorSwatch color={`${color}-5`} />
-              <ColorSwatch color={`${color}-6`} />
-              <ColorSwatch color={`${color}-7`} />
-              <ColorSwatch color={`${color}-8`} />
-              <ColorSwatch color={`${color}-9`} />
-              <ColorSwatch color={`${color}-10`} />
+              <ColorSwatch bg={`${color}-1` as TColorShade} />
+              <ColorSwatch bg={`${color}-2` as TColorShade} />
+              <ColorSwatch bg={`${color}-3` as TColorShade} />
+              <ColorSwatch bg={`${color}-4` as TColorShade} />
+              <ColorSwatch bg={`${color}-5` as TColorShade} />
+              <ColorSwatch bg={`${color}-6` as TColorShade} />
+              <ColorSwatch bg={`${color}-7` as TColorShade} />
+              <ColorSwatch bg={`${color}-8` as TColorShade} />
+              <ColorSwatch bg={`${color}-9` as TColorShade} />
             </Flex>
-            <Flex p="1em" />
+            <Flex pm />
           </Flex>
         ))}
       </Flex>

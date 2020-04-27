@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import classnames from 'classnames';
-import { TBgColorProp } from 'foundations';
+import { TColorShade } from 'foundations';
 import { TBooleanConfigProp, TDefaultProps } from '../../types';
 import { TFlexDirectionProp } from './flex';
+import { getProps, createClassName } from '../../utilities';
 
 //#region Padding
 export const PADDING = ['p0', 'ps', 'pm', 'pl'] as const;
@@ -27,19 +28,36 @@ export const DISPLAY = [
   'list-item',
 ] as const;
 export type TDisplay = typeof DISPLAY[number];
-export type TDisplayProp = TBooleanConfigProp<TDisplay>;
+export type TDisplayProp = {
+  d?: TDisplay;
+};
 //#endregion Display
+//#region Background Color
+export type TBgColorProp = {
+  bg?: TColorShade;
+};
+//#endregion Background Color
 
+export const BOX_PROP_NAMES = ['d', 'bg'];
 export type TBox = TDefaultProps &
   TPaddingProp &
   TMarginProp &
-  TBgColorProp &
   TDisplayProp &
-  TFlexDirectionProp;
+  TFlexDirectionProp &
+  TBgColorProp;
 
-export const Box: FC<TBox> = ({ children, className, ...props }) => (
-  <div className={classnames(className, ...Object.keys(props))}>{children}</div>
-);
+export const Box: FC<TBox> = ({ children, className, ...props }) => {
+  const tradProps = getProps(props, BOX_PROP_NAMES);
+  const tradKeys = Object.keys(tradProps);
+  const tradClassNames = createClassName(tradProps);
+  const experiKeys = Object.keys(props).filter(key => !tradKeys.includes(key));
+
+  return (
+    <div className={classnames(className, tradClassNames, experiKeys)}>
+      {children}
+    </div>
+  );
+};
 
 export const Block = styled(Box)`
   display: block;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from 'foundations';
 import { render } from '@testing-library/react';
-import { BACKGROUND_COLOR } from 'foundations';
+import { COLOR_SHADE } from 'foundations';
 
 describe('Box', () => {
   it('Renders Default', () => {
@@ -49,14 +49,14 @@ describe('Box', () => {
   it('Handles Display Props', () => {
     const { getByText } = render(
       <>
-        <Box none>none</Box>
-        <Box block>block</Box>
-        <Box inline-block>inline-block</Box>
-        <Box flex>flex</Box>
-        <Box inline-flex>inline-flex</Box>
-        <Box grid>grid</Box>
-        <Box inline-grid>inline-grid</Box>
-        <Box list-item>list-item</Box>
+        <Box d="none">none</Box>
+        <Box d="block">block</Box>
+        <Box d="inline-block">inline-block</Box>
+        <Box d="flex">flex</Box>
+        <Box d="inline-flex">inline-flex</Box>
+        <Box d="grid">grid</Box>
+        <Box d="inline-grid">inline-grid</Box>
+        <Box d="list-item">list-item</Box>
       </>
     );
     const none = getByText('none');
@@ -80,14 +80,14 @@ describe('Box', () => {
   it('Handles Background Color Props', () => {
     const { getByText } = render(
       <>
-        {BACKGROUND_COLOR.map(color => (
-          <Box key={color} {...{ [color]: true }}>
+        {COLOR_SHADE.map(color => (
+          <Box key={color} bg={color}>
             {color}
           </Box>
         ))}
       </>
     );
-    BACKGROUND_COLOR.forEach(color => {
+    COLOR_SHADE.forEach(color => {
       const element = getByText(color);
       expect(element).toBeDefined();
     });
