@@ -16,13 +16,13 @@ const KeyValueTable: FC<IKeyValueTable> = ({ data }) => {
   return (
     <Row>
       <Column>
-        <Fonts.Body bold>Value</Fonts.Body>
+        <Fonts.Body weight="bold">Value</Fonts.Body>
         {keys.map(key => (
           <Fonts.Body key={key}>{key}</Fonts.Body>
         ))}
       </Column>
       <Column>
-        <Fonts.Body bold>Effect</Fonts.Body>
+        <Fonts.Body weight="bold">Effect</Fonts.Body>
         {values.map(value => (
           <Fonts.Body key={value}>{value}</Fonts.Body>
         ))}

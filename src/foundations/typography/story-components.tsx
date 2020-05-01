@@ -10,7 +10,7 @@ const Hr = styled.hr`
 export const Typography = () => (
   <Flex column pl bg="grey-2">
     <Block bg="white" ps>
-      <Fonts.Title h1>Typography</Fonts.Title>
+      <Fonts.Title tag="h2">Typography</Fonts.Title>
       <Hr />
       {Object.keys(Fonts).map(font => {
         const Component = Fonts[font];
@@ -19,35 +19,41 @@ export const Typography = () => (
     </Block>
     <Flex pm />
     <Block bg="white" ps>
-      <Fonts.Title h1>Alignment</Fonts.Title>
+      <Fonts.Title tag="h2">Alignment</Fonts.Title>
       <Hr />
-      <Fonts.SectionTitle left>Left</Fonts.SectionTitle>
-      <Fonts.SectionTitle center>Center</Fonts.SectionTitle>
-      <Fonts.SectionTitle right>Right</Fonts.SectionTitle>
+      <Fonts.SectionTitle align="left">Left</Fonts.SectionTitle>
+      <Fonts.SectionTitle align="center">Center</Fonts.SectionTitle>
+      <Fonts.SectionTitle align="right">Right</Fonts.SectionTitle>
     </Block>
     <Flex pm />
     <Block bg="white" ps>
-      <Fonts.Title h1>Styles</Fonts.Title>
+      <Fonts.Title tag="h2">Styles</Fonts.Title>
       <Hr />
-      <Fonts.SectionTitle bold>Bold</Fonts.SectionTitle>
-      <Fonts.SectionTitle strong>Strong</Fonts.SectionTitle>
-      <Fonts.SectionTitle italics>Italics</Fonts.SectionTitle>
-      <Fonts.SectionTitle emphasis>Emphasis</Fonts.SectionTitle>
-      <Fonts.SectionTitle bold italics>
+      <Fonts.SectionTitle weight="bold">Bold</Fonts.SectionTitle>
+      <Fonts.SectionTitle weight="strong">Strong</Fonts.SectionTitle>
+      <Fonts.SectionTitle fStyle="italics">Italics</Fonts.SectionTitle>
+      <Fonts.SectionTitle fStyle="emphasis">Emphasis</Fonts.SectionTitle>
+      <Fonts.SectionTitle weight="bold" fStyle="italics">
         Bold + Italics
       </Fonts.SectionTitle>
-      <Fonts.SectionTitle strong emphasis>
+      <Fonts.SectionTitle weight="bold" fStyle="emphasis">
+        Bold + Emphasis
+      </Fonts.SectionTitle>
+      <Fonts.SectionTitle weight="strong" fStyle="italics">
+        Strong + Italics
+      </Fonts.SectionTitle>
+      <Fonts.SectionTitle weight="strong" fStyle="emphasis">
         Strong + Emphasis
       </Fonts.SectionTitle>
     </Block>
     <Flex pm />
     <Block bg="white" ps>
-      <Fonts.Title h1>Text Transform</Fonts.Title>
+      <Fonts.Title tag="h2">Text Transform</Fonts.Title>
       <Hr />
-      <Fonts.SectionTitle none>none</Fonts.SectionTitle>
-      <Fonts.SectionTitle uppercase>uppercase</Fonts.SectionTitle>
-      <Fonts.SectionTitle lowercase>LOWERCASE</Fonts.SectionTitle>
-      <Fonts.SectionTitle capitalize>
+      <Fonts.SectionTitle transform="none">none</Fonts.SectionTitle>
+      <Fonts.SectionTitle transform="uppercase">uppercase</Fonts.SectionTitle>
+      <Fonts.SectionTitle transform="lowercase">LOWERCASE</Fonts.SectionTitle>
+      <Fonts.SectionTitle transform="capitalize">
         capitalized affects every word
       </Fonts.SectionTitle>
     </Block>

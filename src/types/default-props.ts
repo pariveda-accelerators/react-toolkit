@@ -1,3 +1,7 @@
+import { getProps } from '../utilities';
+
+const DEFAULT_PROPS = ['id', 'className', 'children'];
+export const getDefaultProps = (props: any) => getProps(props, DEFAULT_PROPS);
 export interface IDefaultProps {
   /**
    * All Components may be given an `id` attribute to uniquely identify them
@@ -11,6 +15,11 @@ export interface IDefaultProps {
    * of these components
    */
   className?: string;
+  /**
+   * By default, most components accept any valid ReactNode as a child.  Extending interfaces
+   * may choose to override this by defining a more or less specific type.
+   */
+  children: React.ReactNode;
 }
 export type TDefaultProps = {
   /**

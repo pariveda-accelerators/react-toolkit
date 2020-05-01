@@ -1,7 +1,7 @@
 import { isNullOrUndefined } from './type-guards';
 
-export interface IKeyedObject<T = {}> {
-  [key: string]: T | undefined;
+export interface IKeyedObject<T extends any = undefined> {
+  [key: string]: T;
 }
 
 export const getKeys = <T>(
@@ -33,8 +33,8 @@ export const getKeys = <T>(
 };
 
 export const getProps = <T extends any>(
-  obj: IKeyedObject<T>,
-  keys: any[] | readonly any[] = []
+  obj: T,
+  keys: (keyof T)[] | readonly (keyof T)[]
 ): T => {
   if (isNullOrUndefined(obj) || keys.length === 0) {
     return {} as T;

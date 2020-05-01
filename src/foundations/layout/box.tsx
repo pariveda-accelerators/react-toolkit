@@ -47,7 +47,7 @@ export type TBox = TDefaultProps &
   TBgColorProp;
 
 export const Box: FC<TBox> = ({ children, className, ...props }) => {
-  const tradProps = getProps(props, BOX_PROP_NAMES);
+  const tradProps = getProps(props, BOX_PROP_NAMES as any);
   const tradKeys = Object.keys(tradProps);
   const tradClassNames = createClassName(tradProps);
   const experiKeys = Object.keys(props).filter(key => !tradKeys.includes(key));

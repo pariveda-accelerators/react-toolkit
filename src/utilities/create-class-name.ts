@@ -12,7 +12,7 @@ export const createClassName = (obj: IKeyedObject, bem?: IBemObj): string[] => {
   }
   const objKeys = Object.keys(obj);
   return objKeys.reduce((classes, key) => {
-    if (isNullOrUndefined(obj[key])) {
+    if (isNullOrUndefined(obj[key]) || obj[key] === '') {
       return classes;
     } else if (!isNullOrUndefined(bem)) {
       return classes.concat(`${bem.block}--${obj[key]}`);
