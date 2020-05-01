@@ -82,6 +82,7 @@ const BaseFont: FC<IBaseFont> = ({
   fStyle,
   align,
   transform,
+  className,
   children,
   ...props
 }) => {
@@ -104,7 +105,7 @@ const BaseFont: FC<IBaseFont> = ({
   const TagElement = React.createElement(
     tag || 'p',
     {
-      className: classnames(...classes),
+      className: classnames(...classes, className),
       tag,
       ...defaultProps,
     },

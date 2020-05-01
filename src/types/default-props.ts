@@ -19,7 +19,7 @@ export interface IDefaultProps {
    * By default, most components accept any valid ReactNode as a child.  Extending interfaces
    * may choose to override this by defining a more or less specific type.
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 export type TDefaultProps = {
   /**
@@ -34,4 +34,9 @@ export type TDefaultProps = {
    * of these components
    */
   className?: string;
+  /**
+   * By default, most components accept any valid ReactNode as a child.  Extending interfaces
+   * may choose to override this by defining a more or less specific type.
+   */
+  children?: React.ReactNode;
 };

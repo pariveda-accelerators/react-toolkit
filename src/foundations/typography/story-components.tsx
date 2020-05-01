@@ -8,8 +8,8 @@ const Hr = styled.hr`
 `;
 
 export const Typography = () => (
-  <Flex column pl bg="grey-2">
-    <Block bg="white" ps>
+  <Flex direction="column" p="0" bg="grey-2">
+    <Block bg="white" p="s">
       <Fonts.Title tag="h2">Typography</Fonts.Title>
       <Hr />
       {Object.keys(Fonts).map(font => {
@@ -17,16 +17,16 @@ export const Typography = () => (
         return <Component key={font}>{font}</Component>;
       })}
     </Block>
-    <Flex pm />
-    <Block bg="white" ps>
+    <Flex p="0" />
+    <Block bg="white" p="s">
       <Fonts.Title tag="h2">Alignment</Fonts.Title>
       <Hr />
       <Fonts.SectionTitle align="left">Left</Fonts.SectionTitle>
       <Fonts.SectionTitle align="center">Center</Fonts.SectionTitle>
       <Fonts.SectionTitle align="right">Right</Fonts.SectionTitle>
     </Block>
-    <Flex pm />
-    <Block bg="white" ps>
+    <Flex p="0" />
+    <Block bg="white" p="s">
       <Fonts.Title tag="h2">Styles</Fonts.Title>
       <Hr />
       <Fonts.SectionTitle weight="bold">Bold</Fonts.SectionTitle>
@@ -46,8 +46,8 @@ export const Typography = () => (
         Strong + Emphasis
       </Fonts.SectionTitle>
     </Block>
-    <Flex pm />
-    <Block bg="white" ps>
+    <Flex p="0" />
+    <Block bg="white" p="s">
       <Fonts.Title tag="h2">Text Transform</Fonts.Title>
       <Hr />
       <Fonts.SectionTitle transform="none">none</Fonts.SectionTitle>

@@ -1,6 +1,7 @@
 import { isNullOrUndefined, isString } from '../../utilities';
 
 export const COLOR = [
+  'transparent',
   'white',
   'black',
   'grey',
@@ -23,6 +24,7 @@ export const SHADE = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 export type TShade = typeof SHADE[number];
 
 export const COLOR_SHADE = [
+  'transparent',
   'white',
   'black',
   'grey-1',

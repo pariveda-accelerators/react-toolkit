@@ -1,21 +1,14 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import classnames from 'classnames';
+import styled from 'styled-components';
 import { TColorShade } from 'foundations';
-import { TBooleanConfigProp, TDefaultProps } from '../../types';
-import { TFlexDirectionProp } from './flex';
-import { getProps, createClassName } from '../../utilities';
+import { IDefaultProps, getDefaultProps } from '../../types';
+import { createClassName } from '../../utilities';
 
-//#region Padding
-export const PADDING = ['p0', 'ps', 'pm', 'pl'] as const;
-export type TPadding = typeof PADDING[number];
-export type TPaddingProp = TBooleanConfigProp<TPadding>;
-//#endregion Padding
-//#region Margin
-export const MARGIN = ['m0', 'ms', 'mm', 'ml'] as const;
-export type TMargin = typeof MARGIN[number];
-export type TMarginProp = TBooleanConfigProp<TMargin>;
-//#endregion Margin
+//#region T Shirt Sizes
+export const SHIRT_SIZE = ['0', 's', 'm', 'l'] as const;
+export type TShirtSize = typeof SHIRT_SIZE[number];
+//#endregion T Shirt Sizes
 //#region Display
 export const DISPLAY = [
   'none',
@@ -28,32 +21,28 @@ export const DISPLAY = [
   'list-item',
 ] as const;
 export type TDisplay = typeof DISPLAY[number];
-export type TDisplayProp = {
-  d?: TDisplay;
-};
 //#endregion Display
-//#region Background Color
-export type TBgColorProp = {
-  bg?: TColorShade;
-};
-//#endregion Background Color
 
 export const BOX_PROP_NAMES = ['d', 'bg'];
-export type TBox = TDefaultProps &
-  TPaddingProp &
-  TMarginProp &
-  TDisplayProp &
-  TFlexDirectionProp &
-  TBgColorProp;
 
-export const Box: FC<TBox> = ({ children, className, ...props }) => {
-  const tradProps = getProps(props, BOX_PROP_NAMES as any);
-  const tradKeys = Object.keys(tradProps);
-  const tradClassNames = createClassName(tradProps);
-  const experiKeys = Object.keys(props).filter(key => !tradKeys.includes(key));
+export interface IBox extends IDefaultProps {
+  p?: TShirtSize;
+  m?: TShirtSize;
+  d?: TDisplay;
+  bg?: TColorShade;
+}
 
+export const Box: FC<IBox> = ({ p, m, d, bg, className, children, ...props }) => {
+  const defaultProps = getDefaultProps(props);
+  const classNameStyles = {
+    p,
+    m,
+    d,
+    bg,
+  };
+  const classes = createClassName(classNameStyles);
   return (
-    <div className={classnames(className, tradClassNames, experiKeys)}>
+    <div {...defaultProps} className={classnames(className, ...classes)}>
       {children}
     </div>
   );

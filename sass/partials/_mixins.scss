@@ -71,7 +71,7 @@
 @mixin mix-sizes($selector, $style, $size-map) {
   .#{$selector} {
     @each $size in $t-shirt-sizes {
-      &#{$size} {
+      &--#{$size} {
         #{$style}: map-get($size-map, $size);
       }
     }

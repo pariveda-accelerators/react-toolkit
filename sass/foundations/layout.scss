@@ -11,7 +11,7 @@ $space-sizes: (
 @include mix-sizes(p, padding, $space-sizes);
 @include mix-sizes(m, margin, $space-sizes);
 
-.bg-transparent {
+.bg--transparent {
   background-color: transparent;
 }
 @include mix-colors(bg, background-color);
