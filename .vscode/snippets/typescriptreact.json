@@ -1,11 +1,10 @@
 {
-  "Boolean Config Prop": {
-    "prefix": "BooleanConfigProp",
+  "Value Array Prop": {
+    "prefix": "ValueArrayProp",
     "body": [
       "export const ${1:PROP_SINGULAR_CONSTANT} = ['${3:value1}'] as const;",
-      "export type T${2:PropName} = typeof ${1:PROP_SINGULAR_CONSTANT}[number];",
-      "export type T${2:PropName}Prop = TBooleanConfigProp<T${2:PropName}>;"
+      "export type T${2:PropName} = typeof ${1:PROP_SINGULAR_CONSTANT}[number];"
     ],
-    "description": "Template for a set of boolean props that turn on a given feature"
+    "description": "Template to define a type based on an array of string values"
   }
 }

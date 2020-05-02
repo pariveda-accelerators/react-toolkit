@@ -8,10 +8,10 @@ $space-sizes: (
   l: 2rem,
 );
 
-@include mix-sizes(p, padding, $space-sizes);
-@include mix-sizes(m, margin, $space-sizes);
+@include mix-sizes(p, padding, $space-sizes, $bem: false);
+@include mix-sizes(m, margin, $space-sizes, $bem: false);
 
-.bg-transparent {
+.bg--transparent {
   background-color: transparent;
 }
 @include mix-colors(bg, background-color);

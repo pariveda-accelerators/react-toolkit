@@ -52,13 +52,13 @@ describe('Typography', () => {
   it('Handles Tag', () => {
     const { baseElement, getByText } = render(
       <>
-        <Fonts.Display h1>H1 Tag</Fonts.Display>
-        <Fonts.Display h2>H2 Tag</Fonts.Display>
-        <Fonts.Display h3>H3 Tag</Fonts.Display>
-        <Fonts.Display h4>H4 Tag</Fonts.Display>
-        <Fonts.Display h5>H5 Tag</Fonts.Display>
-        <Fonts.Display h6>H6 Tag</Fonts.Display>
-        <Fonts.Display p>P Tag</Fonts.Display>
+        <Fonts.Display tag="h1">H1 Tag</Fonts.Display>
+        <Fonts.Display tag="h2">H2 Tag</Fonts.Display>
+        <Fonts.Display tag="h3">H3 Tag</Fonts.Display>
+        <Fonts.Display tag="h4">H4 Tag</Fonts.Display>
+        <Fonts.Display tag="h5">H5 Tag</Fonts.Display>
+        <Fonts.Display tag="h6">H6 Tag</Fonts.Display>
+        <Fonts.Display tag="p">P Tag</Fonts.Display>
       </>
     );
 
@@ -74,28 +74,28 @@ describe('Typography', () => {
 
   it('Handles Emphasis', () => {
     const { baseElement } = render(
-      <Fonts.Display emphasis>Emphasis Display Font</Fonts.Display>
+      <Fonts.Display fStyle="emphasis">Emphasis Display Font</Fonts.Display>
     );
     expect(baseElement).toMatchSnapshot();
   });
 
   it('Handles Italics', () => {
     const { baseElement } = render(
-      <Fonts.Display italics>Italics Display Font</Fonts.Display>
+      <Fonts.Display fStyle="italics">Italics Display Font</Fonts.Display>
     );
     expect(baseElement).toMatchSnapshot();
   });
 
   it('Handles Strong', () => {
     const { baseElement } = render(
-      <Fonts.Display strong>Strong Display Font</Fonts.Display>
+      <Fonts.Display weight="strong">Strong Display Font</Fonts.Display>
     );
     expect(baseElement).toMatchSnapshot();
   });
 
   it('Handles Bold', () => {
     const { baseElement } = render(
-      <Fonts.Display bold>Bold Display Font</Fonts.Display>
+      <Fonts.Display weight="bold">Bold Display Font</Fonts.Display>
     );
     expect(baseElement).toMatchSnapshot();
   });
@@ -103,9 +103,9 @@ describe('Typography', () => {
   it('Handles Alignment', () => {
     const { getByText } = render(
       <>
-        <Fonts.Display left>Left Align</Fonts.Display>
-        <Fonts.Display center>Center Align</Fonts.Display>
-        <Fonts.Display right>Right Align</Fonts.Display>
+        <Fonts.Display align="left">Left Align</Fonts.Display>
+        <Fonts.Display align="center">Center Align</Fonts.Display>
+        <Fonts.Display align="right">Right Align</Fonts.Display>
       </>
     );
 
@@ -116,10 +116,10 @@ describe('Typography', () => {
   it('Handles Transform', () => {
     const { getByText } = render(
       <>
-        <Fonts.Display none>NoNe</Fonts.Display>
-        <Fonts.Display uppercase>uppercase</Fonts.Display>
-        <Fonts.Display lowercase>LOWERCASE</Fonts.Display>
-        <Fonts.Display capitalize>first letters only</Fonts.Display>
+        <Fonts.Display transform="none">NoNe</Fonts.Display>
+        <Fonts.Display transform="uppercase">uppercase</Fonts.Display>
+        <Fonts.Display transform="lowercase">LOWERCASE</Fonts.Display>
+        <Fonts.Display transform="capitalize">first letters only</Fonts.Display>
       </>
     );
 

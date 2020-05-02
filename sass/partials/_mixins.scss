@@ -68,10 +68,14 @@
   }
 }
 
-@mixin mix-sizes($selector, $style, $size-map) {
+@mixin mix-sizes($selector, $style, $size-map, $bem: true) {
   .#{$selector} {
+    $bemModifier: '--';
+    @if (not $bem) {
+      $bemModifier: '';
+    }
     @each $size in $t-shirt-sizes {
-      &#{$size} {
+      &#{$bemModifier}#{$size} {
         #{$style}: map-get($size-map, $size);
       }
     }
@@ -85,7 +89,7 @@
   .#{$selector} {
     @each $color in append($colors, 'grey') {
       @for $i from 1 through $shade-count {
-        &-#{$color}-#{$i} {
+        &--#{$color}-#{$i} {
           background-color: var(--#{$color}-#{$i});
         }
       }

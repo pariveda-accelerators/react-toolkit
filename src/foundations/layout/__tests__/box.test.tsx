@@ -1,20 +1,22 @@
 import React from 'react';
 import { Box } from 'foundations';
 import { render } from '@testing-library/react';
-import { BACKGROUND_COLOR } from 'foundations';
+import { COLOR_SHADE } from 'foundations';
 
 describe('Box', () => {
-  it('Renders Default', () => {
-    const { baseElement } = render(<Box />);
-    expect(baseElement).toMatchSnapshot();
+  it('Renders default', () => {
+    const { getByText } = render(<Box>box</Box>);
+    const box = getByText('box');
+    expect(box).toMatchSnapshot();
+    expect(box).toHaveClass('flex', 'pm', 'm0');
   });
-  it('Handles Padding Props', () => {
+  it('Handles padding props', () => {
     const { getByText } = render(
       <>
-        <Box p0>p0</Box>
-        <Box ps>ps</Box>
-        <Box pm>pm</Box>
-        <Box pl>pl</Box>
+        <Box p="0">p0</Box>
+        <Box p="s">ps</Box>
+        <Box p="m">pm</Box>
+        <Box p="l">pl</Box>
       </>
     );
     const p0 = getByText('p0');
@@ -22,18 +24,18 @@ describe('Box', () => {
     const pm = getByText('pm');
     const pl = getByText('pl');
 
-    expect(p0).toBeDefined();
-    expect(ps).toBeDefined();
-    expect(pm).toBeDefined();
-    expect(pl).toBeDefined();
+    expect(p0).toHaveClass('p0');
+    expect(ps).toHaveClass('ps');
+    expect(pm).toHaveClass('pm');
+    expect(pl).toHaveClass('pl');
   });
-  it('Handles Margin Props', () => {
+  it('Handles margin props', () => {
     const { getByText } = render(
       <>
-        <Box m0>m0</Box>
-        <Box ms>ms</Box>
-        <Box mm>mm</Box>
-        <Box ml>ml</Box>
+        <Box m="0">m0</Box>
+        <Box m="s">ms</Box>
+        <Box m="m">mm</Box>
+        <Box m="l">ml</Box>
       </>
     );
     const m0 = getByText('m0');
@@ -41,22 +43,22 @@ describe('Box', () => {
     const mm = getByText('mm');
     const ml = getByText('ml');
 
-    expect(m0).toBeDefined();
-    expect(ms).toBeDefined();
-    expect(mm).toBeDefined();
-    expect(ml).toBeDefined();
+    expect(m0).toHaveClass('m0');
+    expect(ms).toHaveClass('ms');
+    expect(mm).toHaveClass('mm');
+    expect(ml).toHaveClass('ml');
   });
-  it('Handles Display Props', () => {
+  it('Handles display props', () => {
     const { getByText } = render(
       <>
-        <Box none>none</Box>
-        <Box block>block</Box>
-        <Box inline-block>inline-block</Box>
-        <Box flex>flex</Box>
-        <Box inline-flex>inline-flex</Box>
-        <Box grid>grid</Box>
-        <Box inline-grid>inline-grid</Box>
-        <Box list-item>list-item</Box>
+        <Box d="none">none</Box>
+        <Box d="block">block</Box>
+        <Box d="inline-block">inline-block</Box>
+        <Box d="flex">flex</Box>
+        <Box d="inline-flex">inline-flex</Box>
+        <Box d="grid">grid</Box>
+        <Box d="inline-grid">inline-grid</Box>
+        <Box d="list-item">list-item</Box>
       </>
     );
     const none = getByText('none');
@@ -68,28 +70,29 @@ describe('Box', () => {
     const inlineGrid = getByText('inline-grid');
     const listItem = getByText('list-item');
 
-    expect(none).toBeDefined();
-    expect(block).toBeDefined();
-    expect(inlineBlock).toBeDefined();
-    expect(flex).toBeDefined();
-    expect(inlineFlex).toBeDefined();
-    expect(grid).toBeDefined();
-    expect(inlineGrid).toBeDefined();
-    expect(listItem).toBeDefined();
+    expect(none).toHaveClass('none');
+    expect(block).toHaveClass('block');
+    expect(inlineBlock).toHaveClass('inline-block');
+    expect(flex).toHaveClass('flex');
+    expect(inlineFlex).toHaveClass('inline-flex');
+    expect(grid).toHaveClass('grid');
+    expect(inlineGrid).toHaveClass('inline-grid');
+    expect(listItem).toHaveClass('list-item');
   });
-  it('Handles Background Color Props', () => {
-    const { getByText } = render(
+  it('Handles background color props', () => {
+    const { getByText, baseElement } = render(
       <>
-        {BACKGROUND_COLOR.map(color => (
-          <Box key={color} {...{ [color]: true }}>
+        {COLOR_SHADE.map(color => (
+          <Box key={color} bg={color}>
             {color}
           </Box>
         ))}
       </>
     );
-    BACKGROUND_COLOR.forEach(color => {
+    expect(baseElement).toMatchSnapshot();
+    COLOR_SHADE.forEach(color => {
       const element = getByText(color);
-      expect(element).toBeDefined();
+      expect(element).toHaveClass(`bg--${color}`);
     });
   });
 });
