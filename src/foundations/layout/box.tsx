@@ -26,9 +26,13 @@ export type TDisplay = typeof DISPLAY[number];
 export const BOX_PROP_NAMES = ['d', 'bg'];
 
 export interface IBox extends IDefaultProps {
+  /** Padding */
   p?: TShirtSize;
+  /** Margin */
   m?: TShirtSize;
+  /** Display */
   d?: TDisplay;
+  /** Background Color */
   bg?: TColorShade;
 }
 
@@ -37,15 +41,19 @@ export const Box: FC<IBox> = ({ p, m, d, bg, className, children, ...props }) =>
   const classNameStyles = {
     p,
     m,
-    d,
-    bg,
+    'bg--': bg,
   };
   const classes = createClassName(classNameStyles);
   return (
-    <div {...defaultProps} className={classnames(className, ...classes)}>
+    <div {...defaultProps} className={classnames(className, d, ...classes)}>
       {children}
     </div>
   );
+};
+Box.defaultProps = {
+  p: 'm',
+  m: '0',
+  d: 'flex',
 };
 
 export const Block = styled(Box)`

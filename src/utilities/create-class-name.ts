@@ -17,6 +17,6 @@ export const createClassName = (obj: IKeyedObject, bem?: IBemObj): string[] => {
     } else if (!isNullOrUndefined(bem)) {
       return classes.concat(`${bem.block}--${obj[key]}`);
     }
-    return classes.concat(`${key}--${obj[key]}`);
+    return classes.concat(`${key}${obj[key]}`);
   }, [] as string[]);
 };

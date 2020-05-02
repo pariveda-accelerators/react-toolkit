@@ -8,43 +8,41 @@ $space-sizes: (
   l: 2rem,
 );
 
-@include mix-sizes(p, padding, $space-sizes);
-@include mix-sizes(m, margin, $space-sizes);
+@include mix-sizes(p, padding, $space-sizes, $bem: false);
+@include mix-sizes(m, margin, $space-sizes, $bem: false);
 
 .bg--transparent {
   background-color: transparent;
 }
 @include mix-colors(bg, background-color);
 
-.d {
-  &--none {
-    display: none;
+.none {
+  display: none;
+}
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+  &.column {
+    flex-direction: column;
   }
-  &--block {
-    display: block;
+}
+.grid {
+  display: grid;
+}
+.list-item {
+  display: list-item;
+}
+.inline {
+  &-block {
+    display: inline-block;
   }
-  &--flex {
-    display: flex;
-    flex-direction: row;
-    &.column {
-      flex-direction: column;
-    }
+  &-flex {
+    display: inline-flex;
   }
-  &--grid {
-    display: grid;
-  }
-  &--list-item {
-    display: list-item;
-  }
-  &--inline {
-    &-block {
-      display: inline-block;
-    }
-    &-flex {
-      display: inline-flex;
-    }
-    &-grid {
-      display: inline-grid;
-    }
+  &-grid {
+    display: inline-grid;
   }
 }

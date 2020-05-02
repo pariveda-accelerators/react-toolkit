@@ -4,11 +4,13 @@ import { render } from '@testing-library/react';
 import { COLOR_SHADE } from 'foundations';
 
 describe('Box', () => {
-  it('Renders Default', () => {
-    const { baseElement } = render(<Box />);
-    expect(baseElement).toMatchSnapshot();
+  it('Renders default', () => {
+    const { getByText } = render(<Box>box</Box>);
+    const box = getByText('box');
+    expect(box).toMatchSnapshot();
+    expect(box).toHaveClass('flex', 'pm', 'm0');
   });
-  it('Handles Padding Props', () => {
+  it('Handles padding props', () => {
     const { getByText } = render(
       <>
         <Box p="0">p0</Box>
@@ -22,12 +24,12 @@ describe('Box', () => {
     const pm = getByText('pm');
     const pl = getByText('pl');
 
-    expect(p0).toHaveClass('p--0');
-    expect(ps).toHaveClass('p--s');
-    expect(pm).toHaveClass('p--m');
-    expect(pl).toHaveClass('p--l');
+    expect(p0).toHaveClass('p0');
+    expect(ps).toHaveClass('ps');
+    expect(pm).toHaveClass('pm');
+    expect(pl).toHaveClass('pl');
   });
-  it('Handles Margin Props', () => {
+  it('Handles margin props', () => {
     const { getByText } = render(
       <>
         <Box m="0">m0</Box>
@@ -41,12 +43,12 @@ describe('Box', () => {
     const mm = getByText('mm');
     const ml = getByText('ml');
 
-    expect(m0).toHaveClass('m--0');
-    expect(ms).toHaveClass('m--s');
-    expect(mm).toHaveClass('m--m');
-    expect(ml).toHaveClass('m--l');
+    expect(m0).toHaveClass('m0');
+    expect(ms).toHaveClass('ms');
+    expect(mm).toHaveClass('mm');
+    expect(ml).toHaveClass('ml');
   });
-  it('Handles Display Props', () => {
+  it('Handles display props', () => {
     const { getByText } = render(
       <>
         <Box d="none">none</Box>
@@ -68,16 +70,16 @@ describe('Box', () => {
     const inlineGrid = getByText('inline-grid');
     const listItem = getByText('list-item');
 
-    expect(none).toHaveClass('d--none');
-    expect(block).toHaveClass('d--block');
-    expect(inlineBlock).toHaveClass('d--inline-block');
-    expect(flex).toHaveClass('d--flex');
-    expect(inlineFlex).toHaveClass('d--inline-flex');
-    expect(grid).toHaveClass('d--grid');
-    expect(inlineGrid).toHaveClass('d--inline-grid');
-    expect(listItem).toHaveClass('d--list-item');
+    expect(none).toHaveClass('none');
+    expect(block).toHaveClass('block');
+    expect(inlineBlock).toHaveClass('inline-block');
+    expect(flex).toHaveClass('flex');
+    expect(inlineFlex).toHaveClass('inline-flex');
+    expect(grid).toHaveClass('grid');
+    expect(inlineGrid).toHaveClass('inline-grid');
+    expect(listItem).toHaveClass('list-item');
   });
-  it('Handles Background Color Props', () => {
+  it('Handles background color props', () => {
     const { getByText, baseElement } = render(
       <>
         {COLOR_SHADE.map(color => (

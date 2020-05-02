@@ -11,13 +11,13 @@ const ColorSwatch = styled(Box)`
 
 export const Colors = () => {
   return (
-    <Flex column pl>
+    <Flex direction="column" p="l">
       <SectionTitle>Colors</SectionTitle>
       <Body>Colors are used for lots of cool things</Body>
-      <Flex pm />
-      <Flex column>
+      <Flex p="m" />
+      <Flex direction="column">
         {COLOR.slice(2).map((color: string) => (
-          <Flex column ps key={color}>
+          <Flex direction="column" p="s" key={color}>
             <SectionTitle>{color}</SectionTitle>
             <Flex key={color}>
               <ColorSwatch bg={`${color}-1` as TColorShade} />
@@ -30,7 +30,7 @@ export const Colors = () => {
               <ColorSwatch bg={`${color}-8` as TColorShade} />
               <ColorSwatch bg={`${color}-9` as TColorShade} />
             </Flex>
-            <Flex pm />
+            <Flex p="m" />
           </Flex>
         ))}
       </Flex>

@@ -1,13 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Flex Renders Default 1`] = `
-<body>
-  <div>
-    <div
-      class="row d--flex"
-    >
-      children
-    </div>
-  </div>
-</body>
+exports[`Flex Renders default 1`] = `
+<div
+  class="row flex pm m0"
+>
+  flex
+</div>
 `;
