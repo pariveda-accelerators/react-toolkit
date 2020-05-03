@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Fonts } from '.';
-import { Block, Flex } from 'foundations/layout';
+import { Fonts, Block, Flex } from 'foundations';
 
 const Hr = styled.hr`
   border: 1px solid var(--grey-8);

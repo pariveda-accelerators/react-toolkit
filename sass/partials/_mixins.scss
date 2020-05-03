@@ -47,7 +47,7 @@
   );
 
   :root {
-    --white: var(--grey-1);
+    --white: #fff;
     --black: var(--grey-9);
     @each $color in append($colors, 'grey') {
       $shades: map-get($palette, $color);
@@ -87,10 +87,16 @@
   $colors: map-get($color-palette-base, 'colors');
 
   .#{$selector} {
+    &--white {
+      #{$style}: var(--white);
+    }
+    &--black {
+      #{$style}: var(--black);
+    }
     @each $color in append($colors, 'grey') {
       @for $i from 1 through $shade-count {
         &--#{$color}-#{$i} {
-          background-color: var(--#{$color}-#{$i});
+          #{$style}: var(--#{$color}-#{$i});
         }
       }
     }

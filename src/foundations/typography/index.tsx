@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import classnames from 'classnames';
-import { createClassName } from '../../utilities';
+import { createClassName, isNullOrUndefined } from '../../utilities';
 import { IDefaultProps, getDefaultProps } from '../../types';
+import { TColorShade } from 'foundations/colors';
+import { TShirtSize } from 'foundations/layout/box';
 
 /**
  * Docs on everything you can do w/ fonts: https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals
@@ -32,14 +34,14 @@ export const FONT_TYPE = [
 export type TFontType = typeof FONT_TYPE[number];
 //#endregion Font Type
 //#region Font Weight
-export const FONT_WEIGHT = ['normal', 'light', 'bold', 'strong'];
+export const FONT_WEIGHT = ['normal', 'light', 'bold', 'strong'] as const;
 export type TFontWeight = typeof FONT_WEIGHT[number];
 //#endregion Font Weight
 //#region Font Style
-export const FONT_STYLE = ['italics', 'emphasis'];
-export type TFontStyle = typeof FONT_WEIGHT[number];
+export const FONT_STYLE = ['italics', 'emphasis'] as const;
+export type TFontStyle = typeof FONT_STYLE[number];
 //#endregion Font Style
-//#region Style & Accessibility Tags
+//#region Color & Accessibility Tags
 export interface ChildrenAsReactNode {
   children: React.ReactNode;
 }
@@ -58,21 +60,36 @@ const wrapChildren = (
 );
 //#endregion Style & Accessibility Tags
 //#region Font Align
-export const TEXT_ALIGN = ['left', 'center', 'right'];
+export const TEXT_ALIGN = ['left', 'center', 'right'] as const;
 export type TTextAlign = typeof TEXT_ALIGN[number];
 //#endregion Font Align
 //#region Text Transform
-export const TEXT_TRANSFORM = ['none', 'uppercase', 'lowercase', 'capitalize'];
+export const TEXT_TRANSFORM = [
+  'none',
+  'uppercase',
+  'lowercase',
+  'capitalize',
+] as const;
 export type TTextTransform = typeof TEXT_TRANSFORM[number];
 //#endregion Text Transform
 
 interface IBaseFont extends IDefaultProps {
+  /** Font Tag */
   tag?: TFontTag;
+  /** Font Type */
   type?: TFontType;
+  /** Font Weight */
   weight?: TFontWeight;
+  /** Font Style */
   fStyle?: TFontStyle;
+  /** Text Align */
   align?: TTextAlign;
+  /** Text Transform */
   transform?: TTextTransform;
+  /** Color */
+  color?: TColorShade;
+  /** Margin */
+  m?: TShirtSize;
 }
 
 const BaseFont: FC<IBaseFont> = ({
@@ -82,6 +99,8 @@ const BaseFont: FC<IBaseFont> = ({
   fStyle,
   align,
   transform,
+  color,
+  m,
   className,
   children,
   ...props
@@ -95,17 +114,20 @@ const BaseFont: FC<IBaseFont> = ({
       : React.Fragment;
   const B = weight === 'bold' ? Bold : weight === 'strong' ? Strong : React.Fragment;
 
-  const classNameStyles = {
+  const blockStyles = {
     align,
     transform,
     type,
+    color,
   };
-  const classes = createClassName(classNameStyles, { block: 'text' });
+  const blockClasses = createClassName(blockStyles, { block: 'text' });
+
+  const margin = !isNullOrUndefined(m) ? `m${m}` : undefined;
 
   const TagElement = React.createElement(
     tag || 'p',
     {
-      className: classnames(...classes, className),
+      className: classnames(...blockClasses, margin, className),
       tag,
       ...defaultProps,
     },
@@ -116,10 +138,11 @@ const BaseFont: FC<IBaseFont> = ({
 BaseFont.defaultProps = {
   tag: 'p',
   type: 'body',
-  weight: '',
-  fStyle: '',
-  align: '',
-  transform: '',
+  weight: undefined,
+  fStyle: undefined,
+  align: undefined,
+  transform: undefined,
+  color: 'black',
 };
 
 type TFont = Omit<IBaseFont, 'type'>;

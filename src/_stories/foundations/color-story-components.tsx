@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Flex, Box } from 'foundations/layout';
 import { SectionTitle, Body } from 'foundations/typography';
-import { COLOR, TColorShade } from '.';
+import { COLOR, TColorShade } from 'foundations/colors';
 
 const ColorSwatch = styled(Box)`
   height: 64px;
