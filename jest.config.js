@@ -4,6 +4,7 @@ module.exports = {
   moduleDirectories: ['node_modules', '<rootDir>/src'],
   collectCoverageFrom: [
     '<rootDir>/src/**',
+    '!<rootDir>/src/index.ts',
     '!**/__snapshots__/**',
     '!**/_stories/**',
   ],

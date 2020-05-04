@@ -75,7 +75,7 @@ export type TTextTransform = typeof TEXT_TRANSFORM[number];
 
 interface IBaseFont extends IDefaultProps {
   /** Font Tag */
-  tag?: TFontTag;
+  tag: TFontTag;
   /** Font Type */
   type?: TFontType;
   /** Font Weight */
@@ -125,7 +125,7 @@ const BaseFont: FC<IBaseFont> = ({
   const margin = !isNullOrUndefined(m) ? `m${m}` : undefined;
 
   const TagElement = React.createElement(
-    tag || 'p',
+    tag,
     {
       className: classnames(...blockClasses, margin, className),
       tag,
@@ -145,7 +145,7 @@ BaseFont.defaultProps = {
   color: 'black',
 };
 
-type TFont = Omit<IBaseFont, 'type'>;
+type TFont = Omit<IBaseFont, 'type' | 'tag'> & Partial<Pick<IBaseFont, 'tag'>>;
 export const Display: FC<TFont> = props => (
   <BaseFont tag="h1" {...props} type="display" />
 );

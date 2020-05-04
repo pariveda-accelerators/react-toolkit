@@ -44,6 +44,8 @@ describe('Utils - Key Map', () => {
     });
   });
   describe('getProps', () => {
+    it('Returns empty object for null or undefined', () =>
+      expect(getProps(null as any, [])).toEqual({}));
     it('Takes array of strings and pulls matching keys from object', () => {
       const keyedObj = {
         first: 'first',

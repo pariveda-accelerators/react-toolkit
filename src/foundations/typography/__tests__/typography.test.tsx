@@ -128,4 +128,19 @@ describe('Typography', () => {
     expect(getByText('LOWERCASE')).toHaveClass('text--lowercase');
     expect(getByText('first letters only')).toHaveClass('text--capitalize');
   });
+  it('Handles Margin', () => {
+    const { getByText } = render(
+      <>
+        <Fonts.Display m="0">m0</Fonts.Display>
+        <Fonts.Display m="s">ms</Fonts.Display>
+        <Fonts.Display m="m">mm</Fonts.Display>
+        <Fonts.Display m="l">ml</Fonts.Display>
+      </>
+    );
+
+    expect(getByText('m0')).toHaveClass('m0');
+    expect(getByText('ms')).toHaveClass('ms');
+    expect(getByText('mm')).toHaveClass('mm');
+    expect(getByText('ml')).toHaveClass('ml');
+  });
 });
