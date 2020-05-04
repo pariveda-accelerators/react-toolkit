@@ -8,7 +8,7 @@ export const FLEX_DIRECTION = ['row', 'column'] as const;
 export type TFlexDirection = typeof FLEX_DIRECTION[number];
 //#endregion Flex Direction
 //#region Align
-export const ALIGN = ['start', 'center', 'end', 'stretch'] as const;
+export const ALIGN = ['start', 'center', 'end', 'stretch', 'baseline'] as const;
 export type TAlign = typeof ALIGN[number];
 //#endregion Align
 //#region Justify
@@ -29,6 +29,8 @@ export interface IFlex extends IBox {
   direction?: TFlexDirection;
   /** Align Self */
   alignSelf?: TAlign;
+  /** Align Self */
+  alignItems?: TAlign;
   /** Align Self */
   justifyContent?: TJustify;
   /** Flexes */
@@ -51,6 +53,7 @@ export class Flex extends React.Component<IFlex, {}> {
     const {
       direction,
       alignSelf,
+      alignItems,
       justifyContent,
       flex,
       className,
@@ -58,6 +61,7 @@ export class Flex extends React.Component<IFlex, {}> {
     } = this.props;
     const blockStyles = {
       'flex-as--': alignSelf,
+      'flex-ai--': alignItems,
       'flex-jc--': justifyContent,
     };
     const blockClassNames = createClassName(blockStyles);

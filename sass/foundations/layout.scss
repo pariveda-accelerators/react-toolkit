@@ -57,6 +57,23 @@ $space-sizes: (
       align-self: stretch;
     }
   }
+  &-ai {
+    &--start {
+      align-items: flex-start;
+    }
+    &--end {
+      align-items: flex-end;
+    }
+    &--center {
+      align-items: center;
+    }
+    &--stretch {
+      align-items: stretch;
+    }
+    &--baseline {
+      align-items: baseline;
+    }
+  }
   &-jc {
     &--start {
       justify-content: flex-start;

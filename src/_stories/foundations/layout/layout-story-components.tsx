@@ -1,9 +1,8 @@
 import React from 'react';
-import { Flex as Fx, Row, Fonts } from 'foundations';
+import { Flex as Fx, Row, Fonts, COLOR } from 'foundations';
 import { IKeyedObject } from '../../../utilities';
-import { Story, FloatingCard, PropTable, ColorStack } from '_stories/components';
+import { Story, ColorStack, FloatingPropTable } from '_stories/components';
 
-//#region Box Components
 const sizeMap = {
   '0': '0',
   s: '.5em',
@@ -19,9 +18,7 @@ const getSizeStyle = (style: string) =>
     {}
   );
 const padding = getSizeStyle('padding');
-const boxPadding = <PropTable data={padding} className="p" />;
 const margin = getSizeStyle('margin');
-const boxMargin = <PropTable data={margin} className="m" />;
 
 const display = {
   none: 'display: none',
@@ -33,37 +30,42 @@ const display = {
   'inline-grid': 'display: inline-grid',
   'list-item': 'display: list-item',
 };
-const boxDisplay = <PropTable data={display} className="" />;
-//#endregion Box Components
-//#region Flex Components
-//#endregion Flex Components
 
 export const Box = () => (
   <Story title="Box">
     <Fx>
       <Fonts.Subtitle>Configuration</Fonts.Subtitle>
     </Fx>
-    <FloatingCard>
-      <Fonts.SectionTitle weight="bold">Padding</Fonts.SectionTitle>
-      {boxPadding}
-    </FloatingCard>
-    <FloatingCard>
-      <Fonts.SectionTitle weight="bold">Margin</Fonts.SectionTitle>
-      {boxMargin}
-    </FloatingCard>
-    <FloatingCard>
-      <Fonts.SectionTitle weight="bold">Display</Fonts.SectionTitle>
-      {boxDisplay}
-    </FloatingCard>
-    <FloatingCard>
-      <Fonts.SectionTitle weight="bold">Background Color</Fonts.SectionTitle>
+    <FloatingPropTable
+      data={padding}
+      className="p"
+      propName="Padding"
+      exampleUse={`p="s"`}
+    />
+    <FloatingPropTable
+      data={margin}
+      className="m"
+      propName="Margin"
+      exampleUse={`m="s"`}
+    />
+    <FloatingPropTable data={display} propName="Display" exampleUse={`d="flex"`} />
+    <FloatingPropTable
+      className="bg"
+      propName="Background Color"
+      exampleUse={`bg="seafoam-5"`}
+    >
       <Row p="0">
-        <ColorStack color="azure" />
-        <ColorStack color="seafoam" />
+        <ColorStack color="azure" shades={['1', '3', '5', '7', '9']} />
+        <ColorStack color="seafoam" shades={['1', '3', '5', '7', '9']} />
       </Row>
-    </FloatingCard>
+      <Fx />
+      <Fonts.Body>
+        See <b>Foundations | Colors</b> for a list of all available colors
+      </Fonts.Body>
+    </FloatingPropTable>
   </Story>
 );
+//#endregion Box
 
 export const Flex = () => (
   <Fx>
