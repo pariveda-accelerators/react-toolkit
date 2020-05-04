@@ -1,7 +1,12 @@
 import React from 'react';
-import { Flex as Fx, Row, Fonts, COLOR } from 'foundations';
+import { Flex as Fx, Fonts, Column } from 'foundations';
 import { IKeyedObject } from '../../../utilities';
-import { Story, ColorStack, FloatingPropTable } from '_stories/components';
+import {
+  Story,
+  ColorStack,
+  FloatingPropTable,
+  TRenderColorShade,
+} from '_stories/components';
 
 const sizeMap = {
   '0': '0',
@@ -31,8 +36,20 @@ const display = {
   'list-item': 'display: list-item',
 };
 
+const renderColorShade: TRenderColorShade = ({ shade, colorShade }) => (
+  <>
+    <Fonts.Body weight="bold" color={Number(shade) >= 5 ? 'white' : 'black'}>
+      {colorShade}
+    </Fonts.Body>
+    <Fx flex="grow" />
+    <Fonts.Body weight="bold" color={Number(shade) >= 5 ? 'white' : 'black'}>
+      bg="{colorShade}"
+    </Fonts.Body>
+  </>
+);
+
 export const Box = () => (
-  <Story title="Box">
+  <Story title="Layout - Box">
     <Fx>
       <Fonts.Subtitle>Configuration</Fonts.Subtitle>
     </Fx>
@@ -54,10 +71,18 @@ export const Box = () => (
       propName="Background Color"
       exampleUse={`bg="seafoam-5"`}
     >
-      <Row p="0">
-        <ColorStack color="azure" shades={['1', '3', '5', '7', '9']} />
-        <ColorStack color="seafoam" shades={['1', '3', '5', '7', '9']} />
-      </Row>
+      <Column p="0">
+        <ColorStack
+          color="azure"
+          shades={['1', '3', '5', '7', '9']}
+          renderColorShade={renderColorShade}
+        />
+        <ColorStack
+          color="seafoam"
+          shades={['1', '3', '5', '7', '9']}
+          renderColorShade={renderColorShade}
+        />
+      </Column>
       <Fx />
       <Fonts.Body>
         See <b>Foundations | Colors</b> for a list of all available colors

@@ -12,7 +12,14 @@ export const ALIGN = ['start', 'center', 'end', 'stretch', 'baseline'] as const;
 export type TAlign = typeof ALIGN[number];
 //#endregion Align
 //#region Justify
-export const JUSTIFY = ['start', 'center', 'end', 'stretch'] as const;
+export const JUSTIFY = [
+  'start',
+  'center',
+  'end',
+  'stretch',
+  'space-between',
+  'space-around',
+] as const;
 export type TJustify = typeof JUSTIFY[number];
 //#endregion Justify
 //#region Flex

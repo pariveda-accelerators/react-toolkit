@@ -8,6 +8,9 @@ $space-sizes: (
   l: 2rem,
 );
 
+$alignment: flex-start, flex-end, center, stretch, baseline;
+$justification: flex-start, flex-end, center, stretch, space-between, space-around;
+
 @include mix-sizes(p, padding, $space-sizes, $bem: false);
 @include mix-sizes(m, margin, $space-sizes, $bem: false);
 
@@ -44,48 +47,24 @@ $space-sizes: (
     flex: 1 1 auto;
   }
   &-as {
-    &--start {
-      align-self: flex-start;
-    }
-    &--end {
-      align-self: flex-end;
-    }
-    &--center {
-      align-self: center;
-    }
-    &--stretch {
-      align-self: stretch;
+    @each $align in $alignment {
+      &--#{$align} {
+        align-self: #{$align};
+      }
     }
   }
   &-ai {
-    &--start {
-      align-items: flex-start;
-    }
-    &--end {
-      align-items: flex-end;
-    }
-    &--center {
-      align-items: center;
-    }
-    &--stretch {
-      align-items: stretch;
-    }
-    &--baseline {
-      align-items: baseline;
+    @each $align in $alignment {
+      &--#{$align} {
+        align-items: #{$align};
+      }
     }
   }
   &-jc {
-    &--start {
-      justify-content: flex-start;
-    }
-    &--end {
-      justify-content: flex-end;
-    }
-    &--center {
-      justify-content: center;
-    }
-    &--stretch {
-      justify-content: stretch;
+    @each $justify in $justification {
+      &--#{$justify} {
+        justify-content: #{$justify};
+      }
     }
   }
 }

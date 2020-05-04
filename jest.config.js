@@ -5,8 +5,7 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**',
     '!**/__snapshots__/**',
-    '!**/story-components.tsx',
-    '!**/stories.tsx',
+    '!**/_stories/**',
   ],
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],

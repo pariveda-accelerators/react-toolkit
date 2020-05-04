@@ -3,6 +3,8 @@ import { getProps } from 'utilities/key-map';
 
 describe('Utils - Key Map', () => {
   describe('getKeys', () => {
+    it('Returns empty object for null or undefined', () =>
+      expect(getKeys(null as any)).toEqual({}));
     it('Takes array of strings and pulls matching keys from object', () => {
       const keyedObj = {
         first: 'first',

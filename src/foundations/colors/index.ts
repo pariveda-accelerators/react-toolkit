@@ -1,5 +1,8 @@
 import { isNullOrUndefined, isString } from '../../utilities';
 
+export const SHADELESS_COLOR = ['white', 'black', 'transparent'] as const;
+export type TShadlessColor = typeof SHADELESS_COLOR[number];
+
 export const COLOR = [
   'transparent',
   'white',
@@ -152,21 +155,26 @@ export interface IColorObject {
   shade?: TShade;
 }
 
+export const isShadelessColor = (value: any): value is TShadlessColor =>
+  SHADELESS_COLOR.includes(value);
 export const isColor = (value: any): value is TColor => COLOR.includes(value);
 export const isShade = (value: any): value is TShade => SHADE.includes(value);
 export const isColorObject = (value: any): value is IColorObject => {
   if (!isNullOrUndefined(value)) {
     const keys = Object.keys(value);
     // Only checking `color` because `shade` is not required
-    return keys.includes('color');
+    return keys.includes('color') && isColor(value.color);
   }
   return false;
 };
 
 export const colorIsInPalette = (value: any): boolean => {
   if (isString(value)) {
-    const color = value.split('-')[0];
-    return isColor(color);
+    const [color, shade] = value.split('-');
+    if (isShadelessColor(color)) {
+      return true;
+    }
+    return isColor(color) && isShade(shade);
   }
   return false;
 };
@@ -174,9 +182,8 @@ export const colorIsInPalette = (value: any): boolean => {
 export const getPaletteColor = (obj?: IColorObject) => {
   if (isColorObject(obj)) {
     const { color, shade = '5' } = obj;
-    const isWhiteOrBlack = ['white', 'black'].includes(color);
-    const colorString = isWhiteOrBlack ? color : `${color}-${shade}`;
-    return colorIsInPalette(colorString) ? colorString : '';
+    const isShadeless = isShadelessColor(color);
+    return isShadeless ? color : `${color}-${shade}`;
   }
   return '';
 };
