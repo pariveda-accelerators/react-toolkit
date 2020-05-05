@@ -1,11 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Fonts, Block, Flex, Column } from 'foundations';
+import { Fonts } from 'foundations';
 import { Story, FloatingPropTable } from '_stories/components';
-
-const Hr = styled.hr`
-  border: 1px solid var(--grey-8);
-`;
 
 const type = {
   display: '',

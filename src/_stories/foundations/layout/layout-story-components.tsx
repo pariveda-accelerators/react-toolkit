@@ -91,16 +91,75 @@ export const Box = () => (
   </Story>
 );
 //#endregion Box
+//#region Flex
+const direction = {
+  row: 'flex-direction: row;',
+  column: 'flex-direction: column;',
+};
+const alignSelf = {
+  start: 'align-self: flex-start;',
+  center: 'align-self: center;',
+  end: 'align-self: flex-end;',
+  stretch: 'align-self: stretch;',
+  baseline: 'align-self: baseline;',
+};
+const alignItems = {
+  start: 'align-items: flex-start;',
+  center: 'align-items: center;',
+  end: 'align-items: flex-end;',
+  stretch: 'align-items: stretch;',
+  baseline: 'align-items: baseline;',
+};
+const justifyContent = {
+  start: 'justify-content: flex-start;',
+  center: 'justify-content: center;',
+  end: 'justify-content: flex-end;',
+  stretch: 'justify-content: stretch;',
+  'space-between': 'justify-content: space-between;',
+  'space-around': 'justify-content: space-around;',
+};
+const flex = {
+  grow: 'flex: 1 0 auto;',
+  shrink: 'flex: 0 1 0;',
+  stay: 'flex: 0 0 auto;',
+  equal: 'flex: 1 1 0;',
+  auto: 'flex: 1 1 auto;',
+};
 
 export const Flex = () => (
-  <Fx>
-    <Fx direction="column" p="0">
-      <Fx p="s">Row1</Fx>
-      <Fx p="s">Row2</Fx>
+  <Story title="Layout - Flex">
+    <Fx>
+      <Fonts.Subtitle>Configuration</Fonts.Subtitle>
     </Fx>
-    <Fx direction="column" p="0" bg="red-3">
-      <Fx p="s">Row1</Fx>
-      <Fx p="s">Row2</Fx>
-    </Fx>
-  </Fx>
+    <FloatingPropTable
+      data={direction}
+      propName="Direction"
+      exampleUse={`direction="column"`}
+    />
+    <FloatingPropTable
+      data={alignItems}
+      className="flex--ai-"
+      propName="Align Items"
+      exampleUse={`alignItems="stretch"`}
+    />
+    <FloatingPropTable
+      data={alignSelf}
+      className="flex--as-"
+      propName="Align Self"
+      exampleUse={`alignSelf="baseline"`}
+    />
+    <FloatingPropTable
+      data={justifyContent}
+      className="flex--jc-"
+      propName="Align Items"
+      exampleUse={`m="s"`}
+    />
+    <FloatingPropTable
+      data={flex}
+      className=""
+      propName="Flex"
+      exampleUse={`flex="equal"`}
+    />
+  </Story>
 );
+//#endregion Flex
