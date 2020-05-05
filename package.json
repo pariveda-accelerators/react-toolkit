@@ -25,9 +25,9 @@
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "storybook": "yarn build-styles && yarn start-storybook -p 4000 --ci",
-    "build-storybook": "build-storybook",
+    "prepare": "tsdx build && yarn run-s build-styles build-storybook",
+    "storybook": "yarn start-storybook -p 4000 --ci",
+    "build-storybook": "build-storybook -c .storybook -o storybook-web",
     "build-styles": "node ./sass/node-sass.js",
     "watch-styles": "nodemon --watch ./sass -e scss -x \"yarn build-styles\""
   },

@@ -1,8 +1,7 @@
 {
-  "addons": [],
   "buildpacks": [
     {
-      "url": "heroku/node.js"
+      "url": "heroku/nodejs"
     }
   ],
   "scripts": {
