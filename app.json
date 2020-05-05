@@ -1,0 +1,11 @@
+{
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/node.js"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "bundle exec build-storybook -c .storybook -o storybook-web"
+  }
+}
