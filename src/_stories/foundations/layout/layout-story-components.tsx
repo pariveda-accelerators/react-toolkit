@@ -9,10 +9,10 @@ import {
 } from '_stories/components';
 
 const sizeMap = {
-  '0': '0',
-  s: '.5em',
-  m: '1em',
-  l: '2em',
+  '0': '0;',
+  s: '.5em;',
+  m: '1em;',
+  l: '2em;',
 } as IKeyedObject<string>;
 const getSizeStyle = (style: string) =>
   Object.keys(sizeMap).reduce(
@@ -26,14 +26,14 @@ const padding = getSizeStyle('padding');
 const margin = getSizeStyle('margin');
 
 const display = {
-  none: 'display: none',
-  block: 'display: block',
-  'inline-block': 'display: inline-block',
-  flex: 'display: flex',
-  'inline-flex': 'display: inline-flex',
-  grid: 'display: grid',
-  'inline-grid': 'display: inline-grid',
-  'list-item': 'display: list-item',
+  none: 'display: none;',
+  block: 'display: block;',
+  'inline-block': 'display: inline-block;',
+  flex: 'display: flex;',
+  'inline-flex': 'display: inline-flex;',
+  grid: 'display: grid;',
+  'inline-grid': 'display: inline-grid;',
+  'list-item': 'display: list-item;',
 };
 
 const renderColorShade: TRenderColorShade = ({ shade, colorShade }) => (

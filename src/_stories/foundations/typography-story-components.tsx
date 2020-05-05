@@ -1,71 +1,79 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Fonts, Block, Flex } from 'foundations';
+import { Fonts, Block, Flex, Column } from 'foundations';
 import { Story, FloatingPropTable } from '_stories/components';
 
 const Hr = styled.hr`
   border: 1px solid var(--grey-8);
 `;
 
+const type = {
+  display: '',
+  title: '',
+  subtitle: '',
+  'section-title': '',
+  'section-subtitle': '',
+  'subsection-title': '',
+  body: '',
+  description: '',
+  label: '',
+};
 const align = {
-  left: 'text-align: left',
-  center: 'text-align: center',
-  right: 'text-align: right',
+  left: 'text-align: left;',
+  center: 'text-align: center;',
+  right: 'text-align: right;',
 };
 const transform = {
-  none: 'text-transform: none',
-  uppercase: 'text-transform: uppercase',
-  lowercase: 'text-transform: lowercase',
-  capitalize: 'text-transform: capitalize',
+  none: 'text-transform: none;',
+  uppercase: 'text-transform: uppercase;',
+  lowercase: 'text-transform: lowercase;',
+  capitalize: 'text-transform: capitalize;',
+};
+const weight = {
+  bold: '',
+  strong: '',
+};
+const style = {
+  italics: '',
+  emphasis: '',
 };
 export const Typography = () => (
-  <>
-    <Story title="Typography">
-      <FloatingPropTable
-        propName="Font Types"
-        exampleUse="<Fonts.Display>{...}</Fonts.Display>"
-      >
-        <Block>
-          {Object.keys(Fonts).map(font => {
-            const Component = Fonts[font];
-            return <Component key={font}>{font}</Component>;
-          })}
-        </Block>
-      </FloatingPropTable>
-      <FloatingPropTable
-        data={align}
-        className="text--"
-        propName="Text Align"
-        exampleUse={`align="center"`}
-      />
-      <FloatingPropTable
-        data={transform}
-        className="text--"
-        propName="Text Transform"
-        exampleUse={`transform="uppercase"`}
-      />
-    </Story>
-    <Flex direction="column" p="0" bg="grey-2">
-      <Block bg="white" p="s">
-        <Fonts.Title tag="h2">Styles</Fonts.Title>
-        <Hr />
-        <Fonts.SectionTitle weight="bold">Bold</Fonts.SectionTitle>
-        <Fonts.SectionTitle weight="strong">Strong</Fonts.SectionTitle>
-        <Fonts.SectionTitle fStyle="italics">Italics</Fonts.SectionTitle>
-        <Fonts.SectionTitle fStyle="emphasis">Emphasis</Fonts.SectionTitle>
-        <Fonts.SectionTitle weight="bold" fStyle="italics">
-          Bold + Italics
-        </Fonts.SectionTitle>
-        <Fonts.SectionTitle weight="bold" fStyle="emphasis">
-          Bold + Emphasis
-        </Fonts.SectionTitle>
-        <Fonts.SectionTitle weight="strong" fStyle="italics">
-          Strong + Italics
-        </Fonts.SectionTitle>
-        <Fonts.SectionTitle weight="strong" fStyle="emphasis">
-          Strong + Emphasis
-        </Fonts.SectionTitle>
-      </Block>
-    </Flex>
-  </>
+  <Story title="Typography">
+    <FloatingPropTable
+      data={type}
+      className="text--"
+      propName="Font Types"
+      exampleUse="<Fonts.Display>{...}</Fonts.Display>"
+    />
+    <FloatingPropTable
+      data={align}
+      className="text--"
+      propName="Text Align"
+      exampleUse={`align="center"`}
+    />
+    <FloatingPropTable
+      data={transform}
+      className="text--"
+      propName="Text Transform"
+      exampleUse={`transform="uppercase"`}
+    />
+    <FloatingPropTable
+      data={weight}
+      propName="Font Weight"
+      exampleUse={`weight="bold"`}
+    >
+      <Fonts.Body>
+        Renders text inside <b>bold</b> or <strong>strong</strong> tags
+      </Fonts.Body>
+    </FloatingPropTable>
+    <FloatingPropTable
+      data={style}
+      propName="Font Style"
+      exampleUse={`fStyle="italics"`}
+    >
+      <Fonts.Body>
+        Renders text inside <i>italics</i> or <em>emphasis</em> tags
+      </Fonts.Body>
+    </FloatingPropTable>
+  </Story>
 );

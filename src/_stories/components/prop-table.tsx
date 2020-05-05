@@ -30,9 +30,9 @@ export const PropTable: FC<IPropTable> = ({ data, className }) => {
       <Flex />
       <Column>
         <Fonts.SectionSubtitle weight="bold">Applied Style</Fonts.SectionSubtitle>
-        {values.map(value => (
-          <Fonts.Body key={value}>{value};</Fonts.Body>
-        ))}
+        {values.map(
+          value => !!value && <Fonts.Body key={value}>{value}</Fonts.Body>
+        )}
       </Column>
     </Row>
   );
