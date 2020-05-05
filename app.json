@@ -5,6 +5,7 @@
     }
   ],
   "scripts": {
-    "postdeploy": "bundle exec build-storybook -c .storybook -o storybook-web"
+    "build": "tsdx build && yarn run-s build-styles build-storybook",
+    "postdeploy": "bundle exec build-storybook -c .storybook -o dist/storybook-web"
   }
 }
