@@ -3,7 +3,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setup-tests.ts'],
   moduleDirectories: ['node_modules', '<rootDir>/src'],
   collectCoverageFrom: [
-    '<rootDir>/src/**',
+    '<rootDir>/src/**/*.test.ts?(x)',
     '!<rootDir>/src/index.ts',
     '!**/__snapshots__/**',
     '!**/_stories/**',
