@@ -1,6 +1,8 @@
-import { createClassName } from 'utils/create-class-name';
+import { createClassName } from '../../utilities';
 
 describe('Utils - createClassName', () => {
+  it('Returns empty array for null or undefined', () =>
+    expect(createClassName(null as any)).toEqual([]));
   it('Converts keyed object to array of classes', () => {
     const keyedObj = {
       align: 'left',

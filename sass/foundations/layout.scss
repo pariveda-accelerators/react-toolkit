@@ -8,10 +8,13 @@ $space-sizes: (
   l: 2rem,
 );
 
-@include mix-sizes(p, padding, $space-sizes);
-@include mix-sizes(m, margin, $space-sizes);
+$alignment: flex-start, flex-end, center, stretch, baseline;
+$justification: flex-start, flex-end, center, stretch, space-between, space-around;
 
-.bg-transparent {
+@include mix-sizes(p, padding, $space-sizes, $bem: false);
+@include mix-sizes(m, margin, $space-sizes, $bem: false);
+
+.bg--transparent {
   background-color: transparent;
 }
 @include mix-colors(bg, background-color);
@@ -24,8 +27,45 @@ $space-sizes: (
 }
 .flex {
   display: flex;
+  flex-direction: row;
   &.column {
     flex-direction: column;
+  }
+  &.grow {
+    flex: 1 0 auto;
+  }
+  &.shrink {
+    flex: 0 1 0;
+  }
+  &.stay {
+    flex: 0 0 auto;
+  }
+  &.equal {
+    flex: 1 1 0;
+  }
+  &.auto {
+    flex: 1 1 auto;
+  }
+  &-as {
+    @each $align in $alignment {
+      &--#{$align} {
+        align-self: #{$align};
+      }
+    }
+  }
+  &-ai {
+    @each $align in $alignment {
+      &--#{$align} {
+        align-items: #{$align};
+      }
+    }
+  }
+  &-jc {
+    @each $justify in $justification {
+      &--#{$justify} {
+        justify-content: #{$justify};
+      }
+    }
   }
 }
 .grid {
@@ -33,4 +73,15 @@ $space-sizes: (
 }
 .list-item {
   display: list-item;
+}
+.inline {
+  &-block {
+    display: inline-block;
+  }
+  &-flex {
+    display: inline-flex;
+  }
+  &-grid {
+    display: inline-grid;
+  }
 }

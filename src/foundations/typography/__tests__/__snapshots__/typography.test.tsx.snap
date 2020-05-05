@@ -4,7 +4,7 @@ exports[`Typography Handles Bold 1`] = `
 <body>
   <div>
     <h1
-      class="text--display"
+      class="text--display text--black"
       tag="h1"
     >
       <b>
@@ -19,7 +19,7 @@ exports[`Typography Handles Emphasis 1`] = `
 <body>
   <div>
     <h1
-      class="text--display"
+      class="text--display text--black"
       tag="h1"
     >
       <em>
@@ -34,7 +34,7 @@ exports[`Typography Handles Italics 1`] = `
 <body>
   <div>
     <h1
-      class="text--display"
+      class="text--display text--black"
       tag="h1"
     >
       <i>
@@ -49,7 +49,7 @@ exports[`Typography Handles Strong 1`] = `
 <body>
   <div>
     <h1
-      class="text--display"
+      class="text--display text--black"
       tag="h1"
     >
       <strong>
@@ -64,43 +64,43 @@ exports[`Typography Handles Tag 1`] = `
 <body>
   <div>
     <h1
-      class="text--display"
+      class="text--display text--black"
       tag="h1"
     >
       H1 Tag
     </h1>
     <h2
-      class="text--display"
+      class="text--display text--black"
       tag="h2"
     >
       H2 Tag
     </h2>
     <h3
-      class="text--display"
+      class="text--display text--black"
       tag="h3"
     >
       H3 Tag
     </h3>
     <h4
-      class="text--display"
+      class="text--display text--black"
       tag="h4"
     >
       H4 Tag
     </h4>
     <h5
-      class="text--display"
+      class="text--display text--black"
       tag="h5"
     >
       H5 Tag
     </h5>
     <h6
-      class="text--display"
+      class="text--display text--black"
       tag="h6"
     >
       H6 Tag
     </h6>
     <p
-      class="text--display"
+      class="text--display text--black"
       tag="p"
     >
       P Tag
@@ -113,55 +113,55 @@ exports[`Typography Renders Default 1`] = `
 <body>
   <div>
     <h1
-      class="text--display"
+      class="text--display text--black"
       tag="h1"
     >
       Display Font
     </h1>
     <h2
-      class="text--title"
+      class="text--title text--black"
       tag="h2"
     >
       Title Font
     </h2>
     <h3
-      class="text--subtitle"
+      class="text--subtitle text--black"
       tag="h3"
     >
       Subtitle Font
     </h3>
     <h4
-      class="text--section-title"
+      class="text--section-title text--black"
       tag="h4"
     >
       SectionTitle Font
     </h4>
     <h5
-      class="text--section-subtitle"
+      class="text--section-subtitle text--black"
       tag="h5"
     >
       Section Subtitle Font
     </h5>
     <h6
-      class="text--subsection-title"
+      class="text--subsection-title text--black"
       tag="h6"
     >
       Subsection Title Font
     </h6>
     <p
-      class="text--body"
+      class="text--body text--black"
       tag="p"
     >
       Body Font
     </p>
     <p
-      class="text--description"
+      class="text--description text--black"
       tag="p"
     >
       Description Font
     </p>
     <label
-      class="text--body"
+      class="text--body text--black"
       tag="label"
     >
       Label Font

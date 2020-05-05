@@ -1,6 +1,6 @@
 import React from 'react';
-import { Colors } from './colors/story-components';
-import { Typography } from './typography/story-components';
+import { Colors } from './color-story-components';
+import { Typography } from './typography-story-components';
 
 export default {
   title: 'Foundations',

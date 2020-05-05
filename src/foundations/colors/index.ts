@@ -1,7 +1,10 @@
-import { isString, isNullOrUndefined } from 'utils/type-guards';
-import { TBooleanConfigProp } from 'types';
+import { isNullOrUndefined, isString } from '../../utilities';
+
+export const SHADELESS_COLOR = ['white', 'black', 'transparent'] as const;
+export type TShadlessColor = typeof SHADELESS_COLOR[number];
 
 export const COLOR = [
+  'transparent',
   'white',
   'black',
   'grey',
@@ -24,6 +27,7 @@ export const SHADE = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 export type TShade = typeof SHADE[number];
 
 export const COLOR_SHADE = [
+  'transparent',
   'white',
   'black',
   'grey-1',
@@ -145,153 +149,32 @@ export const COLOR_SHADE = [
   'magenta-9',
 ] as const;
 export type TColorShade = typeof COLOR_SHADE[number];
-export type TColorShadeProp = TBooleanConfigProp<TColorShade>;
-
-export const BACKGROUND_COLOR = [
-  'bg-transparent',
-  'bg-white',
-  'bg-black',
-  'bg-grey-1',
-  'bg-grey-2',
-  'bg-grey-3',
-  'bg-grey-4',
-  'bg-grey-5',
-  'bg-grey-6',
-  'bg-grey-7',
-  'bg-grey-8',
-  'bg-grey-9',
-  'bg-rose-1',
-  'bg-rose-2',
-  'bg-rose-3',
-  'bg-rose-4',
-  'bg-rose-5',
-  'bg-rose-6',
-  'bg-rose-7',
-  'bg-rose-8',
-  'bg-rose-9',
-  'bg-red-1',
-  'bg-red-2',
-  'bg-red-3',
-  'bg-red-4',
-  'bg-red-5',
-  'bg-red-6',
-  'bg-red-7',
-  'bg-red-8',
-  'bg-red-9',
-  'bg-orange-1',
-  'bg-orange-2',
-  'bg-orange-3',
-  'bg-orange-4',
-  'bg-orange-5',
-  'bg-orange-6',
-  'bg-orange-7',
-  'bg-orange-8',
-  'bg-orange-9',
-  'bg-yellow-1',
-  'bg-yellow-2',
-  'bg-yellow-3',
-  'bg-yellow-4',
-  'bg-yellow-5',
-  'bg-yellow-6',
-  'bg-yellow-7',
-  'bg-yellow-8',
-  'bg-yellow-9',
-  'bg-lime-1',
-  'bg-lime-2',
-  'bg-lime-3',
-  'bg-lime-4',
-  'bg-lime-5',
-  'bg-lime-6',
-  'bg-lime-7',
-  'bg-lime-8',
-  'bg-lime-9',
-  'bg-green-1',
-  'bg-green-2',
-  'bg-green-3',
-  'bg-green-4',
-  'bg-green-5',
-  'bg-green-6',
-  'bg-green-7',
-  'bg-green-8',
-  'bg-green-9',
-  'bg-seafoam-1',
-  'bg-seafoam-2',
-  'bg-seafoam-3',
-  'bg-seafoam-4',
-  'bg-seafoam-5',
-  'bg-seafoam-6',
-  'bg-seafoam-7',
-  'bg-seafoam-8',
-  'bg-seafoam-9',
-  'bg-teal-1',
-  'bg-teal-2',
-  'bg-teal-3',
-  'bg-teal-4',
-  'bg-teal-5',
-  'bg-teal-6',
-  'bg-teal-7',
-  'bg-teal-8',
-  'bg-teal-9',
-  'bg-azure-1',
-  'bg-azure-2',
-  'bg-azure-3',
-  'bg-azure-4',
-  'bg-azure-5',
-  'bg-azure-6',
-  'bg-azure-7',
-  'bg-azure-8',
-  'bg-azure-9',
-  'bg-blue-1',
-  'bg-blue-2',
-  'bg-blue-3',
-  'bg-blue-4',
-  'bg-blue-5',
-  'bg-blue-6',
-  'bg-blue-7',
-  'bg-blue-8',
-  'bg-blue-9',
-  'bg-violet-1',
-  'bg-violet-2',
-  'bg-violet-3',
-  'bg-violet-4',
-  'bg-violet-5',
-  'bg-violet-6',
-  'bg-violet-7',
-  'bg-violet-8',
-  'bg-violet-9',
-  'bg-magenta-1',
-  'bg-magenta-2',
-  'bg-magenta-3',
-  'bg-magenta-4',
-  'bg-magenta-5',
-  'bg-magenta-6',
-  'bg-magenta-7',
-  'bg-magenta-8',
-  'bg-magenta-9',
-] as const;
-export type TBgColor = typeof BACKGROUND_COLOR[number];
-export type TBgColorProp = TBooleanConfigProp<TBgColor>;
 
 export interface IColorObject {
   color: TColor;
   shade?: TShade;
 }
 
+export const isShadelessColor = (value: any): value is TShadlessColor =>
+  SHADELESS_COLOR.includes(value);
 export const isColor = (value: any): value is TColor => COLOR.includes(value);
 export const isShade = (value: any): value is TShade => SHADE.includes(value);
 export const isColorObject = (value: any): value is IColorObject => {
   if (!isNullOrUndefined(value)) {
     const keys = Object.keys(value);
     // Only checking `color` because `shade` is not required
-    return keys.includes('color');
+    return keys.includes('color') && isColor(value.color);
   }
   return false;
 };
 
 export const colorIsInPalette = (value: any): boolean => {
   if (isString(value)) {
-    const color = value.split('-')[0];
-    return isColor(color);
+    const [color, shade] = value.split('-');
+    if (isShadelessColor(color)) {
+      return true;
+    }
+    return isColor(color) && isShade(shade);
   }
   return false;
 };
@@ -299,9 +182,8 @@ export const colorIsInPalette = (value: any): boolean => {
 export const getPaletteColor = (obj?: IColorObject) => {
   if (isColorObject(obj)) {
     const { color, shade = '5' } = obj;
-    const isWhiteOrBlack = ['white', 'black'].includes(color);
-    const colorString = isWhiteOrBlack ? color : `${color}-${shade}`;
-    return colorIsInPalette(colorString) ? colorString : '';
+    const isShadeless = isShadelessColor(color);
+    return isShadeless ? color : `${color}-${shade}`;
   }
   return '';
 };
