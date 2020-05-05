@@ -6,6 +6,9 @@
   "author": "zakbutcher <zak.s.butcher@gmail.com>",
   "license": "MIT",
   "private": false,
+  "engines": {
+    "node": "10.x"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
