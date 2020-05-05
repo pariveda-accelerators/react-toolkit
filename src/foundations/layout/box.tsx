@@ -1,19 +1,14 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 import classnames from 'classnames';
-import { TBgColorProp } from 'foundations/colors';
-import { TBooleanConfigProp, IDefaultProps } from 'types';
+import styled from 'styled-components';
+import { TColorShade } from 'foundations';
+import { IDefaultProps, getDefaultProps } from '../../types';
+import { createClassName } from '../../utilities';
 
-//#region Padding
-export const PADDING = ['p0', 'ps', 'pm', 'pl'] as const;
-export type TPadding = typeof PADDING[number];
-export type TPaddingProp = TBooleanConfigProp<TPadding>;
-//#endregion Padding
-//#region Margin
-export const MARGIN = ['m0', 'ms', 'mm', 'ml'] as const;
-export type TMargin = typeof MARGIN[number];
-export type TMarginProp = TBooleanConfigProp<TMargin>;
-//#endregion Margin
+//#region T Shirt Sizes
+export const SHIRT_SIZE = ['0', 's', 'm', 'l'] as const;
+export type TShirtSize = typeof SHIRT_SIZE[number];
+//#endregion T Shirt Sizes
 //#region Display
 export const DISPLAY = [
   'none',
@@ -24,27 +19,41 @@ export const DISPLAY = [
   'grid',
   'inline-grid',
   'list-item',
-];
+] as const;
 export type TDisplay = typeof DISPLAY[number];
-export type TDisplayProp = TBooleanConfigProp<TDisplay>;
 //#endregion Display
 
-export interface IBox
-  extends IDefaultProps,
-    TPaddingProp,
-    TMarginProp,
-    TBgColorProp,
-    TDisplayProp {
-  column?: boolean;
+export const BOX_PROP_NAMES = ['d', 'bg'];
+
+export interface IBox extends IDefaultProps {
+  /** Padding */
+  p?: TShirtSize;
+  /** Margin */
+  m?: TShirtSize;
+  /** Display */
+  d?: TDisplay;
+  /** Background Color */
+  bg?: TColorShade;
 }
 
-export const Box: FC<IBox> = ({ children, column, ...props }) => {
-  const columnClass = props.flex ? (column && 'column') || 'row' : undefined;
+export const Box: FC<IBox> = ({ p, m, d, bg, className, children, ...props }) => {
+  const defaultProps = getDefaultProps(props);
+  const classNameStyles = {
+    p,
+    m,
+    'bg--': bg,
+  };
+  const classes = createClassName(classNameStyles);
   return (
-    <div className={classnames(props.className, columnClass, ...Object.keys(props))}>
+    <div {...defaultProps} className={classnames(className, d, ...classes)}>
       {children}
     </div>
   );
+};
+Box.defaultProps = {
+  p: 'm',
+  m: '0',
+  d: 'flex',
 };
 
 export const Block = styled(Box)`

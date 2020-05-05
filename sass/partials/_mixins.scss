@@ -1,7 +1,3 @@
-@use 'sass:color';
-@use 'sass:list';
-@use 'sass:math';
-@use 'sass:map';
 @import 'functions';
 @import 'variables';
 
@@ -51,7 +47,7 @@
   );
 
   :root {
-    --white: var(--grey-1);
+    --white: #fff;
     --black: var(--grey-9);
     @each $color in append($colors, 'grey') {
       $shades: map-get($palette, $color);
@@ -72,10 +68,14 @@
   }
 }
 
-@mixin mix-sizes($selector, $style, $size-map) {
+@mixin mix-sizes($selector, $style, $size-map, $bem: true) {
   .#{$selector} {
+    $bemModifier: '--';
+    @if (not $bem) {
+      $bemModifier: '';
+    }
     @each $size in $t-shirt-sizes {
-      &#{$size} {
+      &#{$bemModifier}#{$size} {
         #{$style}: map-get($size-map, $size);
       }
     }
@@ -87,11 +87,16 @@
   $colors: map-get($color-palette-base, 'colors');
 
   .#{$selector} {
+    &--white {
+      #{$style}: var(--white);
+    }
+    &--black {
+      #{$style}: var(--black);
+    }
     @each $color in append($colors, 'grey') {
       @for $i from 1 through $shade-count {
-        @debug (#{$color}-#{$i});
-        &-#{$color}-#{$i} {
-          background-color: var(--#{$color}-#{$i});
+        &--#{$color}-#{$i} {
+          #{$style}: var(--#{$color}-#{$i});
         }
       }
     }

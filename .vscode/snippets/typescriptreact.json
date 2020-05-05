@@ -1,0 +1,10 @@
+{
+  "Value Array Prop": {
+    "prefix": "ValueArrayProp",
+    "body": [
+      "export const ${1:PROP_SINGULAR_CONSTANT} = ['${3:value1}'] as const;",
+      "export type T${2:PropName} = typeof ${1:PROP_SINGULAR_CONSTANT}[number];"
+    ],
+    "description": "Template to define a type based on an array of string values"
+  }
+}
