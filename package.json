@@ -22,10 +22,10 @@
   ],
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "tsdx build && yarn run-s build-styles build-storybook",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "tsdx build && yarn run-s build-styles build-storybook",
+    "prepare": "yarn build",
     "storybook": "yarn start-storybook -p 4000 --ci",
     "build-storybook": "build-storybook -c .storybook -o storybook-web",
     "build-styles": "node ./sass/node-sass.js",
