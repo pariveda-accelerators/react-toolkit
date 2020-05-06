@@ -1,1 +1,0 @@
-web: bundle exec http-server dist/storybook-static/index.html
