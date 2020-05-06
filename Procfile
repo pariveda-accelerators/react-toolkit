@@ -1,1 +1,1 @@
-web: http-server dist/storybook-static
+web: http-server dist/storybook-static/index.html
