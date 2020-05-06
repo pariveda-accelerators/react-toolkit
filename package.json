@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build && yarn run-s build-styles build-storybook",
+    "build": "tsdx build && yarn build-styles",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "yarn build",

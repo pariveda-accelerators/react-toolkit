@@ -1,1 +1,1 @@
-web: yarn install; yarn storybook
+web: bundle exec http-server dist/storybook-static/index.html
