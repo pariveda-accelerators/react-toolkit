@@ -1,1 +1,1 @@
-web: yarn storybook
+web: yarn install; yarn storybook
