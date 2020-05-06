@@ -1,4 +1,5 @@
 {
+  "name": "React Toolkit Storybook",
   "buildpacks": [
     {
       "url": "heroku/nodejs"
