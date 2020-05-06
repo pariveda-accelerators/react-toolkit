@@ -27,7 +27,7 @@
     "lint": "tsdx lint",
     "prepare": "yarn build",
     "storybook": "yarn start-storybook -p 4000 --ci",
-    "build-storybook": "build-storybook -c .storybook -o dist/storybook-web",
+    "build-storybook": "build-storybook -c .storybook -o public",
     "build-styles": "node ./sass/node-sass.js",
     "watch-styles": "nodemon --watch ./sass -e scss -x \"yarn build-styles\""
   },
