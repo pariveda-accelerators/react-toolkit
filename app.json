@@ -3,8 +3,8 @@
   "description": "",
   "scripts": {},
   "env": {
-    "NPM_CONFIG_PRODUCTION": false,
-    "YARN_PRODUCTION": false
+    "NPM_CONFIG_PRODUCTION": "false",
+    "YARN_PRODUCTION": "false"
   },
   "formation": {
     "web": {
