@@ -3,6 +3,7 @@
   "description": "",
   "scripts": {},
   "env": {
+    "NODE_ENV": "development",
     "NPM_CONFIG_PRODUCTION": "false",
     "YARN_PRODUCTION": "false"
   },
