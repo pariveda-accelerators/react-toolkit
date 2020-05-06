@@ -27,6 +27,7 @@
     "lint": "tsdx lint",
     "prepare": "yarn build",
     "storybook": "yarn start-storybook -p 4000 --ci",
+    "heroku-storybook": "yarn start-storybook",
     "build-storybook": "build-storybook -c .storybook -o public",
     "build-styles": "node ./sass/node-sass.js",
     "watch-styles": "nodemon --watch ./sass -e scss -x \"yarn build-styles\""
