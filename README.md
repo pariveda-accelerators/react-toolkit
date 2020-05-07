@@ -6,13 +6,13 @@ A core library of components built with each of these tenants in mind ensures a 
 
 ## Core Tenants
 
-### Accessibility
+**Accessibility**
 
 According to [W3](https://www.w3.org/WAI/fundamentals/accessibility-intro/#what), Web Accessibility means that, "websites, tools, and technologies are designed and developed so that people with disabilities can use them."
 
 Web Accessibility, as with many other forms of accessibility, benefits more than only those with diabilities. Keyboard accessibility benefits users who prefer to use only their keyboard to interact with an application. Color contrast standards benefit users with perfectly good eyesight in the same way it benefits those with poorer eyesight.
 
-### User Experience
+**User Experience**
 
 Virtually all web applications are designed to be used by people. As such, each user will have a personal experience with each webapp they encounter. A component library centered around the user and their ideal experience ensures they are more likely to come back to the application, spend more time using the application, or otherwise have better outcomes while using the application.
 
@@ -22,7 +22,7 @@ A user's experience may be affected by many things including, but not limited to
 - Consistent experience with similar UI elements
 - Animations & transitions for dynamic content (beware of accessibility concerns!)
 
-### Code Quality
+**Code Quality**
 
 Last, but not least, code quality ensures accessibility, user experience, and an application's overall quality are maintained from the most central place possible. A component library that provides accessible dropdowns, buttons, forms, etc can ensure many independent applications support accessibility and good user experiences by default.
 
