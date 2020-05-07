@@ -1,1 +1,1 @@
-web: http-server storybook-web
+web: http-server storybook-web/index.html
