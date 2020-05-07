@@ -23,6 +23,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build && yarn build-styles",
+    "heroku-postbuild": "yarn build-storybook",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "yarn build",

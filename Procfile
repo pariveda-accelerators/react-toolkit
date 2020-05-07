@@ -1,1 +1,1 @@
-web: yarn build-storybook; http-server storybook-web
+web: http-server storybook-web
