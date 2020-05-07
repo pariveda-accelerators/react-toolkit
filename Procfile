@@ -1,1 +1,1 @@
-web: yarn heroku-storybook
+web: yarn build-storybook; http-server storybook-web
