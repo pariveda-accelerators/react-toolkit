@@ -4,9 +4,18 @@ module.exports = {
   moduleDirectories: ['node_modules', '<rootDir>/src'],
   collectCoverageFrom: [
     '<rootDir>/src/**',
+    '!<rootDir>/src/index.ts',
     '!**/__snapshots__/**',
-    '!**/story-components.tsx',
-    '!**/stories.tsx',
+    '!**/_stories/**',
   ],
-  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
+  testMatch: ['**/__tests__/**/*.test.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
 };

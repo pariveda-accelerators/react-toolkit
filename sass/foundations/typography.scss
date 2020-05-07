@@ -1,3 +1,5 @@
+@import 'sass/partials/mixins';
+
 html {
   font-size: 100%;
 }
@@ -94,3 +96,5 @@ em {
     text-transform: capitalize;
   }
 }
+
+@include mix-colors(text, color);

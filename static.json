@@ -1,0 +1,6 @@
+{
+  "root": "dist",
+  "routes": {
+    "/**": "storybook-web/index.html"
+  }
+}
