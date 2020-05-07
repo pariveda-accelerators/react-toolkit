@@ -1,1 +1,1 @@
-web: http-server storybook-web
+web: bin/boot
