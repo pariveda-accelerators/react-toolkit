@@ -13,7 +13,7 @@
   "license": "MIT",
   "private": false,
   "engines": {
-    "node": ">=14.x"
+    "node": "14.2.0"
   },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -26,7 +26,7 @@
     "heroku-postbuild": "build-storybook",
     "test": "tsdx test --passWithNoTests",
     "loki": "loki test --requireReference",
-    "loki:ci": "yarn build-storybook && loki --requireReference --reactUri file:./storybook-web",
+    "loki:ci": "yarn build-storybook && loki --requireReference --reactUri file:$PWD/storybook-web",
     "lint": "tsdx lint",
     "prepare": "yarn build",
     "storybook": "start-storybook -p 4000 --ci",
