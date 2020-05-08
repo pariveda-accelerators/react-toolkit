@@ -10,8 +10,8 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-            - run: npm run test -- --coverage
-            - run: npm run test-ui --reactUri file:./storybook-static
+            # - run: npm run test -- --coverage
+            - run: npm run loki:ci
 workflows:
   build-and-test:
     jobs:
