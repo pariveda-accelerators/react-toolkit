@@ -55,7 +55,3 @@ Box.defaultProps = {
   m: '0',
   d: 'flex',
 };
-
-export const Block = styled(Box)`
-  display: block;
-`;

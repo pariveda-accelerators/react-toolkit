@@ -23,7 +23,7 @@ $justification: flex-start, flex-end, center, stretch, space-between, space-arou
   display: none;
 }
 .block {
-  display: block;
+  display: flow-root;
 }
 .flex {
   display: flex;
@@ -76,12 +76,12 @@ $justification: flex-start, flex-end, center, stretch, space-between, space-arou
 }
 .inline {
   &-block {
-    display: inline-block;
+    display: inline flow-root;
   }
   &-flex {
-    display: inline-flex;
+    display: inline flex;
   }
   &-grid {
-    display: inline-grid;
+    display: inline grid;
   }
 }
