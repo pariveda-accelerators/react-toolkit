@@ -28,7 +28,7 @@
     "loki": "loki test",
     "test-ui": "run-s build-storybook loki --requireReference",
     "lint": "tsdx lint",
-    "prepare": "build",
+    "prepare": "yarn build",
     "storybook": "start-storybook -p 4000 --ci",
     "storybook:ci": "start-storybook --ci",
     "build-storybook": "build-storybook -c .storybook -o dist/storybook-web",
