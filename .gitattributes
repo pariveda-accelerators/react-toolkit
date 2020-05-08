@@ -1,2 +1,2 @@
-git lfs track *.png diff=exif
-
+git lfs track *.png
+*.png filter=lfs diff=lfs merge=lfs -text
