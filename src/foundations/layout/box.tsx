@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import classnames from 'classnames';
-import styled from 'styled-components';
 import { TColorShade } from 'foundations';
 import { IDefaultProps, getDefaultProps } from '../../types';
 import { createClassName } from '../../utilities';
