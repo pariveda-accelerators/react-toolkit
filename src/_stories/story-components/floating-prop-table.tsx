@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { IPropTable, FloatingCard, PropTable } from '_stories/components';
+import { IPropTable, FloatingCard, PropTable } from '_stories/story-components';
 import { Fonts, Flex } from 'foundations';
 import { isNullOrUndefined } from '../../utilities';
 
