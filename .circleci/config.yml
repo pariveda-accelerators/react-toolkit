@@ -4,8 +4,6 @@ orbs:
 jobs:
   build-and-test:
     machine: true
-    executor:
-      name: node/default
     steps:
       - checkout
       - node/install:
