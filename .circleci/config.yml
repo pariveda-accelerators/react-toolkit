@@ -3,8 +3,6 @@ orbs:
   node: circleci/node@2.1.0
 jobs:
   build-and-test:
-    # docker:
-    #   - image: circleci/node:10-browsers
     machine:
       image: ubuntu-1604:201903-01
     executor:
