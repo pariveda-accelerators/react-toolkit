@@ -7,6 +7,7 @@ jobs:
       - image: circleci/node:10-browsers
     executor:
       name: node/default
+    working_directory: /tmp
     steps:
       - checkout
       - run:
@@ -27,6 +28,12 @@ jobs:
       - run: npm install
       # - run: npm run test -- --coverage
       - run: npm run loki:ci
+      - store_artifacts:
+          path: /tmp/.loki/reference
+          destination: ref
+      - store_artifacts:
+          path: /tmp/.loki/difference
+          destination: diff
 workflows:
   build-and-test:
     jobs:
