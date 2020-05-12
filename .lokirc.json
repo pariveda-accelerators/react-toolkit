@@ -1,5 +1,7 @@
 {
   "chromeSelector": ".sb-show-main > *",
+  "chromeEnableAnimations": false,
+  "verboseRenderer": true,
   "configurations": {
     "chrome.laptop": {
       "target": "chrome.app",

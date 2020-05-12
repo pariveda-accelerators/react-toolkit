@@ -26,7 +26,7 @@
     "heroku-postbuild": "build-storybook",
     "test": "tsdx test --passWithNoTests",
     "loki": "loki test --requireReference",
-    "loki:ci": "yarn build-storybook && loki --requireReference --reactUri file:$PWD/dist/storybook-web --chromeTolerance .05 --verboseRenderer true",
+    "loki:ci": "yarn build-storybook && loki --requireReference --reactUri file:$PWD/dist/storybook-web --chromeTolerance .05",
     "lint": "tsdx lint",
     "prepare": "yarn build",
     "storybook": "start-storybook -p 4000 --ci",
