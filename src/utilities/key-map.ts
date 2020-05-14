@@ -32,7 +32,7 @@ export const getKeys = <T>(
   }, {} as T);
 };
 
-export const getProps = <T extends any>(
+export const getProps = <T extends object>(
   obj: T,
   keys: (keyof T)[] | readonly (keyof T)[]
 ): T => {
@@ -40,10 +40,10 @@ export const getProps = <T extends any>(
     return {} as T;
   }
   return Object.keys(obj).reduce((mappedObject, currKey) => {
-    if (keys.includes(currKey)) {
+    if (keys.includes(currKey as keyof T)) {
       return {
         ...mappedObject,
-        [currKey]: obj[currKey],
+        [currKey]: (obj as T)[currKey as keyof T],
       };
     }
     return mappedObject;
