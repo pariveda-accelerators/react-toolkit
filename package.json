@@ -28,7 +28,7 @@
     "loki": "loki test --requireReference",
     "loki:ci-local-config": "circleci config process .circleci/config.yml > process.yml",
     "loki:ci-local": "yarn loki:ci-local-config && circleci local execute -c process.yml --job build-and-test",
-    "loki:ci": "yarn build-storybook && loki --requireReference --reactUri file:$PWD/dist/storybook-web --chromeTolerance .05",
+    "loki:ci": "yarn build-storybook && loki --requireReference --reactUri file:\"$PWD/dist/storybook-web\"",
     "lint": "tsdx lint",
     "prepare": "yarn build",
     "storybook": "start-storybook -p 4000 --ci",

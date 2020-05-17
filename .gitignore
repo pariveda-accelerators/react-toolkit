@@ -6,3 +6,4 @@ dist
 coverage
 *.orig
 process.yml
+src/**/*.d.ts

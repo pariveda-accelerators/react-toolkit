@@ -1,6 +1,9 @@
 {
   "chromeSelector": ".sb-show-main > *",
   "chromeEnableAnimations": false,
+  "chromeTolerance": 1,
+  "deviceScaleFactor": 2,
+  "verboseRenderer": true,
   "looks-same": {
     "ignoreCaret": true,
     "strict": false,
