@@ -1,7 +1,14 @@
 {
   "chromeSelector": ".sb-show-main > *",
   "chromeEnableAnimations": false,
-  "verboseRenderer": true,
+  "looks-same": {
+    "ignoreCaret": true,
+    "strict": false,
+    "tolerance": 2.5,
+    "pixelRatio": 2,
+    "ignoreAntialiasing": true,
+    "antialiasingTolerance": 3
+  },
   "configurations": {
     "chrome.laptop": {
       "target": "chrome.app",
