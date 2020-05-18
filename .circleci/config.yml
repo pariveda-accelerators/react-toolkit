@@ -24,8 +24,8 @@ jobs:
       - node/install:
           install-yarn: true
           node-version: 14.2.0
+      - setup_remote_docker
       - run: npm install
-      - run: google-chrome --version
       # - run: npm run test -- --coverage
       - run: npm run loki:ci
       - store_artifacts:
