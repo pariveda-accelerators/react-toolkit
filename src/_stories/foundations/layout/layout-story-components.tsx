@@ -6,7 +6,7 @@ import {
   ColorStack,
   FloatingPropTable,
   TRenderColorShade,
-} from '_stories/components';
+} from '_stories/story-components';
 
 const sizeMap = {
   '0': '0;',

@@ -1,0 +1,21 @@
+{
+  "chromeSelector": ".sb-show-main > *",
+  "chromeEnableAnimations": false,
+  "chromeTolerance": 0.1,
+  "verboseRenderer": true,
+  "chromeFlags": "--headless --disable-gpu --enable-webgl --hide-scrollbars --enable-font-antialiasing --font-render-hinting=none",
+  "looks-same": {
+    "ignoreCaret": true,
+    "strict": false,
+    "tolerance": 45,
+    "ignoreAntialiasing": true,
+    "antialiasingTolerance": 10
+  },
+  "configurations": {
+    "chrome.laptop": {
+      "target": "chrome.app",
+      "width": 1920,
+      "height": 1080
+    }
+  }
+}

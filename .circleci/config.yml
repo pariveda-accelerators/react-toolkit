@@ -1,16 +1,41 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@2.1.0
 jobs:
   build-and-test:
+    docker:
+      - image: circleci/node:14.2.0-browsers
     executor:
       name: node/default
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm run test -- --coverage
+      - run:
+          name: Install Git LFS
+          command: |
+            set +e
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+            sudo apt-get update
+            sudo apt-get install -y git-lfs openssh-client
+            git lfs install
+            mkdir -p ~/.ssh
+            ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+            ssh git@github.com git-lfs-authenticate https://github.com/pariveda-accelerators/react-toolkit/ download
+            git lfs pull
+      - node/install:
+          install-yarn: true
+          node-version: 14.2.0
+      - run: npm install
+      - run: npm run test -- --coverage
+      - run: npm run loki:ci
+      - store_artifacts:
+          path: ./.loki/current
+          destination: curr
+      - store_artifacts:
+          path: ./.loki/reference
+          destination: ref
+      - store_artifacts:
+          path: ./.loki/difference
+          destination: diff
 workflows:
   build-and-test:
     jobs:

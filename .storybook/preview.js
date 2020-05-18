@@ -1,5 +1,6 @@
 import { configure } from '@storybook/react';
 import { addons } from '@storybook/addons';
+import 'loki/configure-react';
 import '../dist/main.css';
 import './custom.css';
 
