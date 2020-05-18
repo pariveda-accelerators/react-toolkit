@@ -25,7 +25,7 @@ jobs:
           install-yarn: true
           node-version: 14.2.0
       - run: npm install
-      # - run: npm run test -- --coverage
+      - run: npm run test -- --coverage
       - run: npm run loki:ci
       - store_artifacts:
           path: ./.loki/current

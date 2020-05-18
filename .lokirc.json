@@ -7,7 +7,7 @@
   "looks-same": {
     "ignoreCaret": true,
     "strict": false,
-    "tolerance": 40,
+    "tolerance": 45,
     "ignoreAntialiasing": true,
     "antialiasingTolerance": 10
   },
