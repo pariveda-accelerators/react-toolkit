@@ -7,9 +7,9 @@
   "looks-same": {
     "ignoreCaret": true,
     "strict": false,
-    "tolerance": 5,
+    "tolerance": 10,
     "ignoreAntialiasing": true,
-    "antialiasingTolerance": 5
+    "antialiasingTolerance": 10
   },
   "configurations": {
     "chrome.laptop": {
