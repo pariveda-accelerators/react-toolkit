@@ -1,15 +1,15 @@
 {
   "chromeSelector": ".sb-show-main > *",
   "chromeEnableAnimations": false,
-  "chromeTolerance": 2,
+  "chromeTolerance": 0.2,
   "verboseRenderer": true,
   "chromeFlags": "--headless --disable-gpu --hide-scrollbars --enable-font-antialiasing --font-render-hinting=none",
   "looks-same": {
     "ignoreCaret": true,
     "strict": false,
-    "tolerance": 3,
+    "tolerance": 5,
     "ignoreAntialiasing": true,
-    "antialiasingTolerance": 3
+    "antialiasingTolerance": 5
   },
   "configurations": {
     "chrome.laptop": {
