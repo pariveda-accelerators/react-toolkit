@@ -3,7 +3,7 @@
   "chromeEnableAnimations": false,
   "chromeTolerance": 1,
   "verboseRenderer": true,
-  "chromeFlags": "--headless --disable-gpu --hide-scrollbars --wm-window-animations-disabled",
+  "chromeFlags": "--headless --disable-gpu --hide-scrollbars --wm-window-animations-disabled --enable-font-antialiasing --font-render-hinting=none",
   "looks-same": {
     "ignoreCaret": true,
     "strict": false,
