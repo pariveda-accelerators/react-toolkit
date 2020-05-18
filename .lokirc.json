@@ -14,11 +14,6 @@
     "antialiasingTolerance": 3
   },
   "configurations": {
-    "chrome.laptop": {
-      "target": "chrome.app",
-      "width": 1920,
-      "height": 1080
-    },
     "chrome.docker": {
       "target": "chrome.docker",
       "width": 1920,
