@@ -25,6 +25,8 @@ jobs:
           install-yarn: true
           node-version: 14.2.0
       - setup_remote_docker
+      - run: docker image ls
+      - run: docker ps --all
       - run: npm install
       # - run: npm run test -- --coverage
       - run: npm run loki:ci
