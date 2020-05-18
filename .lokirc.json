@@ -1,15 +1,15 @@
 {
   "chromeSelector": ".sb-show-main > *",
   "chromeEnableAnimations": false,
-  "chromeTolerance": 0.2,
+  "chromeTolerance": 0.1,
   "verboseRenderer": true,
-  "chromeFlags": "--headless --disable-gpu --hide-scrollbars --enable-font-antialiasing --font-render-hinting=none",
+  "chromeFlags": "--headless --disable-gpu --enable-webgl --hide-scrollbars --enable-font-antialiasing --font-render-hinting=none",
   "looks-same": {
     "ignoreCaret": true,
     "strict": false,
-    "tolerance": 15,
+    "tolerance": 40,
     "ignoreAntialiasing": true,
-    "antialiasingTolerance": 5
+    "antialiasingTolerance": 10
   },
   "configurations": {
     "chrome.laptop": {
