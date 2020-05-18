@@ -1,9 +1,9 @@
 {
   "chromeSelector": ".sb-show-main > *",
   "chromeEnableAnimations": false,
-  "chromeTolerance": 1,
+  "chromeTolerance": 2,
   "verboseRenderer": true,
-  "chromeFlags": "--headless --enable-font-antialiasing --font-render-hinting=none",
+  "chromeFlags": "--headless --disable-gpu --hide-scrollbars --enable-font-antialiasing --font-render-hinting=none",
   "looks-same": {
     "ignoreCaret": true,
     "strict": false,
