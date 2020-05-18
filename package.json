@@ -25,7 +25,7 @@
     "build": "tsdx build && yarn build-styles",
     "heroku-postbuild": "build-storybook",
     "test": "tsdx test --passWithNoTests",
-    "loki": "loki test --requireReference",
+    "loki": "loki test",
     "loki:ci-local-config": "circleci config process .circleci/config.yml > process.yml",
     "loki:ci-local": "yarn loki:ci-local-config && circleci local execute -c process.yml --job build-and-test",
     "loki:ci": "yarn build-storybook && loki --requireReference --reactUri file:\"$PWD/dist/storybook-web\"",

@@ -4,6 +4,7 @@
   "chromeTolerance": 1,
   "deviceScaleFactor": 2,
   "verboseRenderer": true,
+  "chromeFlags": "--headless --disable-gpu --hide-scrollbars --wm-window-animations-disabled",
   "looks-same": {
     "ignoreCaret": true,
     "strict": false,
@@ -15,6 +16,11 @@
   "configurations": {
     "chrome.laptop": {
       "target": "chrome.app",
+      "width": 1920,
+      "height": 1080
+    },
+    "chrome.docker": {
+      "target": "chrome.docker",
       "width": 1920,
       "height": 1080
     }
