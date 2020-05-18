@@ -2,14 +2,12 @@
   "chromeSelector": ".sb-show-main > *",
   "chromeEnableAnimations": false,
   "chromeTolerance": 1,
-  "deviceScaleFactor": 2,
   "verboseRenderer": true,
   "chromeFlags": "--headless --disable-gpu --hide-scrollbars --wm-window-animations-disabled",
   "looks-same": {
     "ignoreCaret": true,
     "strict": false,
     "tolerance": 2.5,
-    "pixelRatio": 2,
     "ignoreAntialiasing": true,
     "antialiasingTolerance": 3
   },
