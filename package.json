@@ -1,6 +1,6 @@
 {
   "name": "@pariveda-solutions/react-toolkit",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Component library for React applications",
   "repository": {
     "type": "git",
@@ -25,9 +25,9 @@
     "build": "tsdx build && yarn build-styles",
     "heroku-postbuild": "build-storybook",
     "test": "tsdx test --passWithNoTests",
+    "test:ci-local-config": "circleci config process .circleci/config.yml > process.yml",
+    "test:ci-local": "yarn test:ci-local-config && circleci local execute -c process.yml --job build-and-test",
     "loki": "loki test",
-    "loki:ci-local-config": "circleci config process .circleci/config.yml > process.yml",
-    "loki:ci-local": "yarn loki:ci-local-config && circleci local execute -c process.yml --job build-and-test",
     "loki:ci": "yarn build-storybook && loki test --requireReference --reactUri file:\"$PWD/dist/storybook-web\" --chromeDockerImage circleci/node:14.2.0-browsers",
     "lint": "tsdx lint",
     "prepare": "yarn build",
