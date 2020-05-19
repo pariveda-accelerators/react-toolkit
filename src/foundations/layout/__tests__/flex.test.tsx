@@ -52,13 +52,13 @@ describe('Flex', () => {
     expect(dotColumnElement).toHaveClass('flex', 'column');
   });
   it('Handles align self props', () => {
-    renderAndTestProps(Flex, FLEX_ALIGN, 'alignSelf', 'flex-as--');
+    renderAndTestProps(Flex, FLEX_ALIGN, 'alignSelf', 'flex--as-');
   });
   it('Handles align items props', () => {
-    renderAndTestProps(Flex, FLEX_ALIGN, 'alignItems', 'flex-ai--');
+    renderAndTestProps(Flex, FLEX_ALIGN, 'alignItems', 'flex--ai-');
   });
   it('Handles justify content props', () => {
-    renderAndTestProps(Flex, JUSTIFY_CONTENT, 'justifyContent', 'flex-jc--');
+    renderAndTestProps(Flex, JUSTIFY_CONTENT, 'justifyContent', 'flex--jc-');
   });
   it('Handles flex props', () => {
     renderAndTestProps(Flex, FLEX, 'flex');

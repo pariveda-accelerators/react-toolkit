@@ -21,15 +21,15 @@ describe('Block', () => {
     renderAndTestProps(Block, BLOCK_DISPLAY, 'd');
   });
   it('Handles text overflow props', () => {
-    renderAndTestProps(Block, TEXT_OVERFLOW, 'textOverflow', 'block-to--');
+    renderAndTestProps(Block, TEXT_OVERFLOW, 'textOverflow', 'block--to-');
   });
   it('Handles overflow props', () => {
-    renderAndTestProps(Block, OVERFLOW, 'overflow', 'block-o--');
+    renderAndTestProps(Block, OVERFLOW, 'overflow', 'block--o-');
   });
   it('Handles overflow wrap props', () => {
-    renderAndTestProps(Block, OVERFLOW_WRAP, 'overflowWrap', 'block-ow--');
+    renderAndTestProps(Block, OVERFLOW_WRAP, 'overflowWrap', 'block--ow-');
   });
   it('Handles white space props', () => {
-    renderAndTestProps(Block, WHITE_SPACE, 'whiteSpace', 'block-ws--');
+    renderAndTestProps(Block, WHITE_SPACE, 'whiteSpace', 'block--ws-');
   });
 });
