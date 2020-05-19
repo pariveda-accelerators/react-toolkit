@@ -1,6 +1,9 @@
 import React from 'react';
 import { Fonts } from 'foundations';
 import { render } from '@testing-library/react';
+import { renderAndTestProps } from '../../../utilities';
+import { TEXT_ALIGN, TEXT_TRANSFORM } from '..';
+import { SHIRT_SIZE } from 'foundations/layout/box';
 
 describe('Typography', () => {
   it('Renders Default', () => {
@@ -101,46 +104,12 @@ describe('Typography', () => {
   });
 
   it('Handles Alignment', () => {
-    const { getByText } = render(
-      <>
-        <Fonts.Display align="left">Left Align</Fonts.Display>
-        <Fonts.Display align="center">Center Align</Fonts.Display>
-        <Fonts.Display align="right">Right Align</Fonts.Display>
-      </>
-    );
-
-    expect(getByText('Left Align')).toHaveClass('text--left');
-    expect(getByText('Center Align')).toHaveClass('text--center');
-    expect(getByText('Right Align')).toHaveClass('text--right');
+    renderAndTestProps(Fonts.Display, TEXT_ALIGN, 'align', 'text--');
   });
   it('Handles Transform', () => {
-    const { getByText } = render(
-      <>
-        <Fonts.Display transform="none">NoNe</Fonts.Display>
-        <Fonts.Display transform="uppercase">uppercase</Fonts.Display>
-        <Fonts.Display transform="lowercase">LOWERCASE</Fonts.Display>
-        <Fonts.Display transform="capitalize">first letters only</Fonts.Display>
-      </>
-    );
-
-    expect(getByText('NoNe')).toHaveClass('text--none');
-    expect(getByText('uppercase')).toHaveClass('text--uppercase');
-    expect(getByText('LOWERCASE')).toHaveClass('text--lowercase');
-    expect(getByText('first letters only')).toHaveClass('text--capitalize');
+    renderAndTestProps(Fonts.Display, TEXT_TRANSFORM, 'transform', 'text--');
   });
   it('Handles Margin', () => {
-    const { getByText } = render(
-      <>
-        <Fonts.Display m="0">m0</Fonts.Display>
-        <Fonts.Display m="s">ms</Fonts.Display>
-        <Fonts.Display m="m">mm</Fonts.Display>
-        <Fonts.Display m="l">ml</Fonts.Display>
-      </>
-    );
-
-    expect(getByText('m0')).toHaveClass('m0');
-    expect(getByText('ms')).toHaveClass('ms');
-    expect(getByText('mm')).toHaveClass('mm');
-    expect(getByText('ml')).toHaveClass('ml');
+    renderAndTestProps(Fonts.Display, SHIRT_SIZE, 'm', 'm');
   });
 });

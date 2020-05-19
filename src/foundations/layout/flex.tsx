@@ -8,11 +8,11 @@ export const FLEX_DIRECTION = ['row', 'column'] as const;
 export type TFlexDirection = typeof FLEX_DIRECTION[number];
 //#endregion Flex Direction
 //#region Align
-export const ALIGN = ['start', 'center', 'end', 'stretch', 'baseline'] as const;
-export type TAlign = typeof ALIGN[number];
+export const FLEX_ALIGN = ['start', 'center', 'end', 'stretch', 'baseline'] as const;
+export type TFlexAlign = typeof FLEX_ALIGN[number];
 //#endregion Align
 //#region Justify
-export const JUSTIFY = [
+export const JUSTIFY_CONTENT = [
   'start',
   'center',
   'end',
@@ -20,13 +20,14 @@ export const JUSTIFY = [
   'space-between',
   'space-around',
 ] as const;
-export type TJustify = typeof JUSTIFY[number];
+export type TJustifyContent = typeof JUSTIFY_CONTENT[number];
 //#endregion Justify
 //#region Flex
 export const FLEX = ['grow', 'shrink', 'stay', 'equal', 'auto'] as const;
 export type TFlex = typeof FLEX[number];
 //#endregion Flex
 
+export const FLEX_DISPLAY = ['none', 'flex', 'inline-flex'] as const;
 type TFlexDisplay = 'none' | 'flex' | 'inline-flex';
 
 export interface IFlex extends IBox {
@@ -35,11 +36,11 @@ export interface IFlex extends IBox {
   /** Flex Direction */
   direction?: TFlexDirection;
   /** Align Self */
-  alignSelf?: TAlign;
+  alignSelf?: TFlexAlign;
   /** Align Self */
-  alignItems?: TAlign;
+  alignItems?: TFlexAlign;
   /** Align Self */
-  justifyContent?: TJustify;
+  justifyContent?: TJustifyContent;
   /** Flexes */
   flex?: TFlex;
 }
@@ -66,16 +67,16 @@ export class Flex extends React.Component<IFlex, {}> {
       className,
       ...restProps
     } = this.props;
-    const blockStyles = {
-      'flex-as--': alignSelf,
-      'flex-ai--': alignItems,
-      'flex-jc--': justifyContent,
+    const flexStyles = {
+      'flex--as-': alignSelf,
+      'flex--ai-': alignItems,
+      'flex--jc-': justifyContent,
     };
-    const blockClassNames = createClassName(blockStyles);
+    const flexClassNames = createClassName(flexStyles);
     return (
       <Box
         {...restProps}
-        className={classnames(className, flex, direction, ...blockClassNames)}
+        className={classnames(className, flex, direction, ...flexClassNames)}
       />
     );
   }
