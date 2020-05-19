@@ -163,3 +163,61 @@ export const Flex = () => (
   </Story>
 );
 //#endregion Flex
+//#region Block
+const textOverflow = {
+  clip: 'text-overflow: clip;',
+  ellipsis: 'text-overflow: ellipsis;',
+};
+const overflow = {
+  visible: 'overflow: visible;',
+  hidden: 'overflow: hidden;',
+  scroll: 'overflow: scroll;',
+  'scroll-x': 'overflow: scroll-x;',
+  'scroll-y': 'overflow: scroll-y;',
+  auto: 'overflow: auto;',
+};
+const overflowWrap = {
+  normal: 'overflow-wrap: normal;',
+  'break-word': 'overflow-wrap: break-word;',
+};
+const whiteSpace = {
+  normal: 'white-space: normal;',
+  nowrap: 'white-space: nowrap;',
+  pre: 'white-space: pre;',
+  'pre-wrap': 'white-space: pre-wrap;',
+  'pre-line': 'white-space: pre-line;',
+  'break-spaces': 'white-space: break-spaces;',
+};
+
+export const Block = () => (
+  <Story title="Layout - Block">
+    <Fx>
+      <Fonts.Subtitle>Configuration</Fonts.Subtitle>
+    </Fx>
+    <FloatingPropTable
+      data={textOverflow}
+      className="block--to-"
+      propName="Text Overflow"
+      exampleUse={`textOverflow="ellipsis"`}
+    />
+    <FloatingPropTable
+      data={overflow}
+      className="block--o-"
+      propName="Overflow"
+      exampleUse={`overflow="hidden"`}
+    />
+    <FloatingPropTable
+      data={overflowWrap}
+      className="block--ow-"
+      propName="Overflow Wrap"
+      exampleUse={`overflowWrap="break-word"`}
+    />
+    <FloatingPropTable
+      data={whiteSpace}
+      className="block--ws-"
+      propName="White Space"
+      exampleUse={`whiteSpace="nowrap"`}
+    />
+  </Story>
+);
+//#endregion Block

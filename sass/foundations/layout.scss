@@ -23,7 +23,63 @@ $justification: flex-start, flex-end, center, stretch, space-between, space-arou
   display: none;
 }
 .block {
-  display: block;
+  display: flow-root;
+  &--to {
+    &-clip {
+      text-overflow: clip;
+    }
+    &-ellipsis {
+      text-overflow: ellipsis;
+    }
+  }
+  &--o {
+    &-visible {
+      overflow: visible;
+    }
+    &-hidden {
+      overflow: hidden;
+    }
+    &-scroll {
+      overflow: scroll;
+    }
+    &-scroll-x {
+      overflow-x: scroll;
+    }
+    &-scroll-y {
+      overflow-y: scroll;
+    }
+    &-auto {
+      overflow: auto;
+    }
+  }
+  &--ow {
+    &-normal {
+      overflow-wrap: normal;
+    }
+    &-break-word {
+      overflow-wrap: break-word;
+    }
+  }
+  &--ws {
+    &-normal {
+      white-space: normal;
+    }
+    &-nowrap {
+      white-space: nowrap;
+    }
+    &-pre {
+      white-space: pre;
+    }
+    &-pre-wrap {
+      white-space: pre-wrap;
+    }
+    &-pre-line {
+      white-space: pre-line;
+    }
+    &-break-spaces {
+      white-space: break-spaces;
+    }
+  }
 }
 .flex {
   display: flex;
@@ -46,23 +102,23 @@ $justification: flex-start, flex-end, center, stretch, space-between, space-arou
   &.auto {
     flex: 1 1 auto;
   }
-  &-as {
+  &--as {
     @each $align in $alignment {
-      &--#{$align} {
+      &-#{$align} {
         align-self: #{$align};
       }
     }
   }
-  &-ai {
+  &--ai {
     @each $align in $alignment {
-      &--#{$align} {
+      &-#{$align} {
         align-items: #{$align};
       }
     }
   }
-  &-jc {
+  &--jc {
     @each $justify in $justification {
-      &--#{$justify} {
+      &-#{$justify} {
         justify-content: #{$justify};
       }
     }
@@ -76,12 +132,12 @@ $justification: flex-start, flex-end, center, stretch, space-between, space-arou
 }
 .inline {
   &-block {
-    display: inline-block;
+    display: inline flow-root;
   }
   &-flex {
-    display: inline-flex;
+    display: inline flex;
   }
   &-grid {
-    display: inline-grid;
+    display: inline grid;
   }
 }

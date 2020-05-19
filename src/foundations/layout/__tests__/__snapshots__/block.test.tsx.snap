@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Block Renders default 1`] = `
+<div
+  class="block pm m0"
+>
+  block
+</div>
+`;

@@ -1,6 +1,14 @@
 import React from 'react';
 import { Flex, Row, Column } from 'foundations';
 import { render } from '@testing-library/react';
+import { renderAndTestProps } from '../../../utilities';
+import {
+  FLEX_DISPLAY,
+  FLEX_DIRECTION,
+  FLEX_ALIGN,
+  JUSTIFY_CONTENT,
+  FLEX,
+} from '../flex';
 
 describe('Flex', () => {
   it('Renders default', () => {
@@ -9,36 +17,11 @@ describe('Flex', () => {
     expect(flex).toMatchSnapshot();
     expect(flex).toHaveClass('flex', 'pm', 'm0');
   });
-  it('Handles direction prop', () => {
-    const row = 'direction-row';
-    const column = 'direction-column';
-    const { getByText } = render(
-      <>
-        <Flex direction="row">{row}</Flex>
-        <Flex direction="column">{column}</Flex>
-      </>
-    );
-    const rowElement = getByText(row);
-    const columnElement = getByText(column);
-
-    expect(rowElement).toHaveClass('row');
-    expect(columnElement).toHaveClass('column');
+  it('Handles direction props', () => {
+    renderAndTestProps(Flex, FLEX_DIRECTION, 'direction');
   });
   it('Handles display props', () => {
-    const { getByText } = render(
-      <>
-        <Flex d="none">none</Flex>
-        <Flex d="flex">flex</Flex>
-        <Flex d="inline-flex">inline-flex</Flex>
-      </>
-    );
-    const none = getByText('none');
-    const flex = getByText('flex');
-    const inlineFlex = getByText('inline-flex');
-
-    expect(none).toHaveClass('none');
-    expect(flex).toHaveClass('flex');
-    expect(inlineFlex).toHaveClass('inline-flex');
+    renderAndTestProps(Flex, FLEX_DISPLAY, 'd');
   });
   it('Renders Row variation', () => {
     const row = 'row';
@@ -67,5 +50,17 @@ describe('Flex', () => {
     const dotColumnElement = getByText(col);
     expect(colElement).toHaveClass('flex', 'column');
     expect(dotColumnElement).toHaveClass('flex', 'column');
+  });
+  it('Handles align self props', () => {
+    renderAndTestProps(Flex, FLEX_ALIGN, 'alignSelf', 'flex--as-');
+  });
+  it('Handles align items props', () => {
+    renderAndTestProps(Flex, FLEX_ALIGN, 'alignItems', 'flex--ai-');
+  });
+  it('Handles justify content props', () => {
+    renderAndTestProps(Flex, JUSTIFY_CONTENT, 'justifyContent', 'flex--jc-');
+  });
+  it('Handles flex props', () => {
+    renderAndTestProps(Flex, FLEX, 'flex');
   });
 });
