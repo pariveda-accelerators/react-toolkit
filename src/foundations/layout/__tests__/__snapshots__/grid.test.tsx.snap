@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid Base Grid Renders default 1`] = `
+<div
+  class="grid--tbt grid p0 m0"
+>
+  grid
+</div>
+`;

@@ -28,7 +28,7 @@ export type TFlex = typeof FLEX[number];
 //#endregion Flex
 
 export const FLEX_DISPLAY = ['none', 'flex', 'inline-flex'] as const;
-type TFlexDisplay = 'none' | 'flex' | 'inline-flex';
+type TFlexDisplay = typeof FLEX_DISPLAY[number];
 
 export interface IFlex extends IBox {
   /** Display */

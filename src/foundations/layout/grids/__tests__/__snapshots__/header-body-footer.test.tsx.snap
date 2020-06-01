@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid HBF Grid Renders default 1`] = `
+<div
+  class="grid--hbf grid p0 m0"
+>
+  <div
+    class="grid-header flex pm m0"
+  >
+    Header
+  </div>
+  <div
+    class="grid-body flex pm m0"
+  >
+    Body
+  </div>
+  <div
+    class="grid-footer flex pm m0"
+  >
+    Footer
+  </div>
+</div>
+`;
