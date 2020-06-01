@@ -4,7 +4,7 @@ import { Box, IBox } from './box';
 import { createClassName } from '../../utilities';
 
 export const BLOCK_DISPLAY = ['none', 'block', 'inline-block'] as const;
-type TBlockDisplay = 'none' | 'block' | 'inline-block';
+type TBlockDisplay = typeof BLOCK_DISPLAY[number];
 
 //#region Text Overflow
 export const TEXT_OVERFLOW = ['clip', 'ellipsis'] as const;

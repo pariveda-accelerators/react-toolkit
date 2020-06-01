@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex as Fx, Fonts, Column } from 'foundations';
+import { Flex as Fx, Fonts, Column, Grid as Gd, HBFGrid } from 'foundations';
 import { IKeyedObject } from '../../../utilities';
 import {
   Story,
@@ -221,3 +221,55 @@ export const Block = () => (
   </Story>
 );
 //#endregion Block
+//#region Grid
+export const Grid = () => {
+  const tbtGrid = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  return (
+    <Story title="Layout - Grid">
+      <Fx>
+        <Fonts.Subtitle>Description</Fonts.Subtitle>
+      </Fx>
+      <Column>
+        <Fonts.Body>
+          Grids are layouts that may be used to arrange UI elements according to a
+          grid that divides an area into rows &amp; columns. There are a variety of
+          predefined grids available in our toolkit including Twelve-by-Twelve &amp;
+          Header-Body-Footer.
+        </Fonts.Body>
+        <Fx />
+        <Fx bg="red-2" p="0">
+          <Fx p="s" bg="red-6" />
+          <Fx p="s" />
+          <Fonts.Body>
+            Notice how some grids have gutters / alleys while some do not!
+          </Fonts.Body>
+        </Fx>
+      </Column>
+      <Fx>
+        <Column>
+          <Fonts.SectionSubtitle>Twelve-By-Twelve (tbt)</Fonts.SectionSubtitle>
+          <Gd gridType="tbt">
+            {tbtGrid.map(row =>
+              tbtGrid.map(col => <Fx key={`${row}-${col}`} p="s" bg="grey-3" />)
+            )}
+          </Gd>
+        </Column>
+        <Column>
+          <Fonts.SectionSubtitle>Header-Body-Footer (hbf)</Fonts.SectionSubtitle>
+          <HBFGrid>
+            <HBFGrid.Header p="s" bg="grey-3">
+              <Fonts.SectionTitle>Header</Fonts.SectionTitle>
+            </HBFGrid.Header>
+            <HBFGrid.Body p="s" bg="grey-3">
+              <Fonts.SectionTitle>Body</Fonts.SectionTitle>
+            </HBFGrid.Body>
+            <HBFGrid.Footer p="s" bg="grey-3">
+              <Fonts.SectionTitle>Footer</Fonts.SectionTitle>
+            </HBFGrid.Footer>
+          </HBFGrid>
+        </Column>
+      </Fx>
+    </Story>
+  );
+};
+//#endregion Grid
