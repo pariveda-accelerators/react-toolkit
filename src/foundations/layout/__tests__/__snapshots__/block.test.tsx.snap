@@ -1,5 +1,135 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Block Handles display props 1`] = `
+<body>
+  <div>
+    <div
+      class="none pm m0"
+    >
+      none
+    </div>
+    <div
+      class="block pm m0"
+    >
+      block
+    </div>
+    <div
+      class="inline-block pm m0"
+    >
+      inline-block
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Block Handles overflow props 1`] = `
+<body>
+  <div>
+    <div
+      class="block--o-visible block pm m0"
+    >
+      visible
+    </div>
+    <div
+      class="block--o-hidden block pm m0"
+    >
+      hidden
+    </div>
+    <div
+      class="block--o-scroll block pm m0"
+    >
+      scroll
+    </div>
+    <div
+      class="block--o-scroll-x block pm m0"
+    >
+      scroll-x
+    </div>
+    <div
+      class="block--o-scroll-y block pm m0"
+    >
+      scroll-y
+    </div>
+    <div
+      class="block--o-auto block pm m0"
+    >
+      auto
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Block Handles overflow wrap props 1`] = `
+<body>
+  <div>
+    <div
+      class="block--ow-normal block pm m0"
+    >
+      normal
+    </div>
+    <div
+      class="block--ow-break-word block pm m0"
+    >
+      break-word
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Block Handles text overflow props 1`] = `
+<body>
+  <div>
+    <div
+      class="block--to-clip block pm m0"
+    >
+      clip
+    </div>
+    <div
+      class="block--to-ellipsis block pm m0"
+    >
+      ellipsis
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Block Handles white space props 1`] = `
+<body>
+  <div>
+    <div
+      class="block--ws-normal block pm m0"
+    >
+      normal
+    </div>
+    <div
+      class="block--ws-nowrap block pm m0"
+    >
+      nowrap
+    </div>
+    <div
+      class="block--ws-pre block pm m0"
+    >
+      pre
+    </div>
+    <div
+      class="block--ws-pre-wrap block pm m0"
+    >
+      pre-wrap
+    </div>
+    <div
+      class="block--ws-pre-line block pm m0"
+    >
+      pre-line
+    </div>
+    <div
+      class="block--ws-break-spaces block pm m0"
+    >
+      break-spaces
+    </div>
+  </div>
+</body>
+`;
+
 exports[`Block Renders default 1`] = `
 <div
   class="block pm m0"

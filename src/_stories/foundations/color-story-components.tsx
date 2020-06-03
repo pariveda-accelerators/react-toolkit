@@ -15,6 +15,7 @@ export const Colors = () => {
           <Row key={color} p="s">
             <ColorStack
               color={color}
+              propName="bg"
               renderColorShade={renderColorShade}
               separateHeadingFromContent
             />

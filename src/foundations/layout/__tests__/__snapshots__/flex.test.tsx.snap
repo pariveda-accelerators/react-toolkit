@@ -1,5 +1,177 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Flex Handles align items props 1`] = `
+<body>
+  <div>
+    <div
+      class="row flex--ai-start flex pm m0"
+    >
+      start
+    </div>
+    <div
+      class="row flex--ai-center flex pm m0"
+    >
+      center
+    </div>
+    <div
+      class="row flex--ai-end flex pm m0"
+    >
+      end
+    </div>
+    <div
+      class="row flex--ai-stretch flex pm m0"
+    >
+      stretch
+    </div>
+    <div
+      class="row flex--ai-baseline flex pm m0"
+    >
+      baseline
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Flex Handles align self props 1`] = `
+<body>
+  <div>
+    <div
+      class="row flex--as-start flex pm m0"
+    >
+      start
+    </div>
+    <div
+      class="row flex--as-center flex pm m0"
+    >
+      center
+    </div>
+    <div
+      class="row flex--as-end flex pm m0"
+    >
+      end
+    </div>
+    <div
+      class="row flex--as-stretch flex pm m0"
+    >
+      stretch
+    </div>
+    <div
+      class="row flex--as-baseline flex pm m0"
+    >
+      baseline
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Flex Handles direction props 1`] = `
+<body>
+  <div>
+    <div
+      class="row flex pm m0"
+    >
+      row
+    </div>
+    <div
+      class="column flex pm m0"
+    >
+      column
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Flex Handles display props 1`] = `
+<body>
+  <div>
+    <div
+      class="row none pm m0"
+    >
+      none
+    </div>
+    <div
+      class="row flex pm m0"
+    >
+      flex
+    </div>
+    <div
+      class="row inline-flex pm m0"
+    >
+      inline-flex
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Flex Handles flex props 1`] = `
+<body>
+  <div>
+    <div
+      class="grow row flex pm m0"
+    >
+      grow
+    </div>
+    <div
+      class="shrink row flex pm m0"
+    >
+      shrink
+    </div>
+    <div
+      class="stay row flex pm m0"
+    >
+      stay
+    </div>
+    <div
+      class="equal row flex pm m0"
+    >
+      equal
+    </div>
+    <div
+      class="auto row flex pm m0"
+    >
+      auto
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Flex Handles justify content props 1`] = `
+<body>
+  <div>
+    <div
+      class="row flex--jc-start flex pm m0"
+    >
+      start
+    </div>
+    <div
+      class="row flex--jc-center flex pm m0"
+    >
+      center
+    </div>
+    <div
+      class="row flex--jc-end flex pm m0"
+    >
+      end
+    </div>
+    <div
+      class="row flex--jc-stretch flex pm m0"
+    >
+      stretch
+    </div>
+    <div
+      class="row flex--jc-space-between flex pm m0"
+    >
+      space-between
+    </div>
+    <div
+      class="row flex--jc-space-around flex pm m0"
+    >
+      space-around
+    </div>
+  </div>
+</body>
+`;
+
 exports[`Flex Renders default 1`] = `
 <div
   class="row flex pm m0"

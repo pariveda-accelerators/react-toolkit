@@ -35,6 +35,12 @@ $justification: flex-start, flex-end, center, stretch, space-between, space-arou
   background-color: transparent;
 }
 @include mix-colors(bg, background-color);
+@include mix-colors(bc, border-color);
+
+.border {
+  border-width: 1px;
+  border-style: solid;
+}
 
 .none {
   display: none;

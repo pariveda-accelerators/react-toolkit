@@ -24,4 +24,7 @@ describe('Box', () => {
   it('Handles background color props', () => {
     renderAndTestProps(Box, COLOR_SHADE, 'bg', 'bg--');
   });
+  it('Handles border color props', () => {
+    renderAndTestProps(Box, COLOR_SHADE, 'bc', 'bc--');
+  });
 });

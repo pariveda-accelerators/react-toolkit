@@ -1,5 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Typography Handles Alignment 1`] = `
+<body>
+  <div>
+    <h1
+      class="text--left text--display text--black"
+      tag="h1"
+    >
+      left
+    </h1>
+    <h1
+      class="text--center text--display text--black"
+      tag="h1"
+    >
+      center
+    </h1>
+    <h1
+      class="text--right text--display text--black"
+      tag="h1"
+    >
+      right
+    </h1>
+  </div>
+</body>
+`;
+
 exports[`Typography Handles Bold 1`] = `
 <body>
   <div>
@@ -40,6 +65,37 @@ exports[`Typography Handles Italics 1`] = `
       <i>
         Italics Display Font
       </i>
+    </h1>
+  </div>
+</body>
+`;
+
+exports[`Typography Handles Margin 1`] = `
+<body>
+  <div>
+    <h1
+      class="text--display text--black m0"
+      tag="h1"
+    >
+      0
+    </h1>
+    <h1
+      class="text--display text--black ms"
+      tag="h1"
+    >
+      s
+    </h1>
+    <h1
+      class="text--display text--black mm"
+      tag="h1"
+    >
+      m
+    </h1>
+    <h1
+      class="text--display text--black ml"
+      tag="h1"
+    >
+      l
     </h1>
   </div>
 </body>
@@ -105,6 +161,37 @@ exports[`Typography Handles Tag 1`] = `
     >
       P Tag
     </p>
+  </div>
+</body>
+`;
+
+exports[`Typography Handles Transform 1`] = `
+<body>
+  <div>
+    <h1
+      class="text--none text--display text--black"
+      tag="h1"
+    >
+      none
+    </h1>
+    <h1
+      class="text--uppercase text--display text--black"
+      tag="h1"
+    >
+      uppercase
+    </h1>
+    <h1
+      class="text--lowercase text--display text--black"
+      tag="h1"
+    >
+      lowercase
+    </h1>
+    <h1
+      class="text--capitalize text--display text--black"
+      tag="h1"
+    >
+      capitalize
+    </h1>
   </div>
 </body>
 `;

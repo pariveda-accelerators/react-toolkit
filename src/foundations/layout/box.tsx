@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import classnames from 'classnames';
 import { TColorShade } from 'foundations';
 import { IDefaultProps, getDefaultProps } from '../../types';
-import { createClassName } from '../../utilities';
+import { createClassName, isNullOrUndefined } from '../../utilities';
 
 //#region T Shirt Sizes
 export const SHIRT_SIZE = ['0', 's', 'm', 'l'] as const;
@@ -33,18 +33,34 @@ export interface IBox extends IDefaultProps {
   d?: TDisplay;
   /** Background Color */
   bg?: TColorShade;
+  /** Border Color */
+  bc?: TColorShade;
 }
 
-export const Box: FC<IBox> = ({ p, m, d, bg, className, children, ...props }) => {
+export const Box: FC<IBox> = ({
+  p,
+  m,
+  d,
+  bg,
+  bc,
+  className,
+  children,
+  ...props
+}) => {
   const defaultProps = getDefaultProps(props);
   const classNameStyles = {
     p,
     m,
     'bg--': bg,
+    'bc--': bc,
   };
   const classes = createClassName(classNameStyles);
+  const borderClass = !isNullOrUndefined(bc) ? 'border' : undefined;
   return (
-    <div {...defaultProps} className={classnames(className, d, ...classes)}>
+    <div
+      {...defaultProps}
+      className={classnames(className, d, borderClass, ...classes)}
+    >
       {children}
     </div>
   );
