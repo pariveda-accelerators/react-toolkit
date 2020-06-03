@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Grid Base Grid Handles display props 1`] = `
+<body>
+  <div>
+    <div
+      class="grid--tbt none p0 m0"
+    >
+      none
+    </div>
+    <div
+      class="grid--tbt grid p0 m0"
+    >
+      grid
+    </div>
+    <div
+      class="grid--tbt inline-grid p0 m0"
+    >
+      inline-grid
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Grid Base Grid Handles grid type props 1`] = `
+<body>
+  <div>
+    <div
+      class="grid--tbt grid p0 m0"
+    >
+      tbt
+    </div>
+    <div
+      class="grid--hbf grid p0 m0"
+    >
+      hbf
+    </div>
+  </div>
+</body>
+`;
+
 exports[`Grid Base Grid Renders default 1`] = `
 <div
   class="grid--tbt grid p0 m0"

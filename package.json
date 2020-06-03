@@ -27,7 +27,7 @@
     "test": "tsdx test --passWithNoTests",
     "test:ci-local-config": "circleci config process .circleci/config.yml > process.yml",
     "test:ci-local": "yarn test:ci-local-config && circleci local execute -c process.yml --job build-and-test",
-    "loki": "loki test",
+    "test:loki": "loki test",
     "loki:ci": "yarn build-storybook && loki test --requireReference --reactUri file:\"$PWD/dist/storybook-web\" --chromeDockerImage circleci/node:14.2.0-browsers",
     "lint": "tsdx lint",
     "prepare": "yarn build",

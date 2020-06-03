@@ -17,7 +17,7 @@ interface IColorStack {
   color: string;
   shades?: string[];
   propName: string;
-  renderColorShade: TRenderColorShade;
+  renderColorShade?: TRenderColorShade;
   separateHeadingFromContent?: boolean;
 }
 export const ColorStack: FC<IColorStack> = ({
@@ -40,7 +40,8 @@ export const ColorStack: FC<IColorStack> = ({
         };
         return (
           <Row key={colorShade} {...props}>
-            {renderColorShade({ color, shade, colorShade })}
+            {typeof renderColorShade === 'function' &&
+              renderColorShade({ color, shade, colorShade })}
           </Row>
         );
       }

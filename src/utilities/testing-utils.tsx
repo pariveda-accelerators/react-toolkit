@@ -7,7 +7,7 @@ export const renderAndTestProps = (
   propName: string,
   classNamePrefix?: string
 ) => {
-  const { getByText } = render(
+  const { getByText, baseElement } = render(
     <>
       {propValues.map(value => {
         const props = {
@@ -25,4 +25,5 @@ export const renderAndTestProps = (
     const className = `${classNamePrefix || ''}${value}`;
     expect(getByText(value)).toHaveClass(className);
   });
+  expect(baseElement).toMatchSnapshot();
 };
