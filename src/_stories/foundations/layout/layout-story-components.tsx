@@ -36,7 +36,7 @@ const display = {
   'list-item': 'display: list-item;',
 };
 
-const renderColorShade: TRenderColorShade = ({ shade, colorShade }) => (
+const renderBgColorShade: TRenderColorShade = ({ shade, colorShade }) => (
   <>
     <Fonts.Body weight="bold" color={Number(shade) >= 5 ? 'white' : 'black'}>
       {colorShade}
@@ -45,6 +45,13 @@ const renderColorShade: TRenderColorShade = ({ shade, colorShade }) => (
     <Fonts.Body weight="bold" color={Number(shade) >= 5 ? 'white' : 'black'}>
       bg="{colorShade}"
     </Fonts.Body>
+  </>
+);
+const renderBcColorShade: TRenderColorShade = ({ shade, colorShade }) => (
+  <>
+    <Fonts.Body weight="bold">{colorShade}</Fonts.Body>
+    <Fx flex="grow" />
+    <Fonts.Body weight="bold">bg="{colorShade}"</Fonts.Body>
   </>
 );
 
@@ -75,12 +82,38 @@ export const Box = () => (
         <ColorStack
           color="azure"
           shades={['1', '3', '5', '7', '9']}
-          renderColorShade={renderColorShade}
+          propName="bg"
+          renderColorShade={renderBgColorShade}
         />
         <ColorStack
           color="seafoam"
           shades={['1', '3', '5', '7', '9']}
-          renderColorShade={renderColorShade}
+          propName="bg"
+          renderColorShade={renderBgColorShade}
+        />
+      </Column>
+      <Fx />
+      <Fonts.Body>
+        See <b>Foundations | Colors</b> for a list of all available colors
+      </Fonts.Body>
+    </FloatingPropTable>
+    <FloatingPropTable
+      className="bc"
+      propName="Border Color"
+      exampleUse={`bc="grey-6"`}
+    >
+      <Column p="0">
+        <ColorStack
+          color="azure"
+          shades={['1', '3', '5', '7', '9']}
+          propName="bc"
+          renderColorShade={renderBcColorShade}
+        />
+        <ColorStack
+          color="seafoam"
+          shades={['1', '3', '5', '7', '9']}
+          propName="bc"
+          renderColorShade={renderBcColorShade}
         />
       </Column>
       <Fx />

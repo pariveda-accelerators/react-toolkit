@@ -14,14 +14,16 @@ export type TRenderColorShade = ({
   colorShade,
 }: IRenderColorShade) => React.ReactNode;
 interface IColorStack {
-  renderColorShade: TRenderColorShade;
   color: string;
   shades?: string[];
+  propName: string;
+  renderColorShade: TRenderColorShade;
   separateHeadingFromContent?: boolean;
 }
 export const ColorStack: FC<IColorStack> = ({
   color,
   shades,
+  propName,
   renderColorShade,
   separateHeadingFromContent,
 }) => (
@@ -33,8 +35,11 @@ export const ColorStack: FC<IColorStack> = ({
     {SHADE.filter(shade => isNullOrUndefined(shades) || shades.includes(shade)).map(
       shade => {
         const colorShade = `${color}-${shade}` as TColorShade;
+        const props = {
+          [propName]: colorShade,
+        };
         return (
-          <Row key={colorShade} bg={colorShade}>
+          <Row key={colorShade} {...props}>
             {renderColorShade({ color, shade, colorShade })}
           </Row>
         );
