@@ -7,8 +7,8 @@ import {
   OVERFLOW_WRAP,
   WHITE_SPACE,
   Block,
-} from '../block';
-import { renderAndTestProps } from '../../../utilities/testing-utils';
+} from '../../../src/foundations';
+import { renderAndTestProps } from '../../../src/utilities/testing-utils';
 
 describe('Block', () => {
   it('Renders default', () => {

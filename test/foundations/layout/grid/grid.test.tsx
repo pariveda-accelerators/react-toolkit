@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { renderAndTestProps } from '../../../utilities/testing-utils';
-import { GRID_DISPLAY, GRID_TYPE, Grid } from '../grid';
+import { renderAndTestProps } from '../../../../src/utilities/testing-utils';
+import { GRID_DISPLAY, GRID_TYPE, Grid } from '../../../../src/foundations';
 
 describe('Grid', () => {
   describe('Base Grid', () => {

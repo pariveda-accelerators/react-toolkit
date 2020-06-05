@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { renderAndTestProps } from '../../../utilities/testing-utils';
+import { renderAndTestProps } from '../../../src/utilities/testing-utils';
 import {
   FLEX_DISPLAY,
   FLEX_DIRECTION,
@@ -10,7 +10,7 @@ import {
   Flex,
   Row,
   Column,
-} from '../flex';
+} from '../../../src/foundations';
 
 describe('Flex', () => {
   it('Renders default', () => {
