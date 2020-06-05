@@ -1,5 +1,4 @@
 import React from 'react';
-import { Block } from 'foundations';
 import { render } from '@testing-library/react';
 import {
   TEXT_OVERFLOW,
@@ -7,8 +6,9 @@ import {
   OVERFLOW,
   OVERFLOW_WRAP,
   WHITE_SPACE,
+  Block,
 } from '../block';
-import { renderAndTestProps } from '../../../utilities';
+import { renderAndTestProps } from '../../../utilities/testing-utils';
 
 describe('Block', () => {
   it('Renders default', () => {

@@ -1,5 +1,6 @@
 {
   "include": ["src"],
+  "exclude": ["**/__tests__/**", "testing-tuils.tsx"],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",

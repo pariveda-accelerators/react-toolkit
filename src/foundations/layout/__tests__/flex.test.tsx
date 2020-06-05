@@ -1,13 +1,15 @@
 import React from 'react';
-import { Flex, Row, Column } from 'foundations';
 import { render } from '@testing-library/react';
-import { renderAndTestProps } from '../../../utilities';
+import { renderAndTestProps } from '../../../utilities/testing-utils';
 import {
   FLEX_DISPLAY,
   FLEX_DIRECTION,
   FLEX_ALIGN,
   JUSTIFY_CONTENT,
   FLEX,
+  Flex,
+  Row,
+  Column,
 } from '../flex';
 
 describe('Flex', () => {

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Fonts, Block } from 'foundations';
-import { IDefaultProps } from 'types';
+import { IDefaultProps } from '../../types';
+import { Block, Fonts } from '../../foundations';
 
 export const Title: FC<IDefaultProps> = ({ children }) => (
   <Block p="l" bg="seafoam-6">

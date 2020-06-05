@@ -136,6 +136,8 @@ $justification: flex-start, flex-end, center, stretch, space-between, space-arou
 }
 .grid {
   display: grid;
+  height: 100%;
+  width: 100%;
   $grid: &;
   @include align-self-and-items;
 
@@ -148,8 +150,8 @@ $justification: flex-start, flex-end, center, stretch, space-between, space-arou
   &--hbf {
     grid-template-columns: 1fr;
     grid-template-rows:
-      minmax(min-content, 1fr) minmax(min-content, auto)
-      minmax(min-content, 1fr);
+      minmax(min-content, max-content) minmax(min-content, auto)
+      minmax(min-content, max-content);
     grid-template-areas: 'header' 'body' 'footer';
     #{$grid}-header {
       grid-area: header;

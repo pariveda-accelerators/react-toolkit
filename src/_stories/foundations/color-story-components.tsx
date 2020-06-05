@@ -1,7 +1,6 @@
 import React from 'react';
-import { Box, Column, Row } from 'foundations/layout';
-import { COLOR } from 'foundations/colors';
-import { Story, ColorStack, TRenderColorShade } from '_stories/story-components';
+import { COLOR, Box, Column, Row } from '../../foundations';
+import { Story, ColorStack, TRenderColorShade } from '../story-components';
 
 const renderColorShade: TRenderColorShade = ({ colorShade }) => (
   <Box bg={colorShade} />

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { Row, Column, Fonts, Flex } from 'foundations';
 import { IKeyedObject } from '../../utilities';
+import { Column, Row, Fonts, Flex } from '../../foundations';
 
 export interface IPropTable {
   data: IKeyedObject<string>;

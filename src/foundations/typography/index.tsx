@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import classnames from 'classnames';
 import { createClassName, isNullOrUndefined } from '../../utilities';
 import { IDefaultProps, getDefaultProps } from '../../types';
-import { TColorShade } from 'foundations/colors';
-import { TShirtSize } from 'foundations/layout/box';
+import { TColorShade } from '../colors';
+import { TShirtSize } from '../layout/box';
 
 /**
  * Docs on everything you can do w/ fonts: https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals

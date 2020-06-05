@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import classnames from 'classnames';
-import { TColorShade } from 'foundations';
 import { IDefaultProps, getDefaultProps } from '../../types';
 import { createClassName, isNullOrUndefined } from '../../utilities';
+import { TColorShade } from '../colors';
 
 //#region T Shirt Sizes
 export const SHIRT_SIZE = ['0', 's', 'm', 'l'] as const;
