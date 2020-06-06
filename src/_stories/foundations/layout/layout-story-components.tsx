@@ -1,12 +1,18 @@
 import React from 'react';
-import { Flex as Fx, Fonts, Column, Grid as Gd, HBFGrid } from 'foundations';
 import { IKeyedObject } from '../../../utilities';
 import {
-  Story,
-  ColorStack,
-  FloatingPropTable,
+  Fonts,
+  Flex as Fx,
+  Column,
+  Grid as Gd,
+  HBFGrid,
+} from '../../../foundations';
+import {
   TRenderColorShade,
-} from '_stories/story-components';
+  Story,
+  FloatingPropTable,
+  ColorStack,
+} from '../../story-components';
 
 const sizeMap = {
   '0': '0;',
@@ -47,7 +53,7 @@ const renderBgColorShade: TRenderColorShade = ({ shade, colorShade }) => (
     </Fonts.Body>
   </>
 );
-const renderBcColorShade: TRenderColorShade = ({ shade, colorShade }) => (
+const renderBcColorShade: TRenderColorShade = ({ colorShade }) => (
   <>
     <Fonts.Body weight="bold">{colorShade}</Fonts.Body>
     <Fx flex="grow" />

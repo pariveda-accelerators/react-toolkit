@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { IDefaultProps } from 'types';
-import { Block } from 'foundations';
 import { Title } from './title';
+import { IDefaultProps } from '../../types';
+import { Block } from '../../foundations';
 
 interface IStory extends IDefaultProps {
   title: string;

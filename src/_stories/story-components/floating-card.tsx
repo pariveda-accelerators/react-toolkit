@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { IDefaultProps } from 'types';
-import { Flex } from 'foundations';
+import { Flex } from '../../foundations';
+import { IDefaultProps } from '../../types';
 
 export const FloatingCard: FC<IDefaultProps> = ({ children }) => (
   <Flex bg="grey-1">

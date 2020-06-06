@@ -1,4 +1,4 @@
-import { getKeys, getProps } from '../key-map';
+import { getKeys, getProps } from '../../src/utilities';
 
 describe('Utils - Key Map', () => {
   describe('getKeys', () => {

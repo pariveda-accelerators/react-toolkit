@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { Row, Fonts, SHADE, Flex } from 'foundations';
-import { TColorShade } from 'foundations/colors';
 import { isNullOrUndefined } from '../../utilities';
+import { Fonts, SHADE, TColorShade, Row, Flex } from '../../foundations';
 
 export interface IRenderColorShade {
   color: string;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { HBFGrid } from 'foundations';
 import { render } from '@testing-library/react';
+import { HBFGrid } from '../../../../src/foundations';
 
 describe('Grid', () => {
   describe('HBF Grid', () => {

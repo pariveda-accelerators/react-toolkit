@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import { IPropTable, FloatingCard, PropTable } from '_stories/story-components';
-import { Fonts, Flex } from 'foundations';
 import { isNullOrUndefined } from '../../utilities';
+import { Flex, Fonts } from '../../foundations';
+import { IPropTable, PropTable } from './prop-table';
+import { FloatingCard } from './floating-card';
 
 interface IFloatingPropTable extends Partial<IPropTable> {
   propName: string;

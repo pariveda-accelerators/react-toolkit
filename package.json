@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build && yarn build-styles",
+    "build": "tsdx build --tsconfig ./tsconfig.json && yarn build-styles",
     "heroku-postbuild": "build-storybook",
     "test": "tsdx test --passWithNoTests",
     "test:ci-local-config": "circleci config process .circleci/config.yml > process.yml",

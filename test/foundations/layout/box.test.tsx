@@ -1,9 +1,7 @@
 import React from 'react';
-import { Box } from 'foundations';
 import { render } from '@testing-library/react';
-import { COLOR_SHADE } from 'foundations';
-import { SHIRT_SIZE, DISPLAY } from '../box';
-import { renderAndTestProps } from '../../../utilities';
+import { renderAndTestProps } from '../../../src/utilities/testing-utils';
+import { COLOR_SHADE, Box, SHIRT_SIZE, DISPLAY } from '../../../src/foundations';
 
 describe('Box', () => {
   it('Renders default', () => {

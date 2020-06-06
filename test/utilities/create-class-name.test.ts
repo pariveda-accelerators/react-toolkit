@@ -1,4 +1,4 @@
-import { createClassName } from '../../utilities';
+import { createClassName } from '../../src/utilities';
 
 describe('Utils - createClassName', () => {
   it('Returns empty array for null or undefined', () =>

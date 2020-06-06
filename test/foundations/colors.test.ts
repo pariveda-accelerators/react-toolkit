@@ -9,7 +9,7 @@ import {
   isColorObject,
   colorIsInPalette,
   getPaletteColor,
-} from '..';
+} from '../../src/foundations';
 
 describe('Colors', () => {
   it('Shadeless Color List is default', () => {

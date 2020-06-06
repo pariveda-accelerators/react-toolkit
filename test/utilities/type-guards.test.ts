@@ -1,4 +1,9 @@
-import { isString, isNullOrUndefined, isNull, isUndefined } from '../../utilities';
+import {
+  isString,
+  isNullOrUndefined,
+  isNull,
+  isUndefined,
+} from '../../src/utilities';
 
 describe('Utils - Type Guards', () => {
   describe('isString', () => {

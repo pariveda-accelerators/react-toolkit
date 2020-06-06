@@ -1,6 +1,6 @@
 import React from 'react';
-import { Fonts } from 'foundations';
-import { Story, FloatingPropTable } from '_stories/story-components';
+import { Fonts } from '../../foundations';
+import { Story, FloatingPropTable } from '../story-components';
 
 const type = {
   display: '',

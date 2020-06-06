@@ -1,9 +1,12 @@
 import React from 'react';
-import { Fonts } from 'foundations';
 import { render } from '@testing-library/react';
-import { renderAndTestProps } from '../../../utilities';
-import { TEXT_ALIGN, TEXT_TRANSFORM } from '..';
-import { SHIRT_SIZE } from 'foundations/layout/box';
+import { renderAndTestProps } from '../../src/utilities/testing-utils';
+import {
+  SHIRT_SIZE,
+  Fonts,
+  TEXT_ALIGN,
+  TEXT_TRANSFORM,
+} from '../../src/foundations';
 
 describe('Typography', () => {
   it('Renders Default', () => {
